@@ -1,298 +1,87 @@
 /* ========================================
-   Header
-======================================== */
-
-.header {
-
-    height: 64px;
-
-    background: #ffffff;
-
-    border-bottom:
-        1px solid #e5e7eb;
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 100;
-
-}
-
-
-.header-inner {
-
-    height: 100%;
-
-    max-width: 1440px;
-
-    margin: 0 auto;
-
-    padding:
-        0 24px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 30px;
-
-}
-
-
-.logo {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    text-decoration: none;
-
-    min-width: 210px;
-
-}
-
-
-.logo-mark {
-
-    width: 34px;
-
-    height: 34px;
-
-    border-radius: 8px;
-
-    background: #202124;
-
-    color: #fff;
-
-    display: grid;
-
-    place-items: center;
-
-    font-weight: 800;
-
-}
-
-
-.logo strong {
-
-    display: block;
-
-    font-size: 15px;
-
-    line-height: 1.2;
-
-}
-
-
-.logo small {
-
-    display: block;
-
-    color: #888;
-
-    font-size: 10px;
-
-    margin-top: 2px;
-
-}
-
-
-/* ========================================
-   Header Search
-======================================== */
-
-.header-search {
-
-    height: 40px;
-
-    max-width: 520px;
-
-    flex: 1;
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-}
-
-
-.header-search input {
-
-    width: 100%;
-
-    height: 100%;
-
-    border:
-        1px solid #ddd;
-
-    border-radius: 9px;
-
-    padding:
-        0 75px 0 38px;
-
-    outline: none;
-
-    background: #f7f8fa;
-
-}
-
-
-.header-search input:focus {
-
-    background: white;
-
-    border-color: #999;
-
-}
-
-
-.search-icon {
-
-    position: absolute;
-
-    left: 13px;
-
-    color: #777;
-
-    z-index: 1;
-
-}
-
-
-.header-search kbd {
-
-    position: relative;
-
-    left: -52px;
-
-    font-size: 10px;
-
-    padding: 2px 5px;
-
-    border:
-        1px solid #d5d5d5;
-
-    border-radius: 4px;
-
-    background: white;
-
-    color: #888;
-
-}
-
-
-.header-actions {
-
-    margin-left: auto;
-
-}
-
-
-.icon-button {
-
-    border: 0;
-
-    background: none;
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-}
-
-
-/* ========================================
-   Page
+   ページ全体
 ======================================== */
 
 .page {
-
-    max-width: 1440px;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    min-height:
-        calc(100vh - 64px);
-
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    min-height: calc(100vh - 64px);
 }
 
 
 /* ========================================
-   Sidebar
+   サイドバー
 ======================================== */
 
-.sidebar {
-
-    width: 240px;
-
-    flex-shrink: 0;
-
-    background: #ffffff;
-
-    border-right:
-        1px solid #e5e7eb;
-
-    padding:
-        24px 14px;
-
-    position: sticky;
-
-    top: 64px;
-
-    height:
-        calc(100vh - 64px);
-
-    overflow-y: auto;
-
+#site-sidebar {
+    min-width: 0;
 }
 
 
+.sidebar {
+    position: sticky;
+    top: 64px;
+
+    width: 240px;
+    height: calc(100vh - 64px);
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 14px;
+
+    border-right: 1px solid #e5e5e5;
+
+    background: #fafafa;
+
+    overflow-y: auto;
+}
+
+
+/* ========================================
+   サイドバーセクション
+======================================== */
+
 .sidebar-section {
-
-    margin-bottom: 30px;
-
+    margin-bottom: 28px;
 }
 
 
 .sidebar-title {
+    padding: 0 10px;
+    margin-bottom: 8px;
 
-    padding:
-        0 12px 8px;
+    font-size: 12px;
+    font-weight: 700;
 
     color: #999;
 
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: .08em;
-
-    text-transform: uppercase;
-
+    letter-spacing: 0.08em;
 }
 
 
+/* ========================================
+   サイドバーリンク
+======================================== */
+
 .sidebar-link {
-
     display: flex;
-
     align-items: center;
 
-    gap: 11px;
+    gap: 10px;
 
+    width: 100%;
     min-height: 40px;
 
-    padding:
-        8px 12px;
+    box-sizing: border-box;
 
-    border-radius: 7px;
+    padding: 8px 10px;
+
+    margin: 2px 0;
+
+    border-radius: 8px;
 
     color: #555;
 
@@ -301,164 +90,163 @@
     font-size: 14px;
 
     transition:
-        background .15s,
-        color .15s;
-
+        background 0.15s ease,
+        color 0.15s ease;
 }
 
 
 .sidebar-link span {
+    width: 22px;
 
-    width: 20px;
+    flex-shrink: 0;
 
     text-align: center;
 
-    color: #888;
-
+    font-size: 16px;
 }
 
 
 .sidebar-link:hover {
-
-    background: #f2f3f5;
-
+    background: #eeeeee;
     color: #222;
-
 }
 
 
 .sidebar-link.active {
-
-    background: #eeeeef;
-
+    background: #e8e8e8;
     color: #111;
 
     font-weight: 600;
-
-}
-
-
-.sidebar-link.active span {
-
-    color: #111;
-
 }
 
 
 /* ========================================
-   Main
+   サイドバー下部
+======================================== */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding-top: 20px;
+}
+
+
+/* 更新ボタン */
+
+.update-button {
+    display: block;
+
+    width: 100%;
+
+    padding: 9px 10px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #ddd;
+    border-radius: 7px;
+
+    background: white;
+
+    color: #555;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.update-button:hover {
+    background: #f1f1f1;
+    border-color: #ccc;
+}
+
+
+.update-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+.sidebar-version {
+    padding: 0 10px;
+
+    color: #aaa;
+
+    font-size: 11px;
+}
+
+
+/* ========================================
+   メイン
 ======================================== */
 
 .main {
-
     min-width: 0;
-
-    flex: 1;
-
+    width: 100%;
 }
 
 
 .content {
-
-    max-width: 1100px;
+    width: min(1100px, calc(100% - 48px));
 
     margin: 0 auto;
 
-    padding:
-        60px 50px;
-
+    padding: 48px 0 80px;
 }
 
 
 /* ========================================
-   Mobile
+   スマホ
 ======================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
 
-    .sidebar {
-
-        width: 210px;
-
-    }
-
-    .content {
-
-        padding:
-            40px 30px;
-
-    }
-
-}
-
-
-@media (max-width: 700px) {
-
-    .header-inner {
-
-        padding:
-            0 15px;
-
+    .page {
+        display: block;
     }
 
 
-    .logo {
-
-        min-width: auto;
-
-    }
-
-
-    .logo small {
-
-        display: none;
-
-    }
-
-
-    .header-search {
-
-        display: none;
-
+    #site-sidebar {
+        position: relative;
     }
 
 
     .sidebar {
-
         position: fixed;
 
-        left: -260px;
-
         top: 64px;
+        left: 0;
 
-        width: 250px;
+        z-index: 1000;
 
-        height:
-            calc(100vh - 64px);
+        width: 260px;
 
-        z-index: 90;
+        transform: translateX(-100%);
 
         transition:
-            left .2s;
+            transform 0.2s ease;
 
         box-shadow:
-            4px 0 15px rgba(0,0,0,.08);
-
+            4px 0 20px rgba(0,0,0,0.08);
     }
 
 
     .sidebar.open {
-
-        left: 0;
-
+        transform: translateX(0);
     }
 
 
     .content {
+        width: min(
+            100% - 32px,
+            1100px
+        );
 
-        padding:
-            30px 18px;
-
+        padding-top: 32px;
     }
 
 }
