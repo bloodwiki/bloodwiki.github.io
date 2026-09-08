@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 
 <head>
@@ -11,70 +10,294 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Wiki</title>
+    <title>読み込み中... - ○○ Wiki</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/article.css">
 
 </head>
 
 <body>
 
-<header>
+<div class="site">
 
-    <a href="index.html">
-        Wiki
-    </a>
+    <!-- ================================
+         ヘッダー
+    ================================= -->
 
-</header>
+    <header class="header">
+
+        <div class="header-inner">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <span class="logo-mark">
+                    W
+                </span>
+
+                <span>
+                    <strong>○○ Wiki</strong>
+                    <small>Unofficial Wiki</small>
+                </span>
+
+            </a>
 
 
-<main>
+            <div class="header-search">
 
-    <div id="loading">
-        読み込み中...
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    placeholder="Wikiを検索..."
+                >
+
+                <kbd>Ctrl</kbd>
+                <kbd>K</kbd>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="icon-button"
+                    id="menu-button"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="page">
+
+        <!-- ============================
+             サイドバー
+        ============================= -->
+
+        <aside class="sidebar">
+
+            <nav>
+
+                <div class="sidebar-section">
+
+                    <div class="sidebar-title">
+                        Wiki
+                    </div>
+
+                    <a
+                        href="index.html"
+                        class="sidebar-link"
+                    >
+                        <span>⌂</span>
+                        ホーム
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>⚔</span>
+                        敵・ボス
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>♨</span>
+                        釣り
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>◇</span>
+                        装備・アクセサリー
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>□</span>
+                        アイテム
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>⌖</span>
+                        地域
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>♙</span>
+                        NPC
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>✓</span>
+                        クエスト
+                    </a>
+
+                </div>
+
+
+                <div class="sidebar-section">
+
+                    <div class="sidebar-title">
+                        Wiki情報
+                    </div>
+
+                    <a href="#" class="sidebar-link">
+                        <span>◌</span>
+                        最近の更新
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>⌕</span>
+                        調査・検証
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>?</span>
+                        Wikiについて
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- ============================
+             記事
+        ============================= -->
+
+        <main class="main">
+
+            <div class="article-layout">
+
+                <article class="article">
+
+                    <!-- パンくず -->
+
+                    <nav
+                        class="breadcrumbs"
+                        id="breadcrumbs"
+                    >
+
+                        <a href="index.html">
+                            ホーム
+                        </a>
+
+                        <span>/</span>
+
+                        <span id="breadcrumb-category">
+                            ...
+                        </span>
+
+                        <span>/</span>
+
+                        <strong id="breadcrumb-title">
+                            ...
+                        </strong>
+
+                    </nav>
+
+
+                    <!-- 記事ヘッダー -->
+
+                    <header class="article-header">
+
+                        <div
+                            class="article-category"
+                            id="category"
+                        >
+                            読み込み中
+                        </div>
+
+                        <h1 id="title">
+                            読み込み中...
+                        </h1>
+
+                        <p
+                            class="article-summary"
+                            id="summary"
+                        ></p>
+
+                    </header>
+
+
+                    <!-- 本文 -->
+
+                    <div
+                        id="content"
+                        class="article-content"
+                    >
+
+                        <div class="loading">
+                            記事を読み込んでいます...
+                        </div>
+
+                    </div>
+
+
+                    <!-- 更新情報 -->
+
+                    <footer
+                        class="article-footer"
+                    >
+
+                        <div>
+
+                            <span>
+                                最終更新
+                            </span>
+
+                            <strong id="updated">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </footer>
+
+                </article>
+
+
+                <!-- ========================
+                     右側目次
+                ========================= -->
+
+                <aside class="article-toc">
+
+                    <div class="toc-title">
+                        この記事の内容
+                    </div>
+
+                    <nav id="toc">
+
+                        <div class="toc-empty">
+                            読み込み中...
+                        </div>
+
+                    </nav>
+
+                </aside>
+
+            </div>
+
+        </main>
+
     </div>
 
-    <article id="article"
-        hidden>
-
-        <div
-            id="category"
-            class="category">
-        </div>
-
-        <h1 id="title"></h1>
-
-        <div
-            id="summary"
-            class="summary">
-        </div>
-
-        <div
-            id="content">
-        </div>
-
-        <div
-            id="updated"
-            class="updated">
-        </div>
-
-    </article>
-
-
-    <div
-        id="error"
-        hidden>
-    </div>
-
-</main>
+</div>
 
 
 <script src="js/api.js"></script>
 <script src="js/article.js"></script>
 
 </body>
-
 </html>
