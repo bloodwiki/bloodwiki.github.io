@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -11,39 +9,398 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Wiki</title>
+    <title>○○ Wiki</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
 
 </head>
 
 <body>
 
-<header>
+<div class="site">
 
-    <h1>○○ Wiki</h1>
+    <!-- ================================
+         ヘッダー
+    ================================= -->
 
-    <input
-        id="search"
-        type="search"
-        placeholder="記事を検索..."
-    >
+    <header class="header">
 
-</header>
+        <div class="header-inner">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                <span class="logo-mark">W</span>
+                <span>
+                    <strong>○○ Wiki</strong>
+                    <small>Unofficial Wiki</small>
+                </span>
+            </a>
 
 
-<main>
+            <div class="header-search">
 
-    <h2>記事一覧</h2>
+                <span class="search-icon">⌕</span>
 
-    <div id="articles">
-        読み込み中...
+                <input
+                    type="search"
+                    id="global-search"
+                    placeholder="Wikiを検索..."
+                >
+
+                <kbd>Ctrl</kbd>
+                <kbd>K</kbd>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="icon-button"
+                    id="menu-button"
+                    aria-label="メニュー"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================
+         全体
+    ================================= -->
+
+    <div class="page">
+
+        <!-- ============================
+             サイドバー
+        ============================= -->
+
+        <aside class="sidebar">
+
+            <nav>
+
+                <div class="sidebar-section">
+
+                    <div class="sidebar-title">
+                        Wiki
+                    </div>
+
+                    <a
+                        href="index.html"
+                        class="sidebar-link active"
+                    >
+                        <span>⌂</span>
+                        ホーム
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>⚔</span>
+                        敵・ボス
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>♨</span>
+                        釣り
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>◇</span>
+                        装備・アクセサリー
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>□</span>
+                        アイテム
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>⌖</span>
+                        地域
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>♙</span>
+                        NPC
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>✓</span>
+                        クエスト
+                    </a>
+
+                </div>
+
+
+                <div class="sidebar-section">
+
+                    <div class="sidebar-title">
+                        Wiki情報
+                    </div>
+
+                    <a href="#" class="sidebar-link">
+                        <span>◌</span>
+                        最近の更新
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>⌕</span>
+                        調査・検証
+                    </a>
+
+                    <a href="#" class="sidebar-link">
+                        <span>?</span>
+                        Wikiについて
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-version">
+                    Wiki v0.1
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ============================
+             メイン
+        ============================= -->
+
+        <main class="main">
+
+            <div class="content">
+
+                <section class="hero">
+
+                    <div class="hero-label">
+                        UNOFFICIAL WIKI
+                    </div>
+
+                    <h1>
+                        ○○ Wiki
+                    </h1>
+
+                    <p>
+                        ○○に関する情報をまとめた<br>
+                        非公式Wikiです。
+                    </p>
+
+                    <div class="hero-search">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="search"
+                            id="hero-search"
+                            placeholder="知りたいことを検索..."
+                        >
+
+                    </div>
+
+                </section>
+
+
+                <!-- ========================
+                     カテゴリ
+                ========================= -->
+
+                <section>
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="eyebrow">
+                                EXPLORE
+                            </span>
+
+                            <h2>
+                                Wikiを探索する
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-grid">
+
+                        <a href="#" class="category-card">
+
+                            <div class="category-icon enemy">
+                                ⚔
+                            </div>
+
+                            <div>
+                                <h3>敵・ボス</h3>
+                                <p>
+                                    敵のステータスやドロップ、
+                                    出現場所など
+                                </p>
+                            </div>
+
+                            <span class="arrow">→</span>
+
+                        </a>
+
+
+                        <a href="#" class="category-card">
+
+                            <div class="category-icon fishing">
+                                ♨
+                            </div>
+
+                            <div>
+                                <h3>釣り</h3>
+                                <p>
+                                    釣れるアイテムや
+                                    釣り場など
+                                </p>
+                            </div>
+
+                            <span class="arrow">→</span>
+
+                        </a>
+
+
+                        <a href="#" class="category-card">
+
+                            <div class="category-icon equipment">
+                                ◇
+                            </div>
+
+                            <div>
+                                <h3>装備・アクセサリー</h3>
+                                <p>
+                                    武器やアクセサリーの
+                                    性能・入手方法
+                                </p>
+                            </div>
+
+                            <span class="arrow">→</span>
+
+                        </a>
+
+
+                        <a href="#" class="category-card">
+
+                            <div class="category-icon item">
+                                □
+                            </div>
+
+                            <div>
+                                <h3>アイテム</h3>
+                                <p>
+                                    ゲーム内アイテムの
+                                    詳細情報
+                                </p>
+                            </div>
+
+                            <span class="arrow">→</span>
+
+                        </a>
+
+
+                        <a href="#" class="category-card">
+
+                            <div class="category-icon area">
+                                ⌖
+                            </div>
+
+                            <div>
+                                <h3>地域</h3>
+                                <p>
+                                    各エリアの特徴や
+                                    出現する敵など
+                                </p>
+                            </div>
+
+                            <span class="arrow">→</span>
+
+                        </a>
+
+
+                        <a href="#" class="category-card">
+
+                            <div class="category-icon npc">
+                                ♙
+                            </div>
+
+                            <div>
+                                <h3>NPC</h3>
+                                <p>
+                                    NPCやショップの
+                                    情報
+                                </p>
+                            </div>
+
+                            <span class="arrow">→</span>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ========================
+                     最近の更新
+                ========================= -->
+
+                <section class="home-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="eyebrow">
+                                RECENT
+                            </span>
+
+                            <h2>
+                                最近の更新
+                            </h2>
+                        </div>
+
+                        <a href="#" class="text-link">
+                            すべて見る →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        id="recent-articles"
+                        class="article-list"
+                    >
+
+                        <div class="loading">
+                            読み込み中...
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
     </div>
 
-</main>
+</div>
 
 
 <script src="js/api.js"></script>
@@ -55,94 +412,95 @@ let allArticles = [];
 
 async function loadArticles() {
 
+    const container =
+        document.getElementById(
+            "recent-articles"
+        );
+
     try {
 
         const result =
             await getArticles();
 
         if (!result.success) {
-
-            throw new Error(
-                result.error
-            );
-
+            throw new Error(result.error);
         }
 
         allArticles =
             result.articles;
 
-        displayArticles(
+        displayRecentArticles(
             allArticles
+                .slice(0, 8)
         );
 
     } catch (error) {
 
         console.error(error);
 
-        document
-            .getElementById("articles")
-            .textContent =
-            "記事一覧の読み込みに失敗しました。";
+        container.innerHTML =
+            `<div class="empty">
+                記事を読み込めませんでした。
+            </div>`;
 
     }
 
 }
 
 
-function displayArticles(articles) {
+function displayRecentArticles(
+    articles
+) {
 
     const container =
         document.getElementById(
-            "articles"
+            "recent-articles"
         );
-
 
     container.innerHTML = "";
 
 
-    if (articles.length === 0) {
-
-        container.textContent =
-            "記事がありません。";
-
-        return;
-
-    }
-
-
     for (const article of articles) {
 
-        const card =
+        const element =
             document.createElement("a");
 
-        card.href =
+        element.href =
             "article.html?id=" +
             encodeURIComponent(
                 article.id
             );
 
-        card.className =
-            "article-card";
+        element.className =
+            "article-list-item";
 
 
-        card.innerHTML = `
+        element.innerHTML = `
 
-            <div class="article-category">
-                ${escapeHtml(article.category)}
+            <div class="article-list-main">
+
+                <div class="article-category">
+                    ${escapeHtml(article.category)}
+                </div>
+
+                <h3>
+                    ${escapeHtml(article.title)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(article.summary)}
+                </p>
+
             </div>
 
-            <h3>
-                ${escapeHtml(article.title)}
-            </h3>
-
-            <p>
-                ${escapeHtml(article.summary)}
-            </p>
+            <span class="article-arrow">
+                →
+            </span>
 
         `;
 
 
-        container.appendChild(card);
+        container.appendChild(element);
 
     }
 
@@ -155,71 +513,64 @@ function escapeHtml(text) {
         document.createElement("div");
 
     div.textContent =
-        text;
+        text ?? "";
 
     return div.innerHTML;
 
 }
 
 
-document
-    .getElementById("search")
-    .addEventListener(
-        "input",
-        event => {
+function setupSearch() {
 
-            const keyword =
-                event.target.value
-                    .trim()
-                    .toLowerCase();
+    const inputs = [
+
+        document.getElementById(
+            "global-search"
+        ),
+
+        document.getElementById(
+            "hero-search"
+        )
+
+    ];
 
 
-            if (!keyword) {
+    for (const input of inputs) {
 
-                displayArticles(
-                    allArticles
-                );
+        input.addEventListener(
+            "keydown",
+            event => {
 
-                return;
+                if (
+                    event.key !== "Enter"
+                ) return;
+
+
+                const keyword =
+                    input.value.trim();
+
+
+                if (!keyword) return;
+
+
+                location.href =
+                    "search.html?q=" +
+                    encodeURIComponent(
+                        keyword
+                    );
 
             }
+        );
 
+    }
 
-            const filtered =
-                allArticles.filter(
-                    article =>
-
-                        article.title
-                            .toLowerCase()
-                            .includes(keyword)
-
-                        ||
-
-                        article.summary
-                            .toLowerCase()
-                            .includes(keyword)
-
-                        ||
-
-                        article.category
-                            .toLowerCase()
-                            .includes(keyword)
-
-                );
-
-
-            displayArticles(
-                filtered
-            );
-
-        }
-    );
+}
 
 
 loadArticles();
+setupSearch();
 
 </script>
 
 </body>
-
 </html>
