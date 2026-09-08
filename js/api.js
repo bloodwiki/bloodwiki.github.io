@@ -5,7 +5,7 @@ API設定
 */
 
 const API_URL =
-    "ここにGASのウェブアプリURL";
+    "https://script.google.com/macros/s/AKfycby2sOYs5HFKri8CvWygsreNtsCqVXRgZLV0aNfNvlTxKiK9p-E7Z4bMieKJ-P9xr_p74w/exec";
 
 
 const CACHE_TIME =
