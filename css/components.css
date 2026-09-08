@@ -429,3 +429,118 @@
     font-size: 12px;
 
 }
+
+
+/* ========================================
+   Information Box
+======================================== */
+
+.info-box {
+
+    padding: 20px;
+
+    margin:
+        25px 0 40px;
+
+    background: #fff;
+
+    border:
+        1px solid #ddd;
+
+    border-left:
+        4px solid #777;
+
+    border-radius: 8px;
+
+}
+
+
+.info-box p {
+
+    margin:
+        8px 0 0;
+
+    color: #666;
+
+    font-size: 14px;
+
+}
+
+
+.simple-heading {
+
+    margin:
+        40px 0 15px;
+
+    font-size: 20px;
+
+}
+
+
+.research-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.research-card {
+
+    padding: 20px;
+
+    background: #fff;
+
+    border:
+        1px solid #e1e1e1;
+
+    border-radius: 9px;
+
+}
+
+
+.research-card h3 {
+
+    margin:
+        8px 0;
+
+    font-size: 16px;
+
+}
+
+
+.research-card p {
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+.research-status {
+
+    font-size: 11px;
+
+    color: #888;
+
+    font-weight: 700;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .research-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
