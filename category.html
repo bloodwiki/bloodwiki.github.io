@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>カテゴリ - ○○ Wiki</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+
+</head>
+
+<body>
+
+<div class="site">
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-mark">
+                W
+            </span>
+
+            <span>
+                <strong>○○ Wiki</strong>
+                <small>Unofficial Wiki</small>
+            </span>
+
+        </a>
+
+
+        <div class="header-search">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="search"
+                placeholder="Wikiを検索..."
+            >
+
+            <kbd>Ctrl</kbd>
+            <kbd>K</kbd>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="page">
+
+    <!-- サイドバー -->
+
+    <aside class="sidebar">
+
+        <nav>
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Wiki
+                </div>
+
+                <a
+                    href="index.html"
+                    class="sidebar-link"
+                >
+                    <span>⌂</span>
+                    ホーム
+                </a>
+
+                <a
+                    href="category.html?category=enemy"
+                    class="sidebar-link"
+                >
+                    <span>⚔</span>
+                    敵・ボス
+                </a>
+
+                <a
+                    href="category.html?category=fishing"
+                    class="sidebar-link"
+                >
+                    <span>♨</span>
+                    釣り
+                </a>
+
+                <a
+                    href="category.html?category=equipment"
+                    class="sidebar-link"
+                >
+                    <span>◇</span>
+                    装備・アクセサリー
+                </a>
+
+                <a
+                    href="category.html?category=item"
+                    class="sidebar-link"
+                >
+                    <span>□</span>
+                    アイテム
+                </a>
+
+                <a
+                    href="category.html?category=area"
+                    class="sidebar-link"
+                >
+                    <span>⌖</span>
+                    地域
+                </a>
+
+                <a
+                    href="category.html?category=npc"
+                    class="sidebar-link"
+                >
+                    <span>♙</span>
+                    NPC
+                </a>
+
+                <a
+                    href="category.html?category=quest"
+                    class="sidebar-link"
+                >
+                    <span>✓</span>
+                    クエスト
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Wiki情報
+                </div>
+
+                <a
+                    href="recent.html"
+                    class="sidebar-link"
+                >
+                    <span>◌</span>
+                    最近の更新
+                </a>
+
+                <a
+                    href="research.html"
+                    class="sidebar-link"
+                >
+                    <span>⌕</span>
+                    調査・検証
+                </a>
+
+                <a
+                    href="about.html"
+                    class="sidebar-link"
+                >
+                    <span>?</span>
+                    Wikiについて
+                </a>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- メイン -->
+
+    <main class="main">
+
+        <div class="content">
+
+            <nav class="breadcrumbs">
+
+                <a href="index.html">
+                    ホーム
+                </a>
+
+                <span>/</span>
+
+                <strong id="breadcrumb">
+                    カテゴリ
+                </strong>
+
+            </nav>
+
+
+            <header class="page-heading">
+
+                <div
+                    class="eyebrow"
+                    id="category-eyebrow"
+                >
+                    CATEGORY
+                </div>
+
+                <h1 id="category-title">
+                    カテゴリ
+                </h1>
+
+                <p id="category-description">
+                    Wikiの記事一覧です。
+                </p>
+
+            </header>
+
+
+            <div
+                id="article-count"
+                class="article-count"
+            >
+            </div>
+
+
+            <div
+                id="articles"
+                class="article-list"
+            >
+
+                <div class="loading">
+                    読み込み中...
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</div>
+
+
+<script src="js/api.js"></script>
+
+<script>
+
+const categories = {
+
+    enemy: {
+        name: "敵・ボス",
+        description:
+            "ゲーム内に登場する敵やボスについての情報です。"
+    },
+
+    fishing: {
+        name: "釣り",
+        description:
+            "釣りで入手できるものや釣り場、釣りに関する情報です。"
+    },
+
+    equipment: {
+        name: "装備・アクセサリー",
+        description:
+            "武器やアクセサリーの性能、入手方法などの情報です。"
+    },
+
+    item: {
+        name: "アイテム",
+        description:
+            "ゲーム内に登場するアイテムについての情報です。"
+    },
+
+    area: {
+        name: "地域",
+        description:
+            "各地域の特徴、出現する敵、入手できるものなどの情報です。"
+    },
+
+    npc: {
+        name: "NPC",
+        description:
+            "NPCやショップ、取引などについての情報です。"
+    },
+
+    quest: {
+        name: "クエスト",
+        description:
+            "ゲーム内に存在するクエストについての情報です。"
+    }
+
+};
+
+
+async function loadCategory() {
+
+    const params =
+        new URLSearchParams(
+            location.search
+        );
+
+    const category =
+        params.get("category");
+
+
+    const info =
+        categories[category];
+
+
+    if (!info) {
+
+        showError(
+            "指定されたカテゴリが存在しません。"
+        );
+
+        return;
+
+    }
+
+
+    document.title =
+        info.name +
+        " - ○○ Wiki";
+
+
+    document
+        .getElementById("breadcrumb")
+        .textContent =
+        info.name;
+
+
+    document
+        .getElementById("category-title")
+        .textContent =
+        info.name;
+
+
+    document
+        .getElementById("category-description")
+        .textContent =
+        info.description;
+
+
+    try {
+
+        const result =
+            await getArticles();
+
+
+        if (!result.success) {
+            throw new Error(
+                result.error
+            );
+        }
+
+
+        const articles =
+            result.articles.filter(
+                article =>
+                    article.category ===
+                    info.name
+            );
+
+
+        displayArticles(
+            articles
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        showError(
+            "記事の読み込みに失敗しました。"
+        );
+
+    }
+
+}
+
+
+function displayArticles(articles) {
+
+    const container =
+        document.getElementById(
+            "articles"
+        );
+
+
+    document
+        .getElementById("article-count")
+        .textContent =
+        `${articles.length} 件の記事`;
+
+
+    container.innerHTML = "";
+
+
+    if (articles.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty">
+                このカテゴリにはまだ記事がありません。
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    for (const article of articles) {
+
+        const element =
+            document.createElement("a");
+
+
+        element.href =
+            "article.html?id=" +
+            encodeURIComponent(
+                article.id
+            );
+
+
+        element.className =
+            "article-list-item";
+
+
+        element.innerHTML = `
+
+            <div class="article-list-main">
+
+                <div class="article-category">
+                    ${escapeHtml(article.category)}
+                </div>
+
+                <h3>
+                    ${escapeHtml(article.title)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(article.summary)}
+                </p>
+
+            </div>
+
+            <span class="article-arrow">
+                →
+            </span>
+
+        `;
+
+
+        container.appendChild(element);
+
+    }
+
+}
+
+
+function showError(message) {
+
+    document
+        .getElementById("articles")
+        .innerHTML = `
+
+        <div class="empty">
+            ${escapeHtml(message)}
+        </div>
+
+    `;
+
+}
+
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+loadCategory();
+
+</script>
+
+</body>
+
+</html>
