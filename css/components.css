@@ -382,3 +382,50 @@
     }
 
 }
+
+/* ========================================
+   Page Heading
+======================================== */
+
+.page-heading {
+
+    margin:
+        20px 0 35px;
+
+}
+
+
+.page-heading h1 {
+
+    margin:
+        5px 0 8px;
+
+    font-size:
+        clamp(32px, 4vw, 42px);
+
+    letter-spacing:
+        -.035em;
+
+}
+
+
+.page-heading p {
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+
+.article-count {
+
+    margin-bottom: 10px;
+
+    color: #888;
+
+    font-size: 12px;
+
+}
