@@ -1,0 +1,384 @@
+/* ========================================
+   Hero
+======================================== */
+
+.hero {
+
+    padding:
+        10px 0 60px;
+
+}
+
+
+.hero-label,
+.eyebrow {
+
+    display: block;
+
+    color: #888;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .12em;
+
+}
+
+
+.hero h1 {
+
+    margin:
+        8px 0 10px;
+
+    font-size:
+        clamp(36px, 5vw, 56px);
+
+    line-height: 1.15;
+
+    letter-spacing: -.04em;
+
+}
+
+
+.hero p {
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 16px;
+
+}
+
+
+.hero-search {
+
+    margin-top: 28px;
+
+    max-width: 600px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        0 18px;
+
+    background: #fff;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,.04);
+
+}
+
+
+.hero-search input {
+
+    border: 0;
+
+    outline: 0;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+/* ========================================
+   Section
+======================================== */
+
+.home-section {
+
+    margin-top: 60px;
+
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+}
+
+
+.section-heading h2 {
+
+    margin:
+        3px 0 0;
+
+    font-size: 23px;
+
+    letter-spacing: -.02em;
+
+}
+
+
+.text-link {
+
+    font-size: 13px;
+
+    color: #666;
+
+    text-decoration: none;
+
+}
+
+
+.text-link:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ========================================
+   Category
+======================================== */
+
+.category-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+}
+
+
+.category-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 110px;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border:
+        1px solid #e4e5e7;
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    transition:
+        transform .15s,
+        box-shadow .15s,
+        border-color .15s;
+
+}
+
+
+.category-card:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color: #ccc;
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.06);
+
+}
+
+
+.category-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #f1f2f3;
+
+    font-size: 20px;
+
+}
+
+
+.category-card h3 {
+
+    margin: 0 0 3px;
+
+    font-size: 16px;
+
+}
+
+
+.category-card p {
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+.arrow {
+
+    margin-left: auto;
+
+    color: #aaa;
+
+    font-size: 18px;
+
+}
+
+
+/* ========================================
+   Article list
+======================================== */
+
+.article-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+
+    background: #e5e5e5;
+
+    border:
+        1px solid #e5e5e5;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.article-list-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        18px 20px;
+
+    background: #fff;
+
+    text-decoration: none;
+
+}
+
+
+.article-list-item:hover {
+
+    background: #fafafa;
+
+}
+
+
+.article-list-main {
+
+    min-width: 0;
+
+}
+
+
+.article-list-item h3 {
+
+    margin: 2px 0;
+
+    font-size: 15px;
+
+}
+
+
+.article-list-item p {
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+.article-arrow {
+
+    margin-left: auto;
+
+    color: #aaa;
+
+}
+
+
+.article-category {
+
+    color: #888;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+/* ========================================
+   Utility
+======================================== */
+
+.loading,
+.empty {
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #888;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .category-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
