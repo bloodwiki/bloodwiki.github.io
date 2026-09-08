@@ -8,7 +8,7 @@ async function loadArticle() {
 
     const params =
         new URLSearchParams(
-            window.location.search
+            location.search
         );
 
     const id =
@@ -49,8 +49,15 @@ async function loadArticle() {
 
 
         document.title =
-            article.title + " - Wiki";
+            article.title +
+            " - ○○ Wiki";
 
+
+        /*
+        ================================
+        基本情報
+        ================================
+        */
 
         document
             .getElementById("category")
@@ -67,32 +74,62 @@ async function loadArticle() {
         document
             .getElementById("summary")
             .textContent =
-            article.summary;
-
-
-        document
-            .getElementById("content")
-            .innerHTML =
-            article.html;
+            article.summary || "";
 
 
         document
             .getElementById("updated")
             .textContent =
-            "最終更新: " +
-            article.updated;
+            article.updated || "-";
+
+
+        /*
+        ================================
+        パンくず
+        ================================
+        */
+
+        document
+            .getElementById(
+                "breadcrumb-category"
+            )
+            .textContent =
+            article.category;
 
 
         document
-            .getElementById("loading")
-            .hidden =
-            true;
+            .getElementById(
+                "breadcrumb-title"
+            )
+            .textContent =
+            article.title;
 
 
-        document
-            .getElementById("article")
-            .hidden =
-            false;
+        /*
+        ================================
+        HTML本文
+        ================================
+        */
+
+        const content =
+            document.getElementById(
+                "content"
+            );
+
+
+        content.innerHTML =
+            article.html;
+
+
+        /*
+        ================================
+        目次生成
+        ================================
+        */
+
+        generateTOC(
+            content
+        );
 
 
     } catch (error) {
@@ -108,22 +145,127 @@ async function loadArticle() {
 }
 
 
+/*
+========================================
+目次生成
+========================================
+*/
+
+function generateTOC(content) {
+
+    const toc =
+        document.getElementById(
+            "toc"
+        );
+
+
+    const headings =
+        content.querySelectorAll(
+            "h2, h3"
+        );
+
+
+    toc.innerHTML = "";
+
+
+    if (headings.length === 0) {
+
+        toc.innerHTML =
+            `<div class="toc-empty">
+                見出しなし
+            </div>`;
+
+        return;
+
+    }
+
+
+    headings.forEach(
+        (heading, index) => {
+
+            const id =
+                "heading-" + index;
+
+
+            heading.id = id;
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                "#" + id;
+
+
+            link.textContent =
+                heading.textContent;
+
+
+            if (
+                heading.tagName === "H3"
+            ) {
+
+                link.className =
+                    "toc-h3";
+
+            }
+
+
+            toc.appendChild(link);
+
+        }
+    );
+
+}
+
+
+/*
+========================================
+エラー
+========================================
+*/
+
 function showError(message) {
 
-    document
-        .getElementById("loading")
-        .hidden =
-        true;
+    document.body.innerHTML = `
+
+        <main style="
+            max-width:700px;
+            margin:100px auto;
+            padding:30px;
+            text-align:center;
+        ">
+
+            <h1>
+                記事を表示できません
+            </h1>
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+            <a href="index.html">
+                ← ホームへ戻る
+            </a>
+
+        </main>
+
+    `;
+
+}
 
 
-    const error =
-        document.getElementById("error");
+function escapeHtml(text) {
 
+    const div =
+        document.createElement("div");
 
-    error.textContent =
-        message;
+    div.textContent =
+        text ?? "";
 
-    error.hidden =
-        false;
+    return div.innerHTML;
 
 }
