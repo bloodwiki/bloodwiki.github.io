@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>最近の更新 - ○○ Wiki</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-mark">W</span>
+
+            <span>
+                <strong>○○ Wiki</strong>
+                <small>Unofficial Wiki</small>
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<div class="page">
+
+    <aside class="sidebar">
+
+        <nav>
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Wiki
+                </div>
+
+                <a
+                    href="index.html"
+                    class="sidebar-link"
+                >
+                    <span>⌂</span>
+                    ホーム
+                </a>
+
+                <a
+                    href="category.html?category=enemy"
+                    class="sidebar-link"
+                >
+                    <span>⚔</span>
+                    敵・ボス
+                </a>
+
+                <a
+                    href="category.html?category=fishing"
+                    class="sidebar-link"
+                >
+                    <span>♨</span>
+                    釣り
+                </a>
+
+                <a
+                    href="category.html?category=equipment"
+                    class="sidebar-link"
+                >
+                    <span>◇</span>
+                    装備・アクセサリー
+                </a>
+
+                <a
+                    href="category.html?category=item"
+                    class="sidebar-link"
+                >
+                    <span>□</span>
+                    アイテム
+                </a>
+
+                <a
+                    href="category.html?category=area"
+                    class="sidebar-link"
+                >
+                    <span>⌖</span>
+                    地域
+                </a>
+
+                <a
+                    href="category.html?category=npc"
+                    class="sidebar-link"
+                >
+                    <span>♙</span>
+                    NPC
+                </a>
+
+                <a
+                    href="category.html?category=quest"
+                    class="sidebar-link"
+                >
+                    <span>✓</span>
+                    クエスト
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Wiki情報
+                </div>
+
+                <a
+                    href="recent.html"
+                    class="sidebar-link active"
+                >
+                    <span>◌</span>
+                    最近の更新
+                </a>
+
+                <a
+                    href="research.html"
+                    class="sidebar-link"
+                >
+                    <span>⌕</span>
+                    調査・検証
+                </a>
+
+                <a
+                    href="about.html"
+                    class="sidebar-link"
+                >
+                    <span>?</span>
+                    Wikiについて
+                </a>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="content">
+
+            <nav class="breadcrumbs">
+
+                <a href="index.html">
+                    ホーム
+                </a>
+
+                <span>/</span>
+
+                <strong>
+                    最近の更新
+                </strong>
+
+            </nav>
+
+
+            <header class="page-heading">
+
+                <div class="eyebrow">
+                    RECENT
+                </div>
+
+                <h1>
+                    最近の更新
+                </h1>
+
+                <p>
+                    最近更新された記事を確認できます。
+                </p>
+
+            </header>
+
+
+            <div
+                id="articles"
+                class="article-list"
+            >
+
+                <div class="loading">
+                    読み込み中...
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="js/api.js"></script>
+
+<script>
+
+async function loadRecent() {
+
+    const container =
+        document.getElementById(
+            "articles"
+        );
+
+
+    try {
+
+        const result =
+            await getArticles();
+
+
+        if (!result.success) {
+            throw new Error(
+                result.error
+            );
+        }
+
+
+        const articles =
+            [...result.articles]
+                .reverse();
+
+
+        container.innerHTML = "";
+
+
+        for (
+            const article of
+            articles
+        ) {
+
+            const element =
+                document.createElement("a");
+
+
+            element.href =
+                "article.html?id=" +
+                encodeURIComponent(
+                    article.id
+                );
+
+
+            element.className =
+                "article-list-item";
+
+
+            element.innerHTML = `
+
+                <div class="article-list-main">
+
+                    <div class="article-category">
+                        ${escapeHtml(article.category)}
+                    </div>
+
+                    <h3>
+                        ${escapeHtml(article.title)}
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(article.summary)}
+                    </p>
+
+                </div>
+
+                <span class="article-arrow">
+                    →
+                </span>
+
+            `;
+
+
+            container.appendChild(
+                element
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            `<div class="empty">
+                読み込みに失敗しました。
+            </div>`;
+
+    }
+
+}
+
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+loadRecent();
+
+</script>
+
+</body>
+</html>
