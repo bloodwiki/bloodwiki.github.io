@@ -45,7 +45,7 @@ function injectHeader() {
                     <span>
 
                         <strong>
-                            ○○ Wiki
+                            BLOOD Wiki
                         </strong>
 
                         <small>
