@@ -4,15 +4,6 @@
 ========================================
 */
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    createHeader();
-    createSidebar();
-    setupLayoutEvents();
-    setActiveSidebar();
-
-});
-
 
 /*
 ========================================
@@ -20,34 +11,61 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================================
 */
 
-function createHeader() {
+function injectHeader() {
 
-    const target = document.getElementById("site-header");
+    const container =
+        document.getElementById(
+            "site-header"
+        );
 
-    if (!target) return;
 
-    target.innerHTML = `
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = `
 
         <header class="header">
 
             <div class="header-inner">
 
+
+                <!-- ロゴ -->
+
                 <a
                     href="index.html"
                     class="logo"
                 >
-                    <span class="logo-mark">W</span>
+
+                    <span class="logo-mark">
+                        W
+                    </span>
 
                     <span>
-                        <strong>○○ Wiki</strong>
-                        <small>Unofficial Wiki</small>
+
+                        <strong>
+                            ○○ Wiki
+                        </strong>
+
+                        <small>
+                            Unofficial Wiki
+                        </small>
+
                     </span>
+
                 </a>
 
 
+
+                <!-- 検索 -->
+
                 <div class="header-search">
 
-                    <span class="search-icon">⌕</span>
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
 
                     <input
                         type="search"
@@ -56,17 +74,29 @@ function createHeader() {
                         autocomplete="off"
                     >
 
+
                     <div class="search-shortcut">
-                        <kbd>Ctrl</kbd>
-                        <kbd>K</kbd>
+
+                        <kbd>
+                            Ctrl
+                        </kbd>
+
+                        <kbd>
+                            K
+                        </kbd>
+
                     </div>
 
                 </div>
 
 
+
+                <!-- 右側 -->
+
                 <div class="header-actions">
 
                     <button
+                        type="button"
                         class="icon-button"
                         id="menu-button"
                         aria-label="メニュー"
@@ -75,6 +105,7 @@ function createHeader() {
                     </button>
 
                 </div>
+
 
             </div>
 
@@ -91,19 +122,35 @@ function createHeader() {
 ========================================
 */
 
-function createSidebar() {
+function injectSidebar() {
 
-    const target = document.getElementById("site-sidebar");
+    const container =
+        document.getElementById(
+            "site-sidebar"
+        );
 
-    if (!target) return;
 
-    target.innerHTML = `
+    if (!container) {
+        return;
+    }
 
-        <aside class="sidebar" id="sidebar">
+
+    container.innerHTML = `
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
 
             <nav>
 
+
+                <!-- =================================
+                     Wiki
+                ================================== -->
+
                 <div class="sidebar-section">
+
 
                     <div class="sidebar-title">
                         Wiki
@@ -113,86 +160,139 @@ function createSidebar() {
                     <a
                         href="index.html"
                         class="sidebar-link"
-                        data-page="home"
                     >
-                        <span>⌂</span>
+
+                        <span>
+                            ⌂
+                        </span>
+
                         ホーム
+
                     </a>
 
 
                     <a
                         href="category.html?category=enemy"
                         class="sidebar-link"
-                        data-category="enemy"
                     >
-                        <span>⚔</span>
-                        敵・ボス
+
+                        <span>
+                            ⚔
+                        </span>
+
+                        敵
+
+                    </a>
+
+
+                    <a
+                        href="category.html?category=boss"
+                        class="sidebar-link"
+                    >
+
+                        <span>
+                            ☠
+                        </span>
+
+                        ボス
+
                     </a>
 
 
                     <a
                         href="category.html?category=fishing"
                         class="sidebar-link"
-                        data-category="fishing"
                     >
-                        <span>♨</span>
+
+                        <span>
+                            ♨
+                        </span>
+
                         釣り
+
                     </a>
 
 
                     <a
-                        href="category.html?category=equipment"
+                        href="category.html?category=weapon"
                         class="sidebar-link"
-                        data-category="equipment"
                     >
-                        <span>◇</span>
-                        装備・アクセサリー
+
+                        <span>
+                            ⚔
+                        </span>
+
+                        武器
+
+                    </a>
+
+
+                    <a
+                        href="category.html?category=armor"
+                        class="sidebar-link"
+                    >
+
+                        <span>
+                            ♢
+                        </span>
+
+                        防具
+
+                    </a>
+
+
+                    <a
+                        href="category.html?category=accessory"
+                        class="sidebar-link"
+                    >
+
+                        <span>
+                            ◇
+                        </span>
+
+                        アクセサリー
+
                     </a>
 
 
                     <a
                         href="category.html?category=item"
                         class="sidebar-link"
-                        data-category="item"
                     >
-                        <span>□</span>
+
+                        <span>
+                            □
+                        </span>
+
                         アイテム
-                    </a>
 
-
-                    <a
-                        href="category.html?category=area"
-                        class="sidebar-link"
-                        data-category="area"
-                    >
-                        <span>⌖</span>
-                        地域
                     </a>
 
 
                     <a
                         href="category.html?category=npc"
                         class="sidebar-link"
-                        data-category="npc"
                     >
-                        <span>♙</span>
+
+                        <span>
+                            ♙
+                        </span>
+
                         NPC
+
                     </a>
 
-
-                    <a
-                        href="category.html?category=quest"
-                        class="sidebar-link"
-                        data-category="quest"
-                    >
-                        <span>✓</span>
-                        クエスト
-                    </a>
 
                 </div>
 
 
+
+                <!-- =================================
+                     Wiki情報
+                ================================== -->
+
                 <div class="sidebar-section">
+
 
                     <div class="sidebar-title">
                         Wiki情報
@@ -202,52 +302,75 @@ function createSidebar() {
                     <a
                         href="recent.html"
                         class="sidebar-link"
-                        data-page="recent"
                     >
-                        <span>◌</span>
+
+                        <span>
+                            ◌
+                        </span>
+
                         最近の更新
+
                     </a>
 
 
                     <a
                         href="research.html"
                         class="sidebar-link"
-                        data-page="research"
                     >
-                        <span>⌕</span>
+
+                        <span>
+                            ⌕
+                        </span>
+
                         調査・検証
+
                     </a>
 
 
                     <a
                         href="about.html"
                         class="sidebar-link"
-                        data-page="about"
                     >
-                        <span>?</span>
+
+                        <span>
+                            ?
+                        </span>
+
                         Wikiについて
+
                     </a>
 
+
                 </div>
+
 
             </nav>
 
 
+
+            <!-- =================================
+                 下部
+            ================================== -->
+
             <div class="sidebar-bottom">
 
+
                 <button
+                    type="button"
                     class="update-button"
-                    id="update-wiki"
+                    id="update-button"
                 >
-                    ↻ 最新の情報に更新
+                    最新の情報に更新
                 </button>
 
 
                 <div class="sidebar-version">
-                    Wiki v0.1
+                    Wiki v1.0
                 </div>
 
+
             </div>
+
 
         </aside>
 
@@ -258,65 +381,74 @@ function createSidebar() {
 
 /*
 ========================================
-イベント
+検索
 ========================================
 */
 
-function setupLayoutEvents() {
+function setupGlobalSearch() {
+
+    const globalInput =
+        document.getElementById(
+            "global-search"
+        );
+
+
+    const heroInput =
+        document.getElementById(
+            "hero-search"
+        );
+
 
     /*
-    ------------------------------------
-    モバイルメニュー
-    ------------------------------------
+    検索処理
     */
 
-    const menuButton =
-        document.getElementById("menu-button");
+    function search(input) {
 
-    const sidebar =
-        document.getElementById("sidebar");
+        if (!input) {
+            return;
+        }
 
 
-    if (menuButton && sidebar) {
+        const keyword =
+            input.value.trim();
 
-        menuButton.addEventListener(
-            "click",
-            () => {
 
-                sidebar.classList.toggle("open");
+        if (!keyword) {
+            return;
+        }
 
-            }
-        );
+
+        location.href =
+            "search.html?q=" +
+            encodeURIComponent(
+                keyword
+            );
 
     }
 
 
     /*
-    ------------------------------------
-    検索
-    ------------------------------------
+    Enter
     */
 
-    const search =
-        document.getElementById("global-search");
+    if (globalInput) {
 
-
-    if (search) {
-
-        search.addEventListener(
+        globalInput.addEventListener(
             "keydown",
             event => {
 
-                if (event.key !== "Enter") return;
+                if (
+                    event.key === "Enter"
+                ) {
 
-                const keyword =
-                    search.value.trim();
+                    event.preventDefault();
 
-                if (!keyword) return;
+                    search(
+                        globalInput
+                    );
 
-                location.href =
-                    "search.html?q=" +
-                    encodeURIComponent(keyword);
+                }
 
             }
         );
@@ -325,9 +457,35 @@ function setupLayoutEvents() {
 
 
     /*
-    ------------------------------------
+    ヒーロー検索
+    */
+
+    if (heroInput) {
+
+        heroInput.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    event.preventDefault();
+
+                    search(
+                        heroInput
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /*
     Ctrl + K
-    ------------------------------------
     */
 
     document.addEventListener(
@@ -335,21 +493,17 @@ function setupLayoutEvents() {
         event => {
 
             if (
-                event.ctrlKey &&
+                (event.ctrlKey ||
+                 event.metaKey) &&
                 event.key.toLowerCase() === "k"
             ) {
 
                 event.preventDefault();
 
-                const input =
-                    document.getElementById(
-                        "global-search"
-                    );
 
-                if (input) {
+                if (globalInput) {
 
-                    input.focus();
-                    input.select();
+                    globalInput.focus();
 
                 }
 
@@ -358,64 +512,130 @@ function setupLayoutEvents() {
         }
     );
 
-
-    /*
-    ------------------------------------
-    最新情報へ更新
-    ------------------------------------
-    */
-
-    const updateButton =
-        document.getElementById("update-wiki");
+}
 
 
-    if (updateButton) {
+/*
+========================================
+メニュー
+========================================
+*/
 
-        updateButton.addEventListener(
-            "click",
-            async () => {
+function setupMenu() {
 
-                updateButton.disabled = true;
-
-                updateButton.textContent =
-                    "↻ 更新中...";
-
-                try {
-
-                    await forceRefresh();
-
-                    location.reload();
-
-                } catch (error) {
-
-                    console.error(error);
-
-                    alert(
-                        "更新に失敗しました。"
-                    );
-
-                    updateButton.disabled = false;
-
-                    updateButton.textContent =
-                        "↻ 最新の情報に更新";
-
-                }
-
-            }
+    const button =
+        document.getElementById(
+            "menu-button"
         );
 
+
+    const sidebar =
+        document.getElementById(
+            "sidebar"
+        );
+
+
+    if (
+        !button ||
+        !sidebar
+    ) {
+
+        return;
+
     }
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            sidebar.classList.toggle(
+                "open"
+            );
+
+        }
+    );
 
 }
 
 
 /*
 ========================================
-現在位置
+更新ボタン
 ========================================
 */
 
-function setActiveSidebar() {
+function setupUpdateButton() {
+
+    const button =
+        document.getElementById(
+            "update-button"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
+        async () => {
+
+            button.disabled = true;
+
+            button.textContent =
+                "更新中...";
+
+
+            try {
+
+                if (
+                    typeof forceRefresh ===
+                    "function"
+                ) {
+
+                    await forceRefresh();
+
+                    location.reload();
+
+                } else {
+
+                    console.warn(
+                        "forceRefresh が見つかりません"
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "更新エラー:",
+                    error
+                );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "最新の情報に更新";
+
+            }
+
+        }
+    );
+
+}
+
+
+/*
+========================================
+現在ページのリンクをactiveにする
+========================================
+*/
+
+function setupActiveLink() {
 
     const links =
         document.querySelectorAll(
@@ -423,94 +643,122 @@ function setActiveSidebar() {
         );
 
 
-    links.forEach(link => {
-
-        link.classList.remove("active");
-
-    });
-
-
-    const path =
-        location.pathname;
-
-    const file =
-        path.split("/").pop();
+    const currentPage =
+        location.pathname
+            .split("/")
+            .pop() ||
+        "index.html";
 
 
-    /*
-    ホーム
-    */
-
-    if (
-        file === "" ||
-        file === "index.html"
-    ) {
-
-        const link =
-            document.querySelector(
-                '[data-page="home"]'
-            );
-
-        if (link)
-            link.classList.add("active");
-
-        return;
-
-    }
-
-
-    /*
-    カテゴリ
-    */
-
-    if (file === "category.html") {
-
-        const params =
-            new URLSearchParams(
-                location.search
-            );
-
-        const category =
-            params.get("category");
-
-        const link =
-            document.querySelector(
-                `[data-category="${category}"]`
-            );
-
-        if (link)
-            link.classList.add("active");
-
-        return;
-
-    }
-
-
-    /*
-    その他
-    */
-
-    const pageMap = {
-
-        "recent.html": "recent",
-        "research.html": "research",
-        "about.html": "about"
-
-    };
-
-
-    const page =
-        pageMap[file];
-
-    if (!page) return;
-
-
-    const link =
-        document.querySelector(
-            `[data-page="${page}"]`
+    const params =
+        new URLSearchParams(
+            location.search
         );
 
-    if (link)
-        link.classList.add("active");
+
+    const currentCategory =
+        params.get(
+            "category"
+        );
+
+
+    links.forEach(
+        link => {
+
+            const href =
+                link.getAttribute(
+                    "href"
+                );
+
+
+            if (!href) {
+                return;
+            }
+
+
+            /*
+            index
+            */
+
+            if (
+                currentPage ===
+                    "index.html" &&
+                href ===
+                    "index.html"
+            ) {
+
+                link.classList.add(
+                    "active"
+                );
+
+                return;
+
+            }
+
+
+            /*
+            category
+            */
+
+            if (
+                currentPage ===
+                    "category.html"
+            ) {
+
+                const linkParams =
+                    new URLSearchParams(
+                        href.split("?")[1] ||
+                        ""
+                    );
+
+
+                const linkCategory =
+                    linkParams.get(
+                        "category"
+                    );
+
+
+                if (
+                    linkCategory &&
+                    linkCategory ===
+                        currentCategory
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+
+        }
+    );
 
 }
+
+
+/*
+========================================
+開始
+========================================
+*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        injectHeader();
+
+        injectSidebar();
+
+        setupGlobalSearch();
+
+        setupMenu();
+
+        setupUpdateButton();
+
+        setupActiveLink();
+
+    }
+);
