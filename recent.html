@@ -18,199 +18,88 @@
 
 </head>
 
+
 <body>
 
-<header class="header">
+<div class="site">
 
-    <div class="header-inner">
+    <!-- 共通ヘッダー -->
+    <div id="site-header"></div>
 
-        <a href="index.html" class="logo">
 
-            <span class="logo-mark">W</span>
+    <div class="page">
 
-            <span>
-                <strong>○○ Wiki</strong>
-                <small>Unofficial Wiki</small>
-            </span>
+        <!-- 共通サイドバー -->
+        <div id="site-sidebar"></div>
 
-        </a>
+
+        <main class="main">
+
+            <div class="content">
+
+                <!-- パンくず -->
+
+                <nav class="breadcrumbs">
+
+                    <a href="index.html">
+                        ホーム
+                    </a>
+
+                    <span>/</span>
+
+                    <strong>
+                        最近の更新
+                    </strong>
+
+                </nav>
+
+
+                <!-- ページ見出し -->
+
+                <header class="page-heading">
+
+                    <div class="eyebrow">
+                        RECENT
+                    </div>
+
+                    <h1>
+                        最近の更新
+                    </h1>
+
+                    <p>
+                        最近更新された記事を確認できます。
+                    </p>
+
+                </header>
+
+
+                <!-- 記事一覧 -->
+
+                <div
+                    id="articles"
+                    class="article-list"
+                >
+
+                    <div class="loading">
+                        読み込み中...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
 
     </div>
-
-</header>
-
-
-<div class="page">
-
-    <aside class="sidebar">
-
-        <nav>
-
-            <div class="sidebar-section">
-
-                <div class="sidebar-title">
-                    Wiki
-                </div>
-
-                <a
-                    href="index.html"
-                    class="sidebar-link"
-                >
-                    <span>⌂</span>
-                    ホーム
-                </a>
-
-                <a
-                    href="category.html?category=enemy"
-                    class="sidebar-link"
-                >
-                    <span>⚔</span>
-                    敵・ボス
-                </a>
-
-                <a
-                    href="category.html?category=fishing"
-                    class="sidebar-link"
-                >
-                    <span>♨</span>
-                    釣り
-                </a>
-
-                <a
-                    href="category.html?category=equipment"
-                    class="sidebar-link"
-                >
-                    <span>◇</span>
-                    装備・アクセサリー
-                </a>
-
-                <a
-                    href="category.html?category=item"
-                    class="sidebar-link"
-                >
-                    <span>□</span>
-                    アイテム
-                </a>
-
-                <a
-                    href="category.html?category=area"
-                    class="sidebar-link"
-                >
-                    <span>⌖</span>
-                    地域
-                </a>
-
-                <a
-                    href="category.html?category=npc"
-                    class="sidebar-link"
-                >
-                    <span>♙</span>
-                    NPC
-                </a>
-
-                <a
-                    href="category.html?category=quest"
-                    class="sidebar-link"
-                >
-                    <span>✓</span>
-                    クエスト
-                </a>
-
-            </div>
-
-
-            <div class="sidebar-section">
-
-                <div class="sidebar-title">
-                    Wiki情報
-                </div>
-
-                <a
-                    href="recent.html"
-                    class="sidebar-link active"
-                >
-                    <span>◌</span>
-                    最近の更新
-                </a>
-
-                <a
-                    href="research.html"
-                    class="sidebar-link"
-                >
-                    <span>⌕</span>
-                    調査・検証
-                </a>
-
-                <a
-                    href="about.html"
-                    class="sidebar-link"
-                >
-                    <span>?</span>
-                    Wikiについて
-                </a>
-
-            </div>
-
-        </nav>
-
-    </aside>
-
-
-    <main class="main">
-
-        <div class="content">
-
-            <nav class="breadcrumbs">
-
-                <a href="index.html">
-                    ホーム
-                </a>
-
-                <span>/</span>
-
-                <strong>
-                    最近の更新
-                </strong>
-
-            </nav>
-
-
-            <header class="page-heading">
-
-                <div class="eyebrow">
-                    RECENT
-                </div>
-
-                <h1>
-                    最近の更新
-                </h1>
-
-                <p>
-                    最近更新された記事を確認できます。
-                </p>
-
-            </header>
-
-
-            <div
-                id="articles"
-                class="article-list"
-            >
-
-                <div class="loading">
-                    読み込み中...
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
 
 </div>
 
 
+<!-- 共通処理 -->
+
 <script src="js/api.js"></script>
+<script src="js/layout.js"></script>
+
 
 <script>
 
@@ -229,11 +118,19 @@ async function loadRecent() {
 
 
         if (!result.success) {
+
             throw new Error(
                 result.error
             );
+
         }
 
+
+        /*
+        ================================
+        最近更新された順
+        ================================
+        */
 
         const articles =
             [...result.articles]
@@ -242,6 +139,12 @@ async function loadRecent() {
 
         container.innerHTML = "";
 
+
+        /*
+        ================================
+        記事一覧
+        ================================
+        */
 
         for (
             const article of
@@ -268,18 +171,33 @@ async function loadRecent() {
                 <div class="article-list-main">
 
                     <div class="article-category">
-                        ${escapeHtml(article.category)}
+
+                        ${escapeHtml(
+                            article.category
+                        )}
+
                     </div>
 
+
                     <h3>
-                        ${escapeHtml(article.title)}
+
+                        ${escapeHtml(
+                            article.title
+                        )}
+
                     </h3>
 
+
                     <p>
-                        ${escapeHtml(article.summary)}
+
+                        ${escapeHtml(
+                            article.summary
+                        )}
+
                     </p>
 
                 </div>
+
 
                 <span class="article-arrow">
                     →
@@ -308,22 +226,37 @@ async function loadRecent() {
 }
 
 
+/*
+========================================
+HTMLエスケープ
+========================================
+*/
+
 function escapeHtml(text) {
 
     const div =
         document.createElement("div");
 
+
     div.textContent =
         text ?? "";
+
 
     return div.innerHTML;
 
 }
 
 
+/*
+========================================
+開始
+========================================
+*/
+
 loadRecent();
 
 </script>
 
 </body>
+
 </html>
