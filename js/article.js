@@ -4,6 +4,39 @@ document.addEventListener(
 );
 
 
+/*
+========================================
+カテゴリ
+========================================
+*/
+
+const categorySlugs = {
+
+    "敵": "enemy",
+
+    "ボス": "boss",
+
+    "釣り": "fishing",
+
+    "武器": "weapon",
+
+    "防具": "armor",
+
+    "アクセサリー": "accessory",
+
+    "アイテム": "item",
+
+    "NPC": "npc"
+
+};
+
+
+/*
+========================================
+記事読み込み
+========================================
+*/
+
 async function loadArticle() {
 
     const params =
@@ -89,12 +122,55 @@ async function loadArticle() {
         ================================
         */
 
-        document
-            .getElementById(
+        const categoryElement =
+            document.getElementById(
                 "breadcrumb-category"
-            )
-            .textContent =
+            );
+
+
+        const category =
             article.category;
+
+
+        const slug =
+            categorySlugs[category];
+
+
+        /*
+        カテゴリが登録されている場合
+        */
+
+        if (slug) {
+
+            const link =
+                document.createElement("a");
+
+
+            link.href =
+                "category.html?category=" +
+                encodeURIComponent(slug);
+
+
+            link.textContent =
+                category;
+
+
+            categoryElement.replaceWith(
+                link
+            );
+
+
+        } else {
+
+            /*
+            未登録カテゴリの場合は
+            普通の文字として表示
+            */
+
+            categoryElement.textContent =
+                category;
+
+        }
 
 
         document
@@ -130,7 +206,6 @@ async function loadArticle() {
         generateTOC(
             content
         );
-
 
     } catch (error) {
 
