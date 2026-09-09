@@ -18,239 +18,155 @@
 
 </head>
 
+
 <body>
 
-<header class="header">
+<div class="site">
 
-    <div class="header-inner">
+    <!-- 共通ヘッダー -->
+    <div id="site-header"></div>
 
-        <a href="index.html" class="logo">
 
-            <span class="logo-mark">W</span>
+    <div class="page">
 
-            <span>
-                <strong>○○ Wiki</strong>
-                <small>Unofficial Wiki</small>
-            </span>
+        <!-- 共通サイドバー -->
+        <div id="site-sidebar"></div>
 
-        </a>
+
+        <main class="main">
+
+            <div class="content">
+
+                <!-- パンくず -->
+
+                <nav class="breadcrumbs">
+
+                    <a href="index.html">
+                        ホーム
+                    </a>
+
+                    <span>/</span>
+
+                    <strong>
+                        調査・検証
+                    </strong>
+
+                </nav>
+
+
+                <!-- ページ見出し -->
+
+                <header class="page-heading">
+
+                    <div class="eyebrow">
+                        RESEARCH
+                    </div>
+
+                    <h1>
+                        調査・検証
+                    </h1>
+
+                    <p>
+                        ゲーム内の仕様や確率など、
+                        まだ確定していない情報を調査します。
+                    </p>
+
+                </header>
+
+
+                <!-- Wiki情報 -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Wikiの情報について
+                    </strong>
+
+                    <p>
+                        すべての情報が最初から確定しているとは限りません。
+                        実際のゲーム内での検証結果などをもとに、
+                        情報の正確性を確認しています。
+                    </p>
+
+                </div>
+
+
+                <!-- 調査中の項目 -->
+
+                <h2 class="simple-heading">
+                    調査中の項目
+                </h2>
+
+
+                <div class="research-grid">
+
+                    <div class="research-card">
+
+                        <span class="research-status">
+                            調査中
+                        </span>
+
+                        <h3>
+                            釣りの出現確率
+                        </h3>
+
+                        <p>
+                            釣りパワーによって各アイテムの
+                            出現率がどのように変化するか。
+                        </p>
+
+                    </div>
+
+
+                    <div class="research-card">
+
+                        <span class="research-status">
+                            調査中
+                        </span>
+
+                        <h3>
+                            アクセサリー品質
+                        </h3>
+
+                        <p>
+                            品質%と実際の性能の関係を調査。
+                        </p>
+
+                    </div>
+
+
+                    <div class="research-card">
+
+                        <span class="research-status">
+                            未検証
+                        </span>
+
+                        <h3>
+                            敵のドロップ率
+                        </h3>
+
+                        <p>
+                            敵ごとのアイテム出現率を調査。
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
 
     </div>
 
-</header>
-
-
-<div class="page">
-
-    <aside class="sidebar">
-
-        <nav>
-
-            <div class="sidebar-section">
-
-                <div class="sidebar-title">
-                    Wiki
-                </div>
-
-                <a href="index.html"
-                    class="sidebar-link">
-                    <span>⌂</span>
-                    ホーム
-                </a>
-
-                <a href="category.html?category=enemy"
-                    class="sidebar-link">
-                    <span>⚔</span>
-                    敵・ボス
-                </a>
-
-                <a href="category.html?category=fishing"
-                    class="sidebar-link">
-                    <span>♨</span>
-                    釣り
-                </a>
-
-                <a href="category.html?category=equipment"
-                    class="sidebar-link">
-                    <span>◇</span>
-                    装備・アクセサリー
-                </a>
-
-                <a href="category.html?category=item"
-                    class="sidebar-link">
-                    <span>□</span>
-                    アイテム
-                </a>
-
-                <a href="category.html?category=area"
-                    class="sidebar-link">
-                    <span>⌖</span>
-                    地域
-                </a>
-
-                <a href="category.html?category=npc"
-                    class="sidebar-link">
-                    <span>♙</span>
-                    NPC
-                </a>
-
-                <a href="category.html?category=quest"
-                    class="sidebar-link">
-                    <span>✓</span>
-                    クエスト
-                </a>
-
-            </div>
-
-
-            <div class="sidebar-section">
-
-                <div class="sidebar-title">
-                    Wiki情報
-                </div>
-
-                <a href="recent.html"
-                    class="sidebar-link">
-                    <span>◌</span>
-                    最近の更新
-                </a>
-
-                <a href="research.html"
-                    class="sidebar-link active">
-                    <span>⌕</span>
-                    調査・検証
-                </a>
-
-                <a href="about.html"
-                    class="sidebar-link">
-                    <span>?</span>
-                    Wikiについて
-                </a>
-
-            </div>
-
-        </nav>
-
-    </aside>
-
-
-    <main class="main">
-
-        <div class="content">
-
-            <nav class="breadcrumbs">
-
-                <a href="index.html">
-                    ホーム
-                </a>
-
-                <span>/</span>
-
-                <strong>
-                    調査・検証
-                </strong>
-
-            </nav>
-
-
-            <header class="page-heading">
-
-                <div class="eyebrow">
-                    RESEARCH
-                </div>
-
-                <h1>
-                    調査・検証
-                </h1>
-
-                <p>
-                    ゲーム内の仕様や確率など、
-                    まだ確定していない情報を調査します。
-                </p>
-
-            </header>
-
-
-            <div class="info-box">
-
-                <strong>
-                    Wikiの情報について
-                </strong>
-
-                <p>
-                    すべての情報が最初から確定しているとは限りません。
-                    実際のゲーム内での検証結果などをもとに、
-                    情報の正確性を確認しています。
-                </p>
-
-            </div>
-
-
-            <h2 class="simple-heading">
-                調査中の項目
-            </h2>
-
-
-            <div class="research-grid">
-
-                <div class="research-card">
-
-                    <span class="research-status">
-                        調査中
-                    </span>
-
-                    <h3>
-                        釣りの出現確率
-                    </h3>
-
-                    <p>
-                        釣りパワーによって各アイテムの
-                        出現率がどのように変化するか。
-                    </p>
-
-                </div>
-
-
-                <div class="research-card">
-
-                    <span class="research-status">
-                        調査中
-                    </span>
-
-                    <h3>
-                        アクセサリー品質
-                    </h3>
-
-                    <p>
-                        品質%と実際の性能の関係を調査。
-                    </p>
-
-                </div>
-
-
-                <div class="research-card">
-
-                    <span class="research-status">
-                        未検証
-                    </span>
-
-                    <h3>
-                        敵のドロップ率
-                    </h3>
-
-                    <p>
-                        敵ごとのアイテム出現率を調査。
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
 </div>
 
+
+<!-- 共通処理 -->
+
+<script src="js/api.js"></script>
+<script src="js/layout.js"></script>
+
 </body>
+
 </html>
