@@ -12,6 +12,7 @@
 
     <title>○○ Wiki</title>
 
+
     <link
         rel="stylesheet"
         href="css/base.css"
@@ -89,7 +90,9 @@
 
                     <div class="hero-search">
 
-                        <span>⌕</span>
+                        <span>
+                            ⌕
+                        </span>
 
                         <input
                             type="search"
@@ -110,6 +113,7 @@
 
                 <section>
 
+
                     <div class="section-heading">
 
                         <div>
@@ -127,32 +131,32 @@
                     </div>
 
 
-                    <div class="category-grid">
+                    <div class="category-list">
 
 
-                        <!-- 敵・ボス -->
+                        <!-- ==========================
+                             敵
+                        =========================== -->
 
                         <a
                             href="category.html?category=enemy"
                             class="category-card"
                         >
 
-                            <div
-                                class="category-icon enemy"
-                            >
+                            <div class="category-icon enemy">
                                 ⚔
                             </div>
 
 
-                            <div>
+                            <div class="category-card-content">
 
                                 <h3>
-                                    敵・ボス
+                                    敵
                                 </h3>
 
                                 <p>
-                                    敵のステータスやドロップ、
-                                    出現場所など
+                                    ゲーム内に登場する敵の
+                                    ステータスやドロップなど
                                 </p>
 
                             </div>
@@ -166,29 +170,65 @@
 
 
 
-                        <!-- 釣り -->
+                        <!-- ==========================
+                             ボス
+                        =========================== -->
+
+                        <a
+                            href="category.html?category=boss"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon boss">
+                                ☠
+                            </div>
+
+
+                            <div class="category-card-content">
+
+                                <h3>
+                                    ボス
+                                </h3>
+
+                                <p>
+                                    ボスのステータスや攻略、
+                                    出現方法など
+                                </p>
+
+                            </div>
+
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- ==========================
+                             釣り
+                        =========================== -->
 
                         <a
                             href="category.html?category=fishing"
                             class="category-card"
                         >
 
-                            <div
-                                class="category-icon fishing"
-                            >
+                            <div class="category-icon fishing">
                                 ♨
                             </div>
 
 
-                            <div>
+                            <div class="category-card-content">
 
                                 <h3>
                                     釣り
                                 </h3>
 
                                 <p>
-                                    釣れるアイテムや
-                                    釣り場など
+                                    釣れるアイテムや釣り場、
+                                    釣りに関する情報
                                 </p>
 
                             </div>
@@ -202,29 +242,101 @@
 
 
 
-                        <!-- 装備 -->
+                        <!-- ==========================
+                             武器
+                        =========================== -->
 
                         <a
-                            href="category.html?category=equipment"
+                            href="category.html?category=weapon"
                             class="category-card"
                         >
 
-                            <div
-                                class="category-icon equipment"
-                            >
+                            <div class="category-icon weapon">
+                                ⚔
+                            </div>
+
+
+                            <div class="category-card-content">
+
+                                <h3>
+                                    武器
+                                </h3>
+
+                                <p>
+                                    武器の性能や能力、
+                                    入手方法など
+                                </p>
+
+                            </div>
+
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- ==========================
+                             防具
+                        =========================== -->
+
+                        <a
+                            href="category.html?category=armor"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon armor">
+                                ♢
+                            </div>
+
+
+                            <div class="category-card-content">
+
+                                <h3>
+                                    防具
+                                </h3>
+
+                                <p>
+                                    防具の性能や効果、
+                                    入手方法など
+                                </p>
+
+                            </div>
+
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- ==========================
+                             アクセサリー
+                        =========================== -->
+
+                        <a
+                            href="category.html?category=accessory"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon accessory">
                                 ◇
                             </div>
 
 
-                            <div>
+                            <div class="category-card-content">
 
                                 <h3>
-                                    装備・アクセサリー
+                                    アクセサリー
                                 </h3>
 
                                 <p>
-                                    武器やアクセサリーの
-                                    性能・入手方法
+                                    アクセサリーの性能や効果、
+                                    入手方法など
                                 </p>
 
                             </div>
@@ -238,29 +350,29 @@
 
 
 
-                        <!-- アイテム -->
+                        <!-- ==========================
+                             アイテム
+                        =========================== -->
 
                         <a
                             href="category.html?category=item"
                             class="category-card"
                         >
 
-                            <div
-                                class="category-icon item"
-                            >
+                            <div class="category-icon item">
                                 □
                             </div>
 
 
-                            <div>
+                            <div class="category-card-content">
 
                                 <h3>
                                     アイテム
                                 </h3>
 
                                 <p>
-                                    ゲーム内アイテムの
-                                    詳細情報
+                                    ゲーム内に登場する
+                                    アイテムの詳細情報
                                 </p>
 
                             </div>
@@ -274,64 +386,28 @@
 
 
 
-                        <!-- 地域 -->
-
-                        <a
-                            href="category.html?category=area"
-                            class="category-card"
-                        >
-
-                            <div
-                                class="category-icon area"
-                            >
-                                ⌖
-                            </div>
-
-
-                            <div>
-
-                                <h3>
-                                    地域
-                                </h3>
-
-                                <p>
-                                    各エリアの特徴や
-                                    出現する敵など
-                                </p>
-
-                            </div>
-
-
-                            <span class="arrow">
-                                →
-                            </span>
-
-                        </a>
-
-
-
-                        <!-- NPC -->
+                        <!-- ==========================
+                             NPC
+                        =========================== -->
 
                         <a
                             href="category.html?category=npc"
                             class="category-card"
                         >
 
-                            <div
-                                class="category-icon npc"
-                            >
+                            <div class="category-icon npc">
                                 ♙
                             </div>
 
 
-                            <div>
+                            <div class="category-card-content">
 
                                 <h3>
                                     NPC
                                 </h3>
 
                                 <p>
-                                    NPCやショップの
+                                    NPCやショップなどの
                                     情報
                                 </p>
 
@@ -383,7 +459,6 @@
 
 
                     </div>
-
 
 
                     <div
@@ -510,10 +585,6 @@ function displayRecentArticles(
     container.innerHTML = "";
 
 
-    /*
-    記事がない場合
-    */
-
     if (
         !articles ||
         articles.length === 0
@@ -532,16 +603,14 @@ function displayRecentArticles(
     }
 
 
-    /*
-    記事を生成
-    */
-
     for (
         const article of articles
     ) {
 
         const element =
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
 
 
         element.href =
@@ -613,7 +682,9 @@ HTMLエスケープ
 function escapeHtml(text) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     div.textContent =
@@ -681,6 +752,7 @@ function setupHeroSearch() {
 */
 
 loadArticles();
+
 setupHeroSearch();
 
 </script>
