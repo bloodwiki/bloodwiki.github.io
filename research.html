@@ -1,156 +1,118 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>調査・検証 - BLOOD Wiki</title>
-
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
-
 </head>
 
-
 <body>
-
 <div class="site">
 
-    <!-- 共通ヘッダー -->
     <div id="site-header"></div>
-
 
     <div class="page">
 
-        <!-- 共通サイドバー -->
         <div id="site-sidebar"></div>
-
 
         <main class="main">
 
             <div class="content">
 
-                <!-- パンくず -->
-
                 <nav class="breadcrumbs">
-
-                    <a href="index.html">
-                        ホーム
-                    </a>
-
+                    <a href="index.html">ホーム</a>
                     <span>/</span>
-
-                    <strong>
-                        調査・検証
-                    </strong>
-
+                    <strong>調査・検証</strong>
                 </nav>
 
-
-                <!-- ページ見出し -->
-
                 <header class="page-heading">
-
-                    <div class="eyebrow">
-                        RESEARCH
-                    </div>
-
-                    <h1>
-                        調査・検証
-                    </h1>
-
+                    <div class="eyebrow">RESEARCH</div>
+                    <h1>調査・検証</h1>
                     <p>
                         ゲーム内の仕様や確率など、
-                        まだ確定していない情報を調査します。
+                        まだ明確になっていない情報を調査・検証します。
                     </p>
-
                 </header>
 
+                <div class="info-box">
+                    <strong>調査・検証について</strong>
+                    <p>
+                        BLOOD Wikiでは、プレイヤーによる調査・検証のもと情報を掲示しています。
+                        気になる仕様や確かめたいことがあれば、調査を依頼できます。
+                    </p>
+                </div>
 
-                <!-- Wiki情報 -->
+                <h2 class="simple-heading">調査を依頼する</h2>
 
                 <div class="info-box">
 
-                    <strong>
-                        Wikiの情報について
-                    </strong>
-
                     <p>
-                        すべての情報が最初から確定しているとは限りません。
-                        実際のゲーム内での検証結果などをもとに、
-                        情報の正確性を確認しています。
+                        調査してほしい内容や確認してほしい情報を送信できます。
                     </p>
+
+                    <form id="research-form">
+
+                        <div class="form-group">
+                            <label for="research-target">調査内容</label>
+                            <input
+                                type="text"
+                                id="research-target"
+                                name="target"
+                                placeholder="例：○○のドロップ率"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="research-method">参考情報</label>
+                            <textarea
+                                id="research-method"
+                                name="method"
+                                rows="4"
+                                placeholder="試してほしい方法や、すでに分かっていることがあれば書いてください。"
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="button">
+                            調査を依頼する
+                        </button>
+
+                    </form>
+
+                    <div id="research-message" hidden></div>
 
                 </div>
 
+                <h2 class="simple-heading">調査・検証結果</h2>
 
-                <!-- 調査中の項目 -->
+                <div class="info-box">
+                    <p>
+                        調査・検証の結果は、今後データベースと連携して
+                        このページから確認できるようにする予定です。
+                    </p>
+                </div>
 
-                <h2 class="simple-heading">
-                    調査中の項目
-                </h2>
+                <h2 class="simple-heading">Wiki管理</h2>
 
+                <div class="info-box">
+                    <strong>記事編集</strong>
+                    <p>
+                        Wikiの記事を編集します。
+                        編集には編集権限が必要です。
+                    </p>
 
-                <div class="research-grid">
-
-                    <div class="research-card">
-
-                        <span class="research-status">
-                            調査中
-                        </span>
-
-                        <h3>
-                            釣りの出現確率
-                        </h3>
-
-                        <p>
-                            釣りパワーによって各アイテムの
-                            出現率がどのように変化するか。
-                        </p>
-
-                    </div>
-
-
-                    <div class="research-card">
-
-                        <span class="research-status">
-                            調査中
-                        </span>
-
-                        <h3>
-                            アクセサリー品質
-                        </h3>
-
-                        <p>
-                            品質%と実際の性能の関係を調査。
-                        </p>
-
-                    </div>
-
-
-                    <div class="research-card">
-
-                        <span class="research-status">
-                            未検証
-                        </span>
-
-                        <h3>
-                            敵のドロップ率
-                        </h3>
-
-                        <p>
-                            敵ごとのアイテム出現率を調査。
-                        </p>
-
-                    </div>
-
+                    <!-- 実際のGAS WebアプリURLに置き換える -->
+                    <a
+                        href="https://script.google.com/macros/s/AKfycby2sOYs5HFKri8CvWygsreNtsCqVXRgZLV0aNfNvlTxKiK9p-E7Z4bMieKJ-P9xr_p74w/exec?action="
+                        class="button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        編集画面を開く
+                    </a>
                 </div>
 
             </div>
@@ -158,15 +120,22 @@
         </main>
 
     </div>
-
 </div>
-
-
-<!-- 共通処理 -->
 
 <script src="js/api.js"></script>
 <script src="js/layout.js"></script>
 
-</body>
+<script>
+document.getElementById("research-form").addEventListener("submit", function(event) {
+    event.preventDefault();
 
+    const message = document.getElementById("research-message");
+
+    message.hidden = false;
+    message.textContent =
+        "調査依頼フォームは現在準備中です。";
+});
+</script>
+
+</body>
 </html>
