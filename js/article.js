@@ -83,7 +83,7 @@ async function loadArticle() {
 
         document.title =
             article.title +
-            " - ○○ Wiki";
+            " - BLOOD Wiki";
 
 
         /*
