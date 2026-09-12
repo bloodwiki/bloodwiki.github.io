@@ -26,7 +26,11 @@ const categorySlugs = {
 
     "アイテム": "item",
 
-    "NPC": "npc"
+    "NPC": "npc",
+
+    "エリア": "biome",
+
+    "攻略": "guide"
 
 };
 
