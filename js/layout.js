@@ -282,6 +282,32 @@ function injectSidebar() {
 
                     </a>
 
+                    <a
+                        href="category.html?category=biome"
+                        class="sidebar-link"
+                    >
+
+                        <span>
+                           🗺
+                        </span>
+
+                        エリア
+
+                    </a>
+
+                    <a
+                        href="category.html?category=guide"
+                        class="sidebar-link"
+                    >
+
+                        <span>
+                            ▽
+                        </span>
+
+                        攻略
+
+                    </a>
+
 
                 </div>
 
