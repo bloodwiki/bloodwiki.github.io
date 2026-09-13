@@ -344,8 +344,7 @@ async function getVersion() {
     const response =
         await fetch(
             API_URL +
-            "?action=version&_=" +
-            Date.now(),
+            "?action=version&_=",
             {
                 cache: "no-store"
             }
@@ -422,9 +421,7 @@ async function checkForUpdates() {
     */
 
     const remoteData =
-        await getVersion({
-            force: true
-        });
+        await getVersion();
 
 
     /*
