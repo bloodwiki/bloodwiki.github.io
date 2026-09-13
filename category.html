@@ -81,6 +81,33 @@
                 </header>
 
 
+                <!-- サブカテゴリー -->
+
+                <div
+                    class="category-filter"
+                    id="category-filter"
+                >
+
+                    <label
+                        for="subcategory-select"
+                    >
+                        サブカテゴリー
+                    </label>
+
+
+                    <select
+                        id="subcategory-select"
+                    >
+
+                        <option value="">
+                            すべて
+                        </option>
+
+                    </select>
+
+                </div>
+
+
                 <!-- 記事数 -->
 
                 <div
@@ -193,6 +220,17 @@ const categories = {
 
 /*
 ========================================
+現在の状態
+========================================
+*/
+
+let allCategoryArticles = [];
+
+let currentSubCategory = "";
+
+
+/*
+========================================
 カテゴリ読み込み
 ========================================
 */
@@ -301,7 +339,7 @@ async function loadCategory() {
         カテゴリで絞り込み
         */
 
-        const articles =
+        allCategoryArticles =
             result.articles.filter(
                 article =>
                     article.category ===
@@ -309,9 +347,49 @@ async function loadCategory() {
             );
 
 
-        displayArticles(
-            articles
-        );
+        /*
+        サブカテゴリー生成
+        */
+
+        populateSubCategories();
+
+
+        /*
+        URLからサブカテゴリーを復元
+        */
+
+        const subCategory =
+            params.get(
+                "subcategory"
+            );
+
+
+        if (
+            subCategory &&
+            isValidSubCategory(
+                subCategory
+            )
+        ) {
+
+            currentSubCategory =
+                subCategory;
+
+
+            document
+                .getElementById(
+                    "subcategory-select"
+                )
+                .value =
+                subCategory;
+
+        }
+
+
+        /*
+        記事表示
+        */
+
+        updateArticleList();
 
 
     } catch (error) {
@@ -329,11 +407,257 @@ async function loadCategory() {
 
 /*
 ========================================
+サブカテゴリー一覧
+========================================
+*/
+
+function populateSubCategories() {
+
+    const select =
+        document.getElementById(
+            "subcategory-select"
+        );
+
+
+    select.innerHTML = "";
+
+
+    /*
+    すべて
+    */
+
+    const allOption =
+        document.createElement(
+            "option"
+        );
+
+
+    allOption.value =
+        "";
+
+
+    allOption.textContent =
+        "すべて";
+
+
+    select.appendChild(
+        allOption
+    );
+
+
+    /*
+    サブカテゴリーを抽出
+    */
+
+    const subCategories = [];
+
+
+    for (
+        const article
+        of allCategoryArticles
+    ) {
+
+        const subCategory =
+            String(
+                article.subCategory || ""
+            ).trim();
+
+
+        if (
+            !subCategory
+        ) {
+
+            continue;
+
+        }
+
+
+        if (
+            subCategories.indexOf(
+                subCategory
+            ) === -1
+        ) {
+
+            subCategories.push(
+                subCategory
+            );
+
+        }
+
+    }
+
+
+    /*
+    並び順
+    */
+
+    subCategories.sort(
+        function(a, b) {
+
+            return a.localeCompare(
+                b,
+                "ja"
+            );
+
+        }
+    );
+
+
+    /*
+    選択肢生成
+    */
+
+    for (
+        const subCategory
+        of subCategories
+    ) {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value =
+            subCategory;
+
+
+        option.textContent =
+            subCategory;
+
+
+        select.appendChild(
+            option
+        );
+
+    }
+
+
+    /*
+    変更イベント
+    */
+
+    select.onchange =
+        function() {
+
+            currentSubCategory =
+                select.value;
+
+
+            /*
+            URLにも反映
+            */
+
+            const params =
+                new URLSearchParams(
+                    location.search
+                );
+
+
+            if (
+                currentSubCategory
+            ) {
+
+                params.set(
+                    "subcategory",
+                    currentSubCategory
+                );
+
+            } else {
+
+                params.delete(
+                    "subcategory"
+                );
+
+            }
+
+
+            history.replaceState(
+                null,
+                "",
+                "category.html?" +
+                params.toString()
+            );
+
+
+            updateArticleList();
+
+        };
+
+}
+
+
+/*
+========================================
+サブカテゴリー存在確認
+========================================
+*/
+
+function isValidSubCategory(
+    subCategory
+) {
+
+    return allCategoryArticles.some(
+        article =>
+            String(
+                article.subCategory || ""
+            ).trim()
+            ===
+            subCategory
+    );
+
+}
+
+
+/*
+========================================
+記事一覧更新
+========================================
+*/
+
+function updateArticleList() {
+
+    let articles =
+        allCategoryArticles;
+
+
+    /*
+    サブカテゴリーで絞り込み
+    */
+
+    if (
+        currentSubCategory
+    ) {
+
+        articles =
+            articles.filter(
+                article =>
+                    String(
+                        article.subCategory || ""
+                    ).trim()
+                    ===
+                    currentSubCategory
+            );
+
+    }
+
+
+    displayArticles(
+        articles
+    );
+
+}
+
+
+/*
+========================================
 記事一覧表示
 ========================================
 */
 
-function displayArticles(articles) {
+function displayArticles(
+    articles
+) {
 
     const container =
         document.getElementById(
@@ -364,13 +688,15 @@ function displayArticles(articles) {
     記事がない場合
     */
 
-    if (articles.length === 0) {
+    if (
+        articles.length === 0
+    ) {
 
         container.innerHTML = `
 
             <div class="empty">
 
-                このカテゴリにはまだ記事がありません。
+                この条件に一致する記事がありません。
 
             </div>
 
@@ -385,10 +711,15 @@ function displayArticles(articles) {
     記事を生成
     */
 
-    for (const article of articles) {
+    for (
+        const article
+        of articles
+    ) {
 
         const element =
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
 
 
         element.href =
@@ -402,6 +733,12 @@ function displayArticles(articles) {
             "article-list-item";
 
 
+        const subCategory =
+            String(
+                article.subCategory || ""
+            ).trim();
+
+
         element.innerHTML = `
 
             <div class="article-list-main">
@@ -413,6 +750,23 @@ function displayArticles(articles) {
                     )}
 
                 </div>
+
+
+                ${
+                    subCategory
+                    ?
+                    `
+                    <div class="article-subcategory">
+
+                        ${escapeHtml(
+                            subCategory
+                        )}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
 
 
                 <h3>
@@ -457,7 +811,9 @@ function displayArticles(articles) {
 ========================================
 */
 
-function showError(message) {
+function showError(
+    message
+) {
 
     document
         .getElementById(
@@ -482,10 +838,14 @@ HTMLエスケープ
 ========================================
 */
 
-function escapeHtml(text) {
+function escapeHtml(
+    text
+) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     div.textContent =
