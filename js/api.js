@@ -1,3 +1,4 @@
+```javascript
 /*
 ========================================
 API設定
@@ -7,6 +8,18 @@ API設定
 const API_URL =
     "https://script.google.com/macros/s/AKfycby2sOYs5HFKri8CvWygsreNtsCqVXRgZLV0aNfNvlTxKiK9p-E7Z4bMieKJ-P9xr_p74w/exec";
 
+
+/*
+========================================
+キャッシュ設定
+========================================
+*/
+
+/*
+通常時のキャッシュ時間
+
+24時間
+*/
 
 const CACHE_TIME =
     24 * 60 * 60 * 1000;
@@ -31,7 +44,24 @@ const CACHE_KEYS = {
 
 /*
 ========================================
-記事一覧
+記事一覧取得
+========================================
+
+GAS:
+?action=articles
+
+返ってくるデータ：
+
+{
+    id,
+    title,
+    category,
+    subCategory,
+    summary,
+    html,
+    updated
+}
+
 ========================================
 */
 
@@ -42,9 +72,9 @@ async function getArticles(options = {}) {
 
 
     /*
-    ------------------------------------
+    ========================================
     キャッシュ確認
-    ------------------------------------
+    ========================================
     */
 
     if (!force) {
@@ -54,11 +84,13 @@ async function getArticles(options = {}) {
                 CACHE_KEYS.articles
             );
 
+
         if (cached) {
 
             console.log(
                 "記事: キャッシュを使用"
             );
+
 
             return cached;
 
@@ -68,13 +100,13 @@ async function getArticles(options = {}) {
 
 
     /*
-    ------------------------------------
-    GASから全記事取得
-    ------------------------------------
+    ========================================
+    GASから取得
+    ========================================
     */
 
     console.log(
-        "記事: GASから全件取得"
+        "記事: GASから取得"
     );
 
 
@@ -84,6 +116,12 @@ async function getArticles(options = {}) {
             "?action=articles"
         );
 
+
+    /*
+    ========================================
+    HTTPエラー
+    ========================================
+    */
 
     if (!response.ok) {
 
@@ -95,9 +133,21 @@ async function getArticles(options = {}) {
     }
 
 
+    /*
+    ========================================
+    JSON
+    ========================================
+    */
+
     const data =
         await response.json();
 
+
+    /*
+    ========================================
+    APIエラー
+    ========================================
+    */
 
     if (!data.success) {
 
@@ -110,9 +160,90 @@ async function getArticles(options = {}) {
 
 
     /*
-    ------------------------------------
+    ========================================
+    データ確認
+    ========================================
+    */
+
+    if (
+        !Array.isArray(
+            data.articles
+        )
+    ) {
+
+        throw new Error(
+            "記事データが正しくありません"
+        );
+
+    }
+
+
+    /*
+    ========================================
+    サブカテゴリーを正規化
+    ========================================
+
+    code.gsから
+
+    subCategory
+
+    が返ってくる。
+
+    空の場合も必ず文字列にする。
+    ========================================
+    */
+
+    data.articles =
+        data.articles.map(
+            article => {
+
+                return {
+
+                    ...article,
+
+                    id:
+                        String(
+                            article.id ?? ""
+                        ),
+
+                    title:
+                        String(
+                            article.title ?? ""
+                        ),
+
+                    category:
+                        String(
+                            article.category ?? ""
+                        ),
+
+                    subCategory:
+                        String(
+                            article.subCategory ?? ""
+                        ).trim(),
+
+                    summary:
+                        String(
+                            article.summary ?? ""
+                        ),
+
+                    html:
+                        String(
+                            article.html ?? ""
+                        ),
+
+                    updated:
+                        article.updated ?? ""
+
+                };
+
+            }
+        );
+
+
+    /*
+    ========================================
     キャッシュ保存
-    ------------------------------------
+    ========================================
     */
 
     setCache(
@@ -128,7 +259,18 @@ async function getArticles(options = {}) {
 
 /*
 ========================================
-記事
+個別記事取得
+========================================
+
+現在は記事一覧キャッシュから検索する。
+
+そのため、
+
+・高速
+・追加通信なし
+
+というメリットがある。
+
 ========================================
 */
 
@@ -138,19 +280,21 @@ async function getArticle(
 ) {
 
     /*
-    ------------------------------------
-    全記事を取得
-    ------------------------------------
-    キャッシュがあれば通信しない
-    ------------------------------------
+    ========================================
+    全記事取得
+    ========================================
     */
 
     const result =
-        await getArticles(options);
+        await getArticles(
+            options
+        );
 
 
-    if (!result ||
-        !result.success) {
+    if (
+        !result ||
+        !result.success
+    ) {
 
         throw new Error(
             "記事一覧の取得に失敗しました"
@@ -160,9 +304,9 @@ async function getArticle(
 
 
     /*
-    ------------------------------------
-    キャッシュ内から記事を検索
-    ------------------------------------
+    ========================================
+    記事検索
+    ========================================
     */
 
     const article =
@@ -172,6 +316,12 @@ async function getArticle(
                 String(id)
         );
 
+
+    /*
+    ========================================
+    見つからない
+    ========================================
+    */
 
     if (!article) {
 
@@ -197,7 +347,8 @@ async function getArticle(
 
         success: true,
 
-        article: article
+        article:
+            article
 
     };
 
@@ -232,18 +383,27 @@ function setCache(
 
             key,
 
-            JSON.stringify(record)
+            JSON.stringify(
+                record
+            )
 
         );
 
+
+        /*
+        共通キャッシュ時刻
+        */
 
         localStorage.setItem(
 
             CACHE_KEYS.time,
 
-            String(Date.now())
+            String(
+                Date.now()
+            )
 
         );
+
 
     } catch (error) {
 
@@ -263,12 +423,16 @@ function setCache(
 ========================================
 */
 
-function getCache(key) {
+function getCache(
+    key
+) {
 
     try {
 
         const raw =
-            localStorage.getItem(key);
+            localStorage.getItem(
+                key
+            );
 
 
         if (!raw) {
@@ -279,8 +443,16 @@ function getCache(key) {
 
 
         const record =
-            JSON.parse(raw);
+            JSON.parse(
+                raw
+            );
 
+
+        /*
+        ====================================
+        壊れたキャッシュ
+        ====================================
+        */
 
         if (
             !record ||
@@ -288,29 +460,42 @@ function getCache(key) {
             !record.data
         ) {
 
-            localStorage.removeItem(key);
+            localStorage.removeItem(
+                key
+            );
+
 
             return null;
 
         }
 
 
+        /*
+        ====================================
+        有効期限
+        ====================================
+        */
+
         const age =
             Date.now() -
-            record.savedAt;
+            Number(
+                record.savedAt
+            );
 
-
-        /*
-        --------------------------------
-        24時間以上経過
-        --------------------------------
-        */
 
         if (
             age >= CACHE_TIME
         ) {
 
-            localStorage.removeItem(key);
+            console.log(
+                "記事: キャッシュ期限切れ"
+            );
+
+
+            localStorage.removeItem(
+                key
+            );
+
 
             return null;
 
@@ -319,6 +504,7 @@ function getCache(key) {
 
         return record.data;
 
+
     } catch (error) {
 
         console.warn(
@@ -326,7 +512,11 @@ function getCache(key) {
             error
         );
 
-        localStorage.removeItem(key);
+
+        localStorage.removeItem(
+            key
+        );
+
 
         return null;
 
@@ -337,25 +527,20 @@ function getCache(key) {
 
 /*
 ========================================
-キャッシュ強制更新
+キャッシュ削除
 ========================================
 */
 
-async function forceRefresh() {
-
-    console.log(
-        "Wikiキャッシュを削除"
-    );
-
-
-    /*
-    ------------------------------------
-    Wiki関連キャッシュを削除
-    ------------------------------------
-    */
+function clearWikiCache() {
 
     const keys = [];
 
+
+    /*
+    ========================================
+    Wiki関連キーを検索
+    ========================================
+    */
 
     for (
         let i = 0;
@@ -364,10 +549,16 @@ async function forceRefresh() {
     ) {
 
         const key =
-            localStorage.key(i);
+            localStorage.key(
+                i
+            );
 
 
-        if (!key) continue;
+        if (!key) {
+
+            continue;
+
+        }
 
 
         if (
@@ -376,27 +567,88 @@ async function forceRefresh() {
             )
         ) {
 
-            keys.push(key);
+            keys.push(
+                key
+            );
 
         }
 
     }
 
 
+    /*
+    ========================================
+    削除
+    ========================================
+    */
+
     keys.forEach(
-        key =>
-            localStorage.removeItem(key)
+        key => {
+
+            localStorage.removeItem(
+                key
+            );
+
+        }
+    );
+
+
+    console.log(
+        "Wikiキャッシュを削除しました"
+    );
+
+}
+
+
+/*
+========================================
+キャッシュ強制更新
+========================================
+
+「最新データに更新」用。
+
+既存キャッシュを削除してから
+GASから最新データを取得する。
+
+========================================
+*/
+
+async function forceRefresh() {
+
+    console.log(
+        "Wiki: 最新データを取得"
     );
 
 
     /*
-    ------------------------------------
-    最新データを取得
-    ------------------------------------
+    ========================================
+    1. キャッシュ削除
+    ========================================
     */
 
-    return await getArticles({
-        force: true
-    });
+    clearWikiCache();
+
+
+    /*
+    ========================================
+    2. 最新データ取得
+    ========================================
+    */
+
+    const data =
+        await getArticles({
+
+            force: true
+
+        });
+
+
+    console.log(
+        "Wiki: 最新データ取得完了"
+    );
+
+
+    return data;
 
 }
+```
