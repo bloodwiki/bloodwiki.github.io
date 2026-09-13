@@ -48,6 +48,7 @@ async function loadArticle() {
             location.search
         );
 
+
     const id =
         params.get("id");
 
@@ -96,11 +97,53 @@ async function loadArticle() {
         ================================
         */
 
-        document
-            .getElementById("category")
-            .textContent =
+
+        /*
+        カテゴリ
+        */
+
+        const categoryElement =
+            document.getElementById(
+                "category"
+            );
+
+
+        categoryElement.textContent =
             article.category;
 
+
+        /*
+        サブカテゴリー
+        */
+
+        const subCategoryElement =
+            document.getElementById(
+                "subcategory"
+            );
+
+
+        const subCategory =
+            String(
+                article.subCategory || ""
+            ).trim();
+
+
+        if (subCategory) {
+
+            subCategoryElement.textContent =
+                subCategory;
+
+        } else {
+
+            subCategoryElement.textContent =
+                "";
+
+        }
+
+
+        /*
+        タイトル
+        */
 
         document
             .getElementById("title")
@@ -108,11 +151,19 @@ async function loadArticle() {
             article.title;
 
 
+        /*
+        概要
+        */
+
         document
             .getElementById("summary")
             .textContent =
             article.summary || "";
 
+
+        /*
+        更新日
+        */
 
         document
             .getElementById("updated")
@@ -126,7 +177,7 @@ async function loadArticle() {
         ================================
         */
 
-        const categoryElement =
+        const categoryBreadcrumb =
             document.getElementById(
                 "breadcrumb-category"
             );
@@ -147,42 +198,121 @@ async function loadArticle() {
         if (slug) {
 
             const link =
-                document.createElement("a");
+                document.createElement(
+                    "a"
+                );
 
 
             link.href =
                 "category.html?category=" +
-                encodeURIComponent(slug);
+                encodeURIComponent(
+                    slug
+                );
 
 
             link.textContent =
                 category;
 
 
-            categoryElement.replaceWith(
+            categoryBreadcrumb.replaceWith(
                 link
             );
-
 
         } else {
 
             /*
-            未登録カテゴリの場合は
-            普通の文字として表示
+            未登録カテゴリの場合
             */
 
-            categoryElement.textContent =
+            categoryBreadcrumb.textContent =
                 category;
 
         }
 
 
-        document
-            .getElementById(
-                "breadcrumb-title"
-            )
-            .textContent =
-            article.title;
+        /*
+        ================================
+        サブカテゴリーのパンくず
+        ================================
+        */
+
+        if (subCategory) {
+
+            const currentCategoryElement =
+                document.getElementById(
+                    "breadcrumb-category"
+                );
+
+
+            /*
+            breadcrumb-categoryが
+            replaceWith()で消えているため、
+            その親から探す
+            */
+
+            const breadcrumbs =
+                document.getElementById(
+                    "breadcrumbs"
+                );
+
+
+            const titleBreadcrumb =
+                document.getElementById(
+                    "breadcrumb-title"
+                );
+
+
+            /*
+            サブカテゴリーリンクを生成
+            */
+
+            const subCategoryLink =
+                document.createElement(
+                    "a"
+                );
+
+
+            subCategoryLink.href =
+                "category.html?category=" +
+                encodeURIComponent(
+                    slug
+                ) +
+                "&subcategory=" +
+                encodeURIComponent(
+                    subCategory
+                );
+
+
+            subCategoryLink.textContent =
+                subCategory;
+
+
+            /*
+            タイトルの前に挿入
+            */
+
+            breadcrumbs.insertBefore(
+                subCategoryLink,
+                titleBreadcrumb
+            );
+
+
+            const separator =
+                document.createElement(
+                    "span"
+                );
+
+
+            separator.textContent =
+                "/";
+
+
+            breadcrumbs.insertBefore(
+                separator,
+                titleBreadcrumb
+            );
+
+        }
 
 
         /*
@@ -230,7 +360,9 @@ async function loadArticle() {
 ========================================
 */
 
-function generateTOC(content) {
+function generateTOC(
+    content
+) {
 
     const toc =
         document.getElementById(
@@ -247,7 +379,9 @@ function generateTOC(content) {
     toc.innerHTML = "";
 
 
-    if (headings.length === 0) {
+    if (
+        headings.length === 0
+    ) {
 
         toc.innerHTML =
             `<div class="toc-empty">
@@ -260,13 +394,18 @@ function generateTOC(content) {
 
 
     headings.forEach(
-        (heading, index) => {
+        (
+            heading,
+            index
+        ) => {
 
             const id =
-                "heading-" + index;
+                "heading-" +
+                index;
 
 
-            heading.id = id;
+            heading.id =
+                id;
 
 
             const link =
@@ -293,7 +432,9 @@ function generateTOC(content) {
             }
 
 
-            toc.appendChild(link);
+            toc.appendChild(
+                link
+            );
 
         }
     );
@@ -307,7 +448,9 @@ function generateTOC(content) {
 ========================================
 */
 
-function showError(message) {
+function showError(
+    message
+) {
 
     document.body.innerHTML = `
 
@@ -337,13 +480,25 @@ function showError(message) {
 }
 
 
-function escapeHtml(text) {
+/*
+========================================
+HTMLエスケープ
+========================================
+*/
+
+function escapeHtml(
+    text
+) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.textContent =
         text ?? "";
+
 
     return div.innerHTML;
 
