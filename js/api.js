@@ -1,4 +1,3 @@
-```javascript
 /*
 ========================================
 API設定
@@ -508,4 +507,3 @@ async function forceRefresh() {
     return data;
 
 }
-```
