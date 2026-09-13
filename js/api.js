@@ -334,43 +334,7 @@ GASへの通信は非常に軽量。
 ========================================
 */
 
-async function getVersion(
-    options = {}
-) {
-
-    const force =
-        options.force === true;
-
-
-    /*
-    ------------------------------------
-    バージョンキャッシュ
-    ------------------------------------
-    */
-
-    if (!force) {
-
-        const cached =
-            getCache(
-                CACHE_KEYS.version,
-                VERSION_CACHE_TIME
-            );
-
-
-        if (cached) {
-
-            return cached;
-
-        }
-
-    }
-
-
-    /*
-    ------------------------------------
-    GASへ問い合わせ
-    ------------------------------------
-    */
+async function getVersion() {
 
     console.log(
         "バージョン: GASへ確認"
@@ -380,7 +344,11 @@ async function getVersion(
     const response =
         await fetch(
             API_URL +
-            "?action=version"
+            "?action=version&_=" +
+            Date.now(),
+            {
+                cache: "no-store"
+            }
         );
 
 
@@ -408,15 +376,9 @@ async function getVersion(
     }
 
 
-    /*
-    ------------------------------------
-    キャッシュ
-    ------------------------------------
-    */
-
-    setCache(
-        CACHE_KEYS.version,
-        data
+    console.log(
+        "バージョン:",
+        data.version
     );
 
 
