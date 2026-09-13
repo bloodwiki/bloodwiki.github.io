@@ -102,13 +102,9 @@ async function loadArticle() {
         カテゴリ
         */
 
-        const categoryElement =
-            document.getElementById(
-                "category"
-            );
-
-
-        categoryElement.textContent =
+        document
+            .getElementById("category")
+            .textContent =
             article.category;
 
 
@@ -192,7 +188,7 @@ async function loadArticle() {
 
 
         /*
-        カテゴリが登録されている場合
+        カテゴリ
         */
 
         if (slug) {
@@ -220,10 +216,6 @@ async function loadArticle() {
 
         } else {
 
-            /*
-            未登録カテゴリの場合
-            */
-
             categoryBreadcrumb.textContent =
                 category;
 
@@ -236,19 +228,10 @@ async function loadArticle() {
         ================================
         */
 
-        if (subCategory) {
-
-            const currentCategoryElement =
-                document.getElementById(
-                    "breadcrumb-category"
-                );
-
-
-            /*
-            breadcrumb-categoryが
-            replaceWith()で消えているため、
-            その親から探す
-            */
+        if (
+            subCategory &&
+            slug
+        ) {
 
             const breadcrumbs =
                 document.getElementById(
@@ -263,7 +246,21 @@ async function loadArticle() {
 
 
             /*
-            サブカテゴリーリンクを生成
+            区切り
+            */
+
+            const separator =
+                document.createElement(
+                    "span"
+                );
+
+
+            separator.textContent =
+                "/";
+
+
+            /*
+            サブカテゴリー
             */
 
             const subCategoryLink =
@@ -288,27 +285,17 @@ async function loadArticle() {
 
 
             /*
-            タイトルの前に挿入
+            タイトルの前に追加
             */
 
             breadcrumbs.insertBefore(
-                subCategoryLink,
+                separator,
                 titleBreadcrumb
             );
 
 
-            const separator =
-                document.createElement(
-                    "span"
-                );
-
-
-            separator.textContent =
-                "/";
-
-
             breadcrumbs.insertBefore(
-                separator,
+                subCategoryLink,
                 titleBreadcrumb
             );
 
