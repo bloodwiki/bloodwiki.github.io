@@ -68,25 +68,7 @@
 }
 
 
-/* ========================================
-   Article Content
-   app.html の .rich-editor と統一
-======================================== */
-
-.article-content {
-    color: #292929;
-    font-size: 15px;
-    line-height: 1.9;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Noto Sans JP",
-        sans-serif;
-
-    overflow-wrap: break-word;
-}
+/* ======================================== Article Content ======================================== */ .article-content { position: relative; color: #292929; font-size: 15px; line-height: 1.9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif; overflow-wrap: break-word; }
 
 
 /* ========================================
@@ -200,50 +182,7 @@
 }
 
 
-/* ========================================
-   Tables
-   app.html の .rich-editor table と統一
-======================================== */
-
-.article-content table {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    margin: 25px 0;
-
-    border-collapse: collapse;
-    table-layout: fixed;
-
-    font-size: 14px;
-    background: #fff;
-}
-
-.article-content th,
-.article-content td {
-    min-width: 40px;
-    min-height: 36px;
-
-    padding: 10px 13px;
-
-    border: 1px solid #ddd;
-
-    text-align: left;
-    vertical-align: top;
-}
-
-.article-content th {
-    background: #f3f4f5;
-    font-weight: 600;
-}
-
-
-/*
- * 編集画面で保存された width 指定を尊重しつつ、
- * 本文領域からはみ出さないようにする。
- */
-.article-content table[style*="width"] {
-    max-width: 100%;
-}
+/* ======================================== Tables app.html の .rich-editor と統一 ======================================== */ .article-content table { width: 100%; max-width: 100%; margin: 25px 0; border-collapse: collapse; table-layout: fixed; font-size: 14px; background: #fff; } .article-content th, .article-content td { min-width: 40px; min-height: 36px; padding: 10px 13px; border: 1px solid #ddd; text-align: left; vertical-align: top; } .article-content th { background: #f3f4f5; font-weight: 600; } /* * 自由配置された表 * * app.html では表を移動すると * * position: absolute; * left: xxxpx; * top: xxxpx; * margin: 0; * * が表自身に保存される。 * * article-content を position: relative にすることで * left / top が本文領域を基準に正しく適用される。 * * position / left / top / margin は * インライン style をそのまま使用するため、 * ここでは上書きしない。 */ /* * 保存された表幅を本文幅からはみ出させない。 * * width が px で保存されている場合も、 * max-width のみ制限する。 */ .article-content table[style*="width"] { max-width: 100%; }
 
 
 /* ========================================
@@ -426,13 +365,6 @@
         font-size: 17px;
     }
 
-    .article-content table {
-        font-size: 13px;
-    }
-
-    .article-content th,
-    .article-content td {
-        padding: 8px 9px;
-    }
+    ..article-content table { font-size: 13px; } .article-content th, .article-content td { padding: 8px 9px; }
 
 }
