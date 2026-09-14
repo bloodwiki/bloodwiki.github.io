@@ -33,28 +33,14 @@ function injectHeader() {
 
                 <!-- ロゴ -->
 
-                <a
-                    href="index.html"
-                    class="logo"
-                >
+                <a href="index.html" class="logo">
 
-                    <span class="logo-mark">
-                        W
-                    </span>
+    <img
+        src="images/title.png"
+        alt="THE BLOOD Wiki"
+    >
 
-                    <span>
-
-                        <strong>
-                            BLOOD Wiki
-                        </strong>
-
-                        <small>
-                            Unofficial Wiki
-                        </small>
-
-                    </span>
-
-                </a>
+</a>
 
 
 
