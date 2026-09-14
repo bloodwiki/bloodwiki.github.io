@@ -10,7 +10,7 @@
 
     min-height: 100vh;
 
-    padding-top: 68px;
+    padding-top: 64px;
 
     box-sizing: border-box;
 }
@@ -34,11 +34,11 @@
 .sidebar {
     position: sticky;
 
-    top: 68px;
+    top: 64px;
 
     width: 240px;
 
-    height: calc(100vh - 68px);
+    height: calc(100vh - 64px);
 
     box-sizing: border-box;
 
@@ -46,17 +46,13 @@
 
     flex-direction: column;
 
-    padding: 22px 12px;
+    padding: 24px 14px;
 
     border-right:
         1px solid var(--border);
 
     background:
-        linear-gradient(
-            180deg,
-            #fff7f8 0%,
-            #fffafa 100%
-        );
+        var(--red-50);
 
     overflow-y: auto;
 }
@@ -67,7 +63,7 @@
 ======================================== */
 
 .sidebar-section {
-    margin-bottom: 26px;
+    margin-bottom: 28px;
 }
 
 
@@ -76,15 +72,13 @@
 
     margin-bottom: 8px;
 
-    font-size: 11px;
+    font-size: 12px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     color: var(--red-700);
 
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 
@@ -93,8 +87,6 @@
 ======================================== */
 
 .sidebar-link {
-    position: relative;
-
     display: flex;
 
     align-items: center;
@@ -103,15 +95,15 @@
 
     width: 100%;
 
-    min-height: 42px;
+    min-height: 40px;
 
     box-sizing: border-box;
 
     padding: 8px 10px;
 
-    margin: 3px 0;
+    margin: 2px 0;
 
-    border-radius: 10px;
+    border-radius: 8px;
 
     color: var(--text-sub);
 
@@ -120,14 +112,13 @@
     font-size: 14px;
 
     transition:
-        background 0.18s ease,
-        color 0.18s ease,
-        transform 0.18s ease;
+        background 0.15s ease,
+        color 0.15s ease;
 }
 
 
 .sidebar-link span {
-    width: 24px;
+    width: 22px;
 
     flex-shrink: 0;
 
@@ -140,46 +131,16 @@
 .sidebar-link:hover {
     background: var(--red-100);
 
-    color: var(--red-700);
-
-    transform: translateX(2px);
+    color: var(--red-800);
 }
 
 
 .sidebar-link.active {
-    color: #ffffff;
+    background: var(--red-200);
 
-    font-weight: 700;
+    color: var(--red-800);
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--strawberry),
-            var(--red-700)
-        );
-
-    box-shadow:
-        0 4px 12px
-        rgba(217, 47, 58, 0.18);
-}
-
-
-.sidebar-link.active::before {
-    content: "";
-
-    position: absolute;
-
-    left: -12px;
-
-    top: 8px;
-
-    bottom: 8px;
-
-    width: 3px;
-
-    border-radius: 0 4px 4px 0;
-
-    background: var(--red-500);
+    font-weight: 600;
 }
 
 
@@ -205,10 +166,9 @@
 
     margin-bottom: 10px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
-    border-radius: 9px;
+    border-radius: 7px;
 
     background: var(--surface);
 
@@ -218,25 +178,16 @@
 
     cursor: pointer;
 
-    box-shadow: none;
-
     transition:
-        background 0.18s ease,
-        border-color 0.18s ease,
-        color 0.18s ease;
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
 
 .update-button:hover {
-    background: var(--red-50);
+    background: var(--red-100);
 
     border-color: var(--border-strong);
-
-    color: var(--red-800);
-
-    transform: none;
-
-    box-shadow: none;
 }
 
 
@@ -276,7 +227,7 @@
 
     margin: 0 auto;
 
-    padding: 46px 0 80px;
+    padding: 48px 0 80px;
 
     box-sizing: border-box;
 }
@@ -299,30 +250,25 @@
 
     width: 100%;
 
-    height: 68px;
+    height: 64px;
 
     box-sizing: border-box;
 
     border-bottom:
-        1px solid var(--red-700);
+        1px solid var(--border-strong);
 
     background:
-        linear-gradient(
-            90deg,
-            var(--red-800) 0%,
-            var(--red-700) 48%,
-            var(--red-600) 100%
+        rgba(
+            255,
+            245,
+            246,
+            0.96
         );
 
-    box-shadow:
-        0 4px 18px
-        rgba(120, 20, 35, 0.16);
+    backdrop-filter:
+        blur(10px);
 }
 
-
-/* ========================================
-   ヘッダー内部
-======================================== */
 
 .header-inner {
     height: 100%;
@@ -343,42 +289,36 @@
    ロゴ
 ======================================== */
 
-/*
-   左上の画像タイトルを想定。
-   imgを入れた場合でも自然に収まるようにする。
-*/
-
 .logo {
     display: flex;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 
     flex-shrink: 0;
 
-    color: #ffffff;
+    color: var(--red-800);
 
     text-decoration: none;
 }
 
 
+/*
+   画像型タイトル
+*/
+
 .logo img {
     display: block;
 
-    width: auto;
-
-    max-width: 180px;
-
     max-height: 48px;
 
-    object-fit: contain;
+    width: auto;
 }
 
 
 /*
-   画像タイトルを使わない場合の
-   旧ロゴ用
+   画像を使わない場合のマーク
 */
 
 .logo-mark {
@@ -388,33 +328,24 @@
 
     justify-content: center;
 
-    width: 32px;
+    width: 30px;
 
-    height: 32px;
+    height: 30px;
 
-    flex-shrink: 0;
+    border-radius: 7px;
 
-    border-radius: 9px;
+    background: var(--red-600);
 
-    background:
-        rgba(255, 255, 255, 0.16);
-
-    color: #ffffff;
+    color: white;
 
     font-size: 13px;
 
-    font-weight: 800;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.18);
+    font-weight: 700;
 }
 
 
 .logo strong {
     display: block;
-
-    color: #ffffff;
 
     font-size: 17px;
 
@@ -429,8 +360,7 @@
 
     margin-top: 2px;
 
-    color:
-        rgba(255, 255, 255, 0.68);
+    color: var(--red-400);
 
     font-size: 10px;
 }
@@ -454,53 +384,38 @@
 
     width: 100%;
 
-    height: 38px;
+    height: 36px;
 
     box-sizing: border-box;
 
     padding:
-        0 55px 0 38px;
+        0 55px 0 36px;
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.28);
+        1px solid var(--border-strong);
 
-    border-radius: 10px;
+    border-radius: 8px;
 
     outline: none;
 
-    background:
-        rgba(255, 255, 255, 0.13);
+    background: var(--surface-soft);
 
-    color: #ffffff;
+    color: var(--text);
 
     font-family: inherit;
 
     font-size: 13px;
 
     transition:
-        border-color 0.18s ease,
-        background 0.18s ease,
-        box-shadow 0.18s ease;
-}
-
-
-.header-search input::placeholder {
-    color:
-        rgba(255, 255, 255, 0.68);
+        border-color 0.15s ease,
+        background 0.15s ease;
 }
 
 
 .header-search input:focus {
-    border-color:
-        rgba(255, 255, 255, 0.72);
+    border-color: var(--red-400);
 
-    background:
-        rgba(255, 255, 255, 0.20);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(255, 255, 255, 0.10);
+    background: white;
 }
 
 
@@ -514,8 +429,7 @@
     transform:
         translateY(-50%);
 
-    color:
-        rgba(255, 255, 255, 0.78);
+    color: var(--red-500);
 
     font-size: 14px;
 
@@ -543,16 +457,13 @@
     padding: 2px 5px;
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.22);
+        1px solid var(--border);
 
     border-radius: 4px;
 
-    background:
-        rgba(255, 255, 255, 0.10);
+    background: white;
 
-    color:
-        rgba(255, 255, 255, 0.65);
+    color: var(--text-light);
 
     font-family: inherit;
 
@@ -589,38 +500,28 @@
     padding: 0;
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.25);
+        1px solid var(--border-strong);
 
-    border-radius: 9px;
+    border-radius: 7px;
 
-    background:
-        rgba(255, 255, 255, 0.10);
+    background: var(--surface);
 
-    color: #ffffff;
+    color: var(--red-700);
 
     font-size: 17px;
 
     cursor: pointer;
 
-    box-shadow: none;
-
     transition:
-        background 0.18s ease,
-        border-color 0.18s ease;
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
 
 .icon-button:hover {
-    background:
-        rgba(255, 255, 255, 0.20);
+    background: var(--red-100);
 
-    border-color:
-        rgba(255, 255, 255, 0.45);
-
-    transform: none;
-
-    box-shadow: none;
+    border-color: var(--red-300);
 }
 
 
@@ -630,9 +531,7 @@
 
 @media (max-width: 800px) {
 
-    /* ------------------------------------
-       ページ
-    ------------------------------------ */
+    /* ページ */
 
     .page {
         display: block;
@@ -643,9 +542,7 @@
     }
 
 
-    /* ------------------------------------
-       サイドバー
-    ------------------------------------ */
+    /* サイドバー */
 
     #site-sidebar {
         width: auto;
@@ -673,11 +570,16 @@
             translateX(-100%);
 
         transition:
-            transform 0.22s ease;
+            transform 0.2s ease;
 
         box-shadow:
-            6px 0 24px
-            rgba(100, 20, 30, 0.16);
+            4px 0 20px
+            rgba(
+                120,
+                20,
+                35,
+                0.12
+            );
     }
 
 
@@ -687,14 +589,7 @@
     }
 
 
-    .sidebar-link.active::before {
-        left: 0;
-    }
-
-
-    /* ------------------------------------
-       メイン
-    ------------------------------------ */
+    /* メイン */
 
     .content {
         width:
@@ -706,9 +601,7 @@
     }
 
 
-    /* ------------------------------------
-       ヘッダー
-    ------------------------------------ */
+    /* ヘッダー */
 
     .header {
         height: 56px;
@@ -723,9 +616,9 @@
 
 
     .logo img {
-        max-width: 130px;
-
         max-height: 40px;
+
+        max-width: 140px;
     }
 
 
