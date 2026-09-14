@@ -1,25 +1,33 @@
-```css
 /* ========================================
    Article Layout
 ======================================== */
 
 .article-layout {
     width: 100%;
-    max-width: 1100px;
+    max-width: none;
 
-    margin: 0 auto;
+    margin: 0;
 
-    padding: 40px 50px 80px;
+    padding: 40px 40px 80px;
 
     box-sizing: border-box;
 
     display: grid;
 
     grid-template-columns:
-        minmax(0, 780px)
+        minmax(0, 1fr)
         180px;
 
-    gap: 60px;
+    gap: 40px;
+}
+
+
+/* ========================================
+   Article
+======================================== */
+
+.article {
+    min-width: 0;
 }
 
 
@@ -108,21 +116,11 @@
    Article Content
 ======================================== */
 
-/*
- * 重要
- *
- * app.html の .rich-editor と同じく、
- * 絶対配置された要素の基準にする。
- *
- * article.html で
- *
- *     left: xxxpx;
- *     top: xxxpx;
- *
- * が保存された表・画像などを
- * 本文領域基準で再現できるようにする。
- */
 .article-content {
+    /*
+     * app.html の .rich-editor と同じく、
+     * 自由配置要素の座標基準にする。
+     */
     position: relative;
 
     width: 100%;
@@ -229,12 +227,9 @@
 
 
 /*
- * 編集画面で保存された画像の
- * inline style を優先する。
- *
- * 例:
- * margin-left: 8px;
- * margin-top: 18px;
+ * HTMLに保存されている
+ * margin-left / margin-top などの
+ * inline style はそのまま尊重する。
  */
 .article-content img[style] {
     max-width: 100%;
@@ -252,6 +247,7 @@
     height: 24px !important;
 
     min-width: 24px;
+
     max-width: 24px !important;
 
     margin: 0 2px !important;
@@ -265,7 +261,7 @@
 
 
 /* ========================================
-   Math
+   Math expressions
 ======================================== */
 
 .article-content .math-expression {
@@ -286,14 +282,14 @@
 ======================================== */
 
 /*
- * 基本的な表の見た目。
+ * 基本表
  *
- * width / position / left / top / margin / height
- * はHTML側の inline style を尊重する。
+ * app.html の表と同じ基本仕様。
+ *
+ * width / margin / position / left / top
+ * などの inline style は尊重する。
  */
 .article-content table {
-    max-width: 100%;
-
     border-collapse: collapse;
 
     table-layout: fixed;
@@ -301,33 +297,75 @@
     font-size: 14px;
 
     background: #fff;
+
+    box-sizing: border-box;
 }
 
 
 /*
- * 通常配置の表
+ * 通常の表。
  *
- * width がHTMLにない場合だけ本文幅いっぱい。
- *
- * inline style="width:80%"
- * inline style="width:540px"
- * などはそのまま使用される。
+ * width指定がHTMLにある場合はその幅を使用。
+ * 指定がない表だけ本文幅いっぱい。
  */
-.article-content table:not([style*="width"]) {
+.article-content table:not([style*="width"]):not(.free-positioned) {
     width: 100%;
 }
 
 
 /*
- * セル
- *
- * app.html側で保存された
- * rowspan / colspan / width / height
- * などを邪魔しない。
+ * 通常表は記事の端に張り付きすぎないよう
+ * 最大幅だけ少し余裕を確保する。
  */
+.article-content table:not(.free-positioned) {
+    max-width: calc(100% - 16px);
+
+    margin-left: 0;
+
+    margin-right: 16px;
+}
+
+
+/* ========================================
+   Free Positioned Table
+======================================== */
+
+/*
+ * app.html の自由配置表と同じ考え方。
+ *
+ * HTMLに保存されている
+ *
+ *     position: absolute;
+ *     left: 311px;
+ *     top: 131px;
+ *     width: 540px;
+ *
+ * をそのまま使用する。
+ */
+.article-content table.free-positioned {
+    position: absolute !important;
+
+    box-sizing: border-box;
+
+    margin: 0 !important;
+
+    /*
+     * left / top / width は
+     * inline style を使用するため指定しない。
+     */
+    z-index: 2;
+}
+
+
+/* ========================================
+   Table Cells
+======================================== */
+
 .article-content th,
 .article-content td {
     min-width: 40px;
+
+    min-height: 36px;
 
     padding: 10px 13px;
 
@@ -354,7 +392,8 @@
 
 
 /*
- * colgroup / col の幅をそのまま使用する。
+ * app.htmlで保存された
+ * colgroup / col の幅を維持する。
  */
 .article-content table col {
     box-sizing: border-box;
@@ -362,45 +401,11 @@
 
 
 /*
- * HTMLに保存された width が
- * 本文幅を超えないようにする。
- *
- * ただし width 自体は変更しない。
+ * rowspan / colspan のレイアウトを
+ * ブラウザ標準のtable計算に任せる。
  */
-.article-content table[style*="width"] {
-    max-width: 100%;
-}
-
-
-/*
- * 自由配置された表。
- *
- * position:absolute
- * left
- * top
- * margin
- *
- * はHTMLのinline styleを使用する。
- *
- * ここでは position を指定しない。
- */
-.article-content table.free-positioned {
-    /* intentionally empty */
-}
-
-
-/*
- * 編集画面用の選択状態は
- * 公開ページでは装飾しない。
- */
-.article-content table.table-selected {
-    outline: none;
-}
-
-
-.article-content td.cell-selected,
-.article-content th.cell-selected {
-    outline: none;
+.article-content table tbody {
+    width: 100%;
 }
 
 
@@ -597,5 +602,16 @@
             8px 9px;
     }
 
+
+    /*
+     * スマホでは自由配置表が
+     * 画面外へ大きく飛び出さないようにする。
+     *
+     * desktopの保存座標は維持するため、
+     * position / left / top 自体は変更しない。
+     */
+    .article-content table.free-positioned {
+        max-width: calc(100vw - 36px);
+    }
+
 }
-```
