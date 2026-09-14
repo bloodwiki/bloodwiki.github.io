@@ -1,3 +1,4 @@
+```css
 /* ========================================
    ページ全体
 ======================================== */
@@ -10,7 +11,7 @@
 
     min-height: 100vh;
 
-    padding-top: 64px;
+    padding-top: 68px;
 
     box-sizing: border-box;
 }
@@ -34,11 +35,11 @@
 .sidebar {
     position: sticky;
 
-    top: 64px;
+    top: 68px;
 
     width: 240px;
 
-    height: calc(100vh - 64px);
+    height: calc(100vh - 68px);
 
     box-sizing: border-box;
 
@@ -46,12 +47,17 @@
 
     flex-direction: column;
 
-    padding: 24px 14px;
+    padding: 22px 12px;
 
     border-right:
-        1px solid #e5e5e5;
+        1px solid var(--border);
 
-    background: #fafafa;
+    background:
+        linear-gradient(
+            180deg,
+            #fff7f8 0%,
+            #fffafa 100%
+        );
 
     overflow-y: auto;
 }
@@ -62,7 +68,7 @@
 ======================================== */
 
 .sidebar-section {
-    margin-bottom: 28px;
+    margin-bottom: 26px;
 }
 
 
@@ -71,13 +77,15 @@
 
     margin-bottom: 8px;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    font-weight: 700;
+    font-weight: 800;
 
-    color: #999;
+    color: var(--red-700);
 
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
 }
 
 
@@ -86,6 +94,8 @@
 ======================================== */
 
 .sidebar-link {
+    position: relative;
+
     display: flex;
 
     align-items: center;
@@ -94,30 +104,31 @@
 
     width: 100%;
 
-    min-height: 40px;
+    min-height: 42px;
 
     box-sizing: border-box;
 
     padding: 8px 10px;
 
-    margin: 2px 0;
+    margin: 3px 0;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
-    color: #555;
+    color: var(--text-sub);
 
     text-decoration: none;
 
     font-size: 14px;
 
     transition:
-        background 0.15s ease,
-        color 0.15s ease;
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
 }
 
 
 .sidebar-link span {
-    width: 22px;
+    width: 24px;
 
     flex-shrink: 0;
 
@@ -128,18 +139,48 @@
 
 
 .sidebar-link:hover {
-    background: #eeeeee;
+    background: var(--red-100);
 
-    color: #222;
+    color: var(--red-700);
+
+    transform: translateX(2px);
 }
 
 
 .sidebar-link.active {
-    background: #e8e8e8;
+    color: #ffffff;
 
-    color: #111;
+    font-weight: 700;
 
-    font-weight: 600;
+    background:
+        linear-gradient(
+            135deg,
+            var(--strawberry),
+            var(--red-700)
+        );
+
+    box-shadow:
+        0 4px 12px
+        rgba(217, 47, 58, 0.18);
+}
+
+
+.sidebar-link.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -12px;
+
+    top: 8px;
+
+    bottom: 8px;
+
+    width: 3px;
+
+    border-radius: 0 4px 4px 0;
+
+    background: var(--red-500);
 }
 
 
@@ -165,28 +206,38 @@
 
     margin-bottom: 10px;
 
-    border: 1px solid #ddd;
+    border:
+        1px solid var(--border);
 
-    border-radius: 7px;
+    border-radius: 9px;
 
-    background: white;
+    background: var(--surface);
 
-    color: #555;
+    color: var(--red-700);
 
     font-size: 12px;
 
     cursor: pointer;
 
+    box-shadow: none;
+
     transition:
-        background 0.15s ease,
-        border-color 0.15s ease;
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
 }
 
 
 .update-button:hover {
-    background: #f1f1f1;
+    background: var(--red-50);
 
-    border-color: #ccc;
+    border-color: var(--border-strong);
+
+    color: var(--red-800);
+
+    transform: none;
+
+    box-shadow: none;
 }
 
 
@@ -200,7 +251,7 @@
 .sidebar-version {
     padding: 0 10px;
 
-    color: #aaa;
+    color: var(--text-light);
 
     font-size: 11px;
 }
@@ -226,7 +277,7 @@
 
     margin: 0 auto;
 
-    padding: 48px 0 80px;
+    padding: 46px 0 80px;
 
     box-sizing: border-box;
 }
@@ -249,25 +300,30 @@
 
     width: 100%;
 
-    height: 64px;
+    height: 68px;
 
     box-sizing: border-box;
 
     border-bottom:
-        1px solid #e5e5e5;
+        1px solid var(--red-700);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.96
+        linear-gradient(
+            90deg,
+            var(--red-800) 0%,
+            var(--red-700) 48%,
+            var(--red-600) 100%
         );
 
-    backdrop-filter:
-        blur(10px);
+    box-shadow:
+        0 4px 18px
+        rgba(120, 20, 35, 0.16);
 }
 
+
+/* ========================================
+   ヘッダー内部
+======================================== */
 
 .header-inner {
     height: 100%;
@@ -288,20 +344,43 @@
    ロゴ
 ======================================== */
 
+/*
+   左上の画像タイトルを想定。
+   imgを入れた場合でも自然に収まるようにする。
+*/
+
 .logo {
     display: flex;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 9px;
 
     flex-shrink: 0;
 
-    color: #222;
+    color: #ffffff;
 
     text-decoration: none;
 }
 
+
+.logo img {
+    display: block;
+
+    width: auto;
+
+    max-width: 180px;
+
+    max-height: 48px;
+
+    object-fit: contain;
+}
+
+
+/*
+   画像タイトルを使わない場合の
+   旧ロゴ用
+*/
 
 .logo-mark {
     display: flex;
@@ -310,24 +389,33 @@
 
     justify-content: center;
 
-    width: 30px;
+    width: 32px;
 
-    height: 30px;
+    height: 32px;
 
-    border-radius: 7px;
+    flex-shrink: 0;
 
-    background: #222;
+    border-radius: 9px;
 
-    color: white;
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    color: #ffffff;
 
     font-size: 13px;
 
-    font-weight: 700;
+    font-weight: 800;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
 }
 
 
 .logo strong {
     display: block;
+
+    color: #ffffff;
 
     font-size: 17px;
 
@@ -342,7 +430,8 @@
 
     margin-top: 2px;
 
-    color: #999;
+    color:
+        rgba(255, 255, 255, 0.68);
 
     font-size: 10px;
 }
@@ -366,38 +455,53 @@
 
     width: 100%;
 
-    height: 36px;
+    height: 38px;
 
     box-sizing: border-box;
 
     padding:
-        0 55px 0 36px;
+        0 55px 0 38px;
 
     border:
-        1px solid #ddd;
+        1px solid
+        rgba(255, 255, 255, 0.28);
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     outline: none;
 
-    background: #f7f7f7;
+    background:
+        rgba(255, 255, 255, 0.13);
 
-    color: #333;
+    color: #ffffff;
 
     font-family: inherit;
 
     font-size: 13px;
 
     transition:
-        border-color 0.15s ease,
-        background 0.15s ease;
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.header-search input::placeholder {
+    color:
+        rgba(255, 255, 255, 0.68);
 }
 
 
 .header-search input:focus {
-    border-color: #bbb;
+    border-color:
+        rgba(255, 255, 255, 0.72);
 
-    background: white;
+    background:
+        rgba(255, 255, 255, 0.20);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255, 255, 255, 0.10);
 }
 
 
@@ -411,7 +515,8 @@
     transform:
         translateY(-50%);
 
-    color: #777;
+    color:
+        rgba(255, 255, 255, 0.78);
 
     font-size: 14px;
 
@@ -439,13 +544,16 @@
     padding: 2px 5px;
 
     border:
-        1px solid #ddd;
+        1px solid
+        rgba(255, 255, 255, 0.22);
 
     border-radius: 4px;
 
-    background: white;
+    background:
+        rgba(255, 255, 255, 0.10);
 
-    color: #999;
+    color:
+        rgba(255, 255, 255, 0.65);
 
     font-family: inherit;
 
@@ -482,28 +590,38 @@
     padding: 0;
 
     border:
-        1px solid #ddd;
+        1px solid
+        rgba(255, 255, 255, 0.25);
 
-    border-radius: 7px;
+    border-radius: 9px;
 
-    background: white;
+    background:
+        rgba(255, 255, 255, 0.10);
 
-    color: #444;
+    color: #ffffff;
 
     font-size: 17px;
 
     cursor: pointer;
 
+    box-shadow: none;
+
     transition:
-        background 0.15s ease,
-        border-color 0.15s ease;
+        background 0.18s ease,
+        border-color 0.18s ease;
 }
 
 
 .icon-button:hover {
-    background: #f4f4f4;
+    background:
+        rgba(255, 255, 255, 0.20);
 
-    border-color: #ccc;
+    border-color:
+        rgba(255, 255, 255, 0.45);
+
+    transform: none;
+
+    box-shadow: none;
 }
 
 
@@ -513,7 +631,9 @@
 
 @media (max-width: 800px) {
 
-    /* ページ */
+    /* ------------------------------------
+       ページ
+    ------------------------------------ */
 
     .page {
         display: block;
@@ -524,7 +644,9 @@
     }
 
 
-    /* サイドバー */
+    /* ------------------------------------
+       サイドバー
+    ------------------------------------ */
 
     #site-sidebar {
         width: auto;
@@ -552,16 +674,11 @@
             translateX(-100%);
 
         transition:
-            transform 0.2s ease;
+            transform 0.22s ease;
 
         box-shadow:
-            4px 0 20px
-            rgba(
-                0,
-                0,
-                0,
-                0.08
-            );
+            6px 0 24px
+            rgba(100, 20, 30, 0.16);
     }
 
 
@@ -571,7 +688,14 @@
     }
 
 
-    /* メイン */
+    .sidebar-link.active::before {
+        left: 0;
+    }
+
+
+    /* ------------------------------------
+       メイン
+    ------------------------------------ */
 
     .content {
         width:
@@ -583,7 +707,9 @@
     }
 
 
-    /* ヘッダー */
+    /* ------------------------------------
+       ヘッダー
+    ------------------------------------ */
 
     .header {
         height: 56px;
@@ -594,6 +720,13 @@
         padding: 0 14px;
 
         gap: 10px;
+    }
+
+
+    .logo img {
+        max-width: 130px;
+
+        max-height: 40px;
     }
 
 
@@ -635,3 +768,4 @@
     }
 
 }
+```
