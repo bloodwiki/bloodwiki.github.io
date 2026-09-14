@@ -1,3 +1,65 @@
+/* ========================================
+   BLOOD Wiki - Base
+   Red / Strawberry Theme
+======================================== */
+
+:root {
+    /* Main Reds */
+    --red-50:  #fff5f5;
+    --red-100: #ffe4e4;
+    --red-200: #ffc9c9;
+    --red-300: #ff9f9f;
+    --red-400: #ff6f6f;
+    --red-500: #f04444;
+    --red-600: #d92f3a;
+    --red-700: #b82032;
+    --red-800: #8f1d2c;
+    --red-900: #641524;
+
+    /* Strawberry */
+    --strawberry: #ff4f64;
+    --strawberry-light: #fff0f2;
+
+    /* Accent */
+    --accent: #e63950;
+    --accent-light: #ffe8ec;
+
+    /* Text */
+    --text: #2b2022;
+    --text-sub: #705b60;
+    --text-light: #a18d92;
+
+    /* Background */
+    --background: #fffafa;
+    --surface: #ffffff;
+    --surface-soft: #fff3f4;
+
+    /* Border */
+    --border: #f0d8dc;
+    --border-strong: #e8b8bf;
+
+    /* Shadow */
+    --shadow-sm:
+        0 2px 8px rgba(120, 20, 35, 0.06);
+
+    --shadow-md:
+        0 8px 24px rgba(120, 20, 35, 0.10);
+
+    --shadow-lg:
+        0 16px 40px rgba(120, 20, 35, 0.14);
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+}
+
+
+/* ========================================
+   Reset
+======================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -9,7 +71,6 @@ html {
 
 
 body {
-
     margin: 0;
 
     font-family:
@@ -19,27 +80,245 @@ body {
         "Noto Sans JP",
         sans-serif;
 
-    color: #202124;
+    color: var(--text);
 
-    background: #f7f8fa;
+    background:
+        linear-gradient(
+            180deg,
+            #fff7f8 0%,
+            var(--background) 35%,
+            #fffafa 100%
+        );
 
     line-height: 1.7;
 
+    -webkit-font-smoothing: antialiased;
 }
 
 
+/* ========================================
+   Basic Elements
+======================================== */
+
 button,
-input {
+input,
+textarea,
+select {
     font: inherit;
 }
 
 
+button {
+    cursor: pointer;
+}
+
+
 a {
-    color: inherit;
+    color: var(--red-700);
+
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+a:hover {
+    color: var(--red-500);
 }
 
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+
+/* ========================================
+   Selection
+======================================== */
+
+::selection {
+    color: #ffffff;
+    background: var(--strawberry);
+}
+
+
+/* ========================================
+   Scrollbar
+======================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #fff1f3;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #e9a5ae;
+    border-radius: 999px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--red-500);
+}
+
+
+/* ========================================
+   Common Text
+======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text);
+
+    line-height: 1.35;
+
+    margin-top: 0;
+}
+
+
+h1 {
+    font-weight: 800;
+}
+
+
+h2 {
+    font-weight: 750;
+}
+
+
+h3,
+h4 {
+    font-weight: 700;
+}
+
+
+p {
+    margin-top: 0;
+}
+
+
+small {
+    color: var(--text-sub);
+}
+
+
+/* ========================================
+   Form
+======================================== */
+
+input,
+textarea,
+select {
+    color: var(--text);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--red-400);
+
+    box-shadow:
+        0 0 0 3px rgba(240, 68, 68, 0.12);
+}
+
+
+/* ========================================
+   Button Base
+======================================== */
+
+button {
+    border: 0;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--red-500),
+            var(--red-700)
+        );
+
+    border-radius: var(--radius-sm);
+
+    padding: 0.55em 1em;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+button:hover {
+    filter: brightness(1.05);
+
+    box-shadow: var(--shadow-md);
+
+    transform: translateY(-1px);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   Images
+======================================== */
+
+img {
+    display: block;
+}
+
+
+/* ========================================
+   Utility
+======================================== */
+
+.text-red {
+    color: var(--red-600);
+}
+
+
+.text-sub {
+    color: var(--text-sub);
+}
+
+
+.bg-red {
+    background: var(--red-600);
+}
+
+
+.bg-red-soft {
+    background: var(--surface-soft);
 }
