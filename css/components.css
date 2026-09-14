@@ -1,1776 +1,1327 @@
 /* ========================================
-BLOOD Wiki - トップページ
-Components
+   BLOOD Wiki - トップページ
 ======================================== */
 
-/* ========================================
-ヒーロー
-======================================== */
-
-.hero {
-position: relative;
-
-```
-display: grid;
-
-grid-template-columns:
-    minmax(320px, 1.05fr)
-    minmax(360px, 0.95fr);
-
-min-height: 430px;
-
-margin-bottom: 64px;
-
-overflow: hidden;
-
-border:
-    1px solid
-    rgba(130, 20, 40, 0.18);
-
-border-radius: 20px;
-
-background:
-    linear-gradient(
-        135deg,
-        #741326 0%,
-        #a71938 42%,
-        #d93650 72%,
-        #ef6876 100%
-    );
-
-box-shadow:
-    0 18px 45px
-    rgba(115, 18, 38, 0.18);
-```
-
-}
 
 /* ========================================
-ヒーロー画像
-======================================== */
-
-.hero-visual {
-position: relative;
-
-```
-min-height: 430px;
-
-overflow: hidden;
-
-background:
-    linear-gradient(
-        135deg,
-        #741326,
-        #a71938
-    );
-```
-
-}
-
-.hero-visual::after {
-content: "";
-
-```
-position: absolute;
-
-inset: 0;
-
-background:
-    linear-gradient(
-        90deg,
-        rgba(65, 5, 18, 0.00) 20%,
-        rgba(65, 5, 18, 0.16) 65%,
-        rgba(65, 5, 18, 0.42) 100%
-    );
-
-pointer-events: none;
-```
-
-}
-
-.hero-visual img {
-display: block;
-
-```
-width: 100%;
-
-height: 100%;
-
-min-height: 430px;
-
-object-fit: cover;
-
-transition:
-    transform 0.5s ease;
-```
-
-}
-
-.hero:hover .hero-visual img {
-transform:
-scale(1.025);
-}
-
-.hero-visual-overlay {
-position: absolute;
-
-```
-inset: 0;
-
-background:
-    radial-gradient(
-        circle at 30% 35%,
-        rgba(255,255,255,0.08),
-        transparent 45%
-    );
-
-pointer-events: none;
-```
-
-}
-
-/* ========================================
-ヒーロー本文
-======================================== */
-
-.hero-content {
-position: relative;
-
-```
-z-index: 1;
-
-display: flex;
-
-flex-direction: column;
-
-justify-content: center;
-
-padding:
-    52px;
-
-color: white;
-```
-
-}
-
-.hero-label {
-display: inline-flex;
-
-```
-align-items: center;
-
-width: fit-content;
-
-padding:
-    5px 11px;
-
-margin-bottom: 18px;
-
-border:
-    1px solid
-    rgba(
-        255,
-        255,
-        255,
-        0.30
-    );
-
-border-radius: 999px;
-
-background:
-    rgba(
-        255,
-        255,
-        255,
-        0.10
-    );
-
-color:
-    rgba(
-        255,
-        255,
-        255,
-        0.88
-    );
-
-font-size: 11px;
-
-font-weight: 800;
-
-letter-spacing: 0.14em;
-```
-
-}
-
-.hero h1 {
-margin: 0;
-
-```
-color: white;
-
-font-size:
-    clamp(
-        42px,
-        5vw,
-        68px
-    );
-
-font-weight: 850;
-
-line-height: 1.02;
-
-letter-spacing: -0.045em;
-```
-
-}
-
-.hero-lead {
-margin:
-20px 0 0;
-
-```
-color:
-    rgba(
-        255,
-        255,
-        255,
-        0.96
-    );
-
-font-size: 18px;
-
-font-weight: 700;
-```
-
-}
-
-.hero-description {
-max-width: 510px;
-
-```
-margin:
-    9px 0 28px;
-
-color:
-    rgba(
-        255,
-        255,
-        255,
-        0.78
-    );
-
-font-size: 13px;
-
-line-height: 1.85;
-```
-
-}
-
-/* ========================================
-ヒーロー検索
-======================================== */
-
-.hero-search {
-position: relative;
-
-```
-width: 100%;
-
-max-width: 510px;
-```
-
-}
-
-.hero-search span {
-position: absolute;
-
-```
-left: 15px;
-
-top: 50%;
-
-z-index: 1;
-
-transform:
-    translateY(-50%);
-
-color:
-    #a71938;
-
-font-size: 21px;
-
-line-height: 1;
-
-pointer-events: none;
-```
-
-}
-
-.hero-search input {
-width: 100%;
-
-```
-height: 52px;
-
-box-sizing: border-box;
-
-padding:
-    0 18px 0 46px;
-
-border:
-    1px solid
-    rgba(
-        255,
-        255,
-        255,
-        0.35
-    );
-
-border-radius: 11px;
-
-outline: none;
-
-background:
-    rgba(
-        255,
-        255,
-        255,
-        0.97
-    );
-
-color:
-    var(--text);
-
-font-size: 14px;
-
-box-shadow:
-    0 7px 24px
-    rgba(
-        60,
-        5,
-        18,
-        0.14
-    );
-
-transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-```
-
-}
-
-.hero-search input::placeholder {
-color:
-var(--text-light);
-}
-
-.hero-search input:focus {
-border-color:
-white;
-
-```
-box-shadow:
-    0 0 0 4px
-    rgba(
-        255,
-        255,
-        255,
-        0.16
-    );
-```
-
-}
-
-/* ========================================
-共通セクション
+   共通
 ======================================== */
 
 .home-section {
-margin-bottom: 72px;
+    margin-bottom: 72px;
 }
+
 
 .section-heading {
-display: flex;
+    display: flex;
 
-```
-align-items: flex-end;
+    align-items: flex-end;
 
-justify-content: space-between;
+    justify-content: space-between;
 
-gap: 20px;
+    gap: 20px;
 
-margin-bottom: 24px;
-```
-
+    margin-bottom: 24px;
 }
+
 
 .eyebrow {
-display: block;
+    display: block;
 
-```
-margin-bottom: 5px;
+    margin-bottom: 5px;
 
-color:
-    var(--red-600);
+    color: var(--red-600);
 
-font-size: 11px;
+    font-size: 11px;
 
-font-weight: 850;
+    font-weight: 800;
 
-letter-spacing: 0.15em;
-```
-
+    letter-spacing: 0.14em;
 }
+
 
 .section-heading h2 {
-margin: 0;
+    margin: 0;
 
-```
-color:
-    var(--text);
+    color: var(--text);
 
-font-size: 26px;
+    font-size: 26px;
 
-font-weight: 850;
+    font-weight: 800;
 
-letter-spacing: -0.03em;
-```
-
+    letter-spacing: -0.025em;
 }
+
 
 .section-description {
-margin:
-5px 0 0;
+    margin:
+        5px 0 0;
 
-```
-color:
-    var(--text-light);
+    color: var(--text-light);
 
-font-size: 13px;
-```
-
+    font-size: 13px;
 }
+
 
 .text-link {
-flex-shrink: 0;
+    flex-shrink: 0;
 
-```
-color:
-    var(--red-600);
+    color: var(--red-600);
 
-font-size: 13px;
+    font-size: 13px;
 
-font-weight: 750;
+    font-weight: 700;
 
-text-decoration: none;
+    text-decoration: none;
 
-transition:
-    color 0.15s ease,
-    transform 0.15s ease;
-```
-
+    transition:
+        color 0.15s ease,
+        transform 0.15s ease;
 }
+
 
 .text-link:hover {
-color:
-var(--red-800);
+    color: var(--red-800);
 
-```
-transform:
-    translateX(2px);
-```
-
+    transform: translateX(2px);
 }
+
 
 /* ========================================
-BLOODとは？
-======================================== */
-
-.about-section {
-padding:
-30px;
-
-```
-border:
-    1px solid
-    var(--border);
-
-border-radius: 18px;
-
-background:
-    linear-gradient(
-        135deg,
-        #fff3f5 0%,
-        #fffafb 45%,
-        #ffffff 100%
-    );
-
-box-shadow:
-    0 8px 28px
-    rgba(
-        120,
-        20,
-        35,
-        0.045
-    );
-```
-
-}
-
-.about-content {
-display: grid;
-
-```
-grid-template-columns:
-    minmax(300px, 1fr)
-    minmax(280px, 1fr);
-
-gap: 34px;
-
-align-items: stretch;
-```
-
-}
-
-/* ========================================
-BLOODとは？画像
-======================================== */
-
-.about-visual {
-position: relative;
-
-```
-min-height: 330px;
-
-overflow: hidden;
-
-border-radius: 14px;
-
-background:
-    linear-gradient(
-        135deg,
-        #8b1830,
-        #d13a50
-    );
-```
-
-}
-
-.about-visual img {
-display: block;
-
-```
-width: 100%;
-
-height: 100%;
-
-min-height: 330px;
-
-object-fit: cover;
-
-transition:
-    transform 0.4s ease;
-```
-
-}
-
-.about-visual:hover img {
-transform:
-scale(1.025);
-}
-
-.about-visual::after {
-content: "";
-
-```
-position: absolute;
-
-inset: 0;
-
-background:
-    linear-gradient(
-        180deg,
-        transparent 45%,
-        rgba(80, 8, 24, 0.30)
-    );
-
-pointer-events: none;
-```
-
-}
-
-.image-placeholder {
-position: absolute;
-
-```
-left: 18px;
-
-bottom: 15px;
-
-z-index: 2;
-
-color:
-    rgba(
-        255,
-        255,
-        255,
-        0.65
-    );
-
-font-size: 11px;
-
-font-weight: 800;
-
-letter-spacing: 0.16em;
-```
-
-}
-
-/* ========================================
-BLOODとは？本文
-======================================== */
-
-.about-text {
-display: flex;
-
-```
-flex-direction: column;
-
-justify-content: center;
-
-color:
-    var(--text-sub);
-
-font-size: 14px;
-
-line-height: 1.9;
-```
-
-}
-
-.about-text p {
-margin:
-0 0 13px;
-}
-
-.about-text p:last-of-type {
-margin-bottom: 22px;
-}
-
-.about-text strong {
-color:
-var(--red-800);
-}
-
-/* ========================================
-Wiki Note
-======================================== */
-
-.about-note {
-padding:
-20px 22px;
-
-```
-border-left:
-    4px solid
-    #f06a7a;
-
-border-radius: 10px;
-
-background:
-    linear-gradient(
-        135deg,
-        #a71938,
-        #c62f4a
-    );
-
-color: white;
-
-box-shadow:
-    0 8px 22px
-    rgba(
-        150,
-        20,
-        42,
-        0.14
-    );
-```
-
-}
-
-.about-note-label {
-display: block;
-
-```
-margin-bottom: 7px;
-
-color:
-    rgba(
-        255,
-        255,
-        255,
-        0.66
-    );
-
-font-size: 10px;
-
-font-weight: 850;
-
-letter-spacing: 0.15em;
-```
-
-}
-
-.about-note p {
-margin: 0;
-
-```
-color: white;
-
-font-size: 13px;
-
-line-height: 1.8;
-```
-
-}
-
-/* ========================================
-BLOODをもっと知る
-======================================== */
-
-.know-section {
-margin-top: 4px;
-}
-
-.discover-grid {
-display: grid;
-
-```
-grid-template-columns:
-    repeat(
-        2,
-        minmax(0, 1fr)
-    );
-
-gap: 16px;
-```
-
-}
-
-/* ========================================
-Discoverカード
-======================================== */
-
-.discover-card {
-display: grid;
-
-```
-grid-template-columns:
-    minmax(145px, 0.72fr)
-    minmax(0, 1fr);
-
-min-height: 190px;
-
-overflow: hidden;
-
-border:
-    1px solid
-    var(--border);
-
-border-radius: 15px;
-
-background:
-    var(--surface);
-
-box-shadow:
-    0 4px 16px
-    rgba(
-        100,
-        15,
-        30,
-        0.035
-    );
-
-transition:
-    transform 0.18s ease,
-    border-color 0.18s ease,
-    box-shadow 0.18s ease;
-```
-
-}
-
-.discover-card:hover {
-transform:
-translateY(-3px);
-
-```
-border-color:
-    var(--red-300);
-
-box-shadow:
-    0 12px 28px
-    rgba(
-        110,
-        18,
-        35,
-        0.10
-    );
-```
-
-}
-
-/* ========================================
-Discover画像
-======================================== */
-
-.discover-image {
-position: relative;
-
-```
-min-height: 190px;
-
-overflow: hidden;
-
-background:
-    linear-gradient(
-        135deg,
-        #8c1830,
-        #d83a53
-    );
-```
-
-}
-
-.discover-image img {
-display: block;
-
-```
-width: 100%;
-
-height: 100%;
-
-min-height: 190px;
-
-object-fit: cover;
-
-transition:
-    transform 0.4s ease;
-```
-
-}
-
-.discover-card:hover
-.discover-image img {
-transform:
-scale(1.06);
-}
-
-.discover-image::after {
-content: "";
-
-```
-position: absolute;
-
-inset: 0;
-
-background:
-    linear-gradient(
-        180deg,
-        rgba(60, 5, 18, 0.00),
-        rgba(60, 5, 18, 0.32)
-    );
-```
-
-}
-
-.discover-image span {
-position: absolute;
-
-```
-left: 14px;
-
-bottom: 12px;
-
-z-index: 2;
-
-color:
-    rgba(
-        255,
-        255,
-        255,
-        0.88
-    );
-
-font-size: 10px;
-
-font-weight: 850;
-
-letter-spacing: 0.15em;
-```
-
-}
-
-/* ========================================
-Discover本文
-======================================== */
-
-.discover-content {
-display: flex;
-
-```
-flex-direction: column;
-
-justify-content: center;
-
-padding:
-    22px;
-```
-
-}
-
-.discover-content h3 {
-margin:
-0 0 7px;
-
-```
-color:
-    var(--red-800);
-
-font-size: 18px;
-
-font-weight: 800;
-```
-
-}
-
-.discover-content p {
-margin:
-0 0 17px;
-
-```
-color:
-    var(--text-light);
-
-font-size: 12px;
-
-line-height: 1.75;
-```
-
-}
-
-.discover-link {
-width: fit-content;
-
-```
-color:
-    var(--red-600);
-
-font-size: 12px;
-
-font-weight: 750;
-
-text-decoration: none;
-
-transition:
-    color 0.15s ease,
-    transform 0.15s ease;
-```
-
-}
-
-.discover-link:hover {
-color:
-var(--red-800);
-
-```
-transform:
-    translateX(3px);
-```
-
-}
-
-/* ========================================
-Wikiを探索する
-======================================== */
-
-.category-list {
-display: grid;
-
-```
-grid-template-columns:
-    repeat(
-        2,
-        minmax(0, 1fr)
-    );
-
-gap: 12px;
-```
-
-}
-
-/* ========================================
-カテゴリカード
-======================================== */
-
-.category-card {
-position: relative;
-
-```
-display: flex;
-
-align-items: center;
-
-gap: 14px;
-
-min-height: 88px;
-
-padding:
-    14px 16px;
-
-border:
-    1px solid
-    var(--border);
-
-border-radius: 12px;
-
-background:
-    var(--surface);
-
-color:
-    var(--text);
-
-text-decoration: none;
-
-overflow: hidden;
-
-transition:
-    transform 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
-```
-
-}
-
-.category-card::before {
-content: "";
-
-```
-position: absolute;
-
-left: 0;
-
-top: 0;
-
-bottom: 0;
-
-width: 3px;
-
-background:
-    var(--red-300);
-
-transition:
-    background 0.15s ease;
-```
-
-}
-
-.category-card:hover {
-transform:
-translateY(-2px);
-
-```
-border-color:
-    var(--red-300);
-
-background:
-    #fffafb;
-
-box-shadow:
-    0 8px 24px
-    rgba(
-        120,
-        20,
-        35,
-        0.09
-    );
-```
-
-}
-
-.category-card:hover::before {
-background:
-var(--red-600);
-}
-
-/* ========================================
-カテゴリアイコン
-======================================== */
-
-.category-icon {
-display: flex;
-
-```
-align-items: center;
-
-justify-content: center;
-
-width: 46px;
-
-height: 46px;
-
-flex-shrink: 0;
-
-border-radius: 11px;
-
-background:
-    var(--red-100);
-
-color:
-    var(--red-700);
-
-font-size: 20px;
-
-font-weight: 700;
-```
-
-}
-
-.category-icon.enemy {
-background: #ffe1e6;
-color: #a71932;
-}
-
-.category-icon.boss {
-background: #f5d5dc;
-color: #7d1428;
-}
-
-.category-icon.fishing {
-background: #ffe9ed;
-color: #c52d4a;
-}
-
-.category-icon.weapon {
-background: #f9d9df;
-color: #991b35;
-}
-
-.category-icon.armor {
-background: #fce7ea;
-color: #b52a42;
-}
-
-.category-icon.accessory {
-background: #f8dbe1;
-color: #8f2035;
-}
-
-.category-icon.item {
-background: #ffe8ec;
-color: #c13a50;
-}
-
-.category-icon.npc {
-background: #f5dde2;
-color: #9e2b40;
-}
-
-/* ========================================
-カテゴリ本文
-======================================== */
-
-.category-card-content {
-min-width: 0;
-
-```
-flex: 1;
-```
-
-}
-
-.category-card-content h3 {
-margin:
-0 0 3px;
-
-```
-color:
-    var(--text);
-
-font-size: 16px;
-
-font-weight: 750;
-```
-
-}
-
-.category-card-content p {
-margin: 0;
-
-```
-color:
-    var(--text-light);
-
-font-size: 12px;
-
-line-height: 1.6;
-```
-
-}
-
-/* ========================================
-カテゴリ矢印
-======================================== */
-
-.arrow {
-flex-shrink: 0;
-
-```
-color:
-    var(--red-400);
-
-font-size: 18px;
-
-transition:
-    transform 0.15s ease,
-    color 0.15s ease;
-```
-
-}
-
-.category-card:hover .arrow {
-transform:
-translateX(3px);
-
-```
-color:
-    var(--red-600);
-```
-
-}
-
-/* ========================================
-最近の更新
-======================================== */
-
-.article-list {
-display: flex;
-
-```
-flex-direction: column;
-
-gap: 8px;
-```
-
-}
-
-.article-list-item {
-display: flex;
-
-```
-align-items: center;
-
-justify-content: space-between;
-
-gap: 20px;
-
-padding:
-    16px 18px;
-
-border:
-    1px solid
-    var(--border);
-
-border-radius: 10px;
-
-background:
-    var(--surface);
-
-color:
-    var(--text);
-
-text-decoration: none;
-
-transition:
-    border-color 0.15s ease,
-    background 0.15s ease,
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-```
-
-}
-
-.article-list-item:hover {
-transform:
-translateX(3px);
-
-```
-border-color:
-    var(--red-300);
-
-background:
-    #fffafb;
-
-box-shadow:
-    0 5px 16px
-    rgba(
-        120,
-        20,
-        35,
-        0.05
-    );
-```
-
-}
-
-.article-list-main {
-min-width: 0;
-}
-
-.article-category {
-margin-bottom: 2px;
-
-```
-color:
-    var(--red-600);
-
-font-size: 11px;
-
-font-weight: 750;
-```
-
-}
-
-.article-list-item h3 {
-margin: 0;
-
-```
-color:
-    var(--text);
-
-font-size: 15px;
-
-font-weight: 700;
-```
-
-}
-
-.article-list-item p {
-margin:
-3px 0 0;
-
-```
-overflow: hidden;
-
-color:
-    var(--text-light);
-
-font-size: 12px;
-
-text-overflow: ellipsis;
-
-white-space: nowrap;
-```
-
-}
-
-.article-arrow {
-flex-shrink: 0;
-
-```
-color:
-    var(--red-400);
-
-font-size: 18px;
-
-transition:
-    transform 0.15s ease;
-```
-
-}
-
-.article-list-item:hover
-.article-arrow {
-transform:
-translateX(3px);
-}
-
-/* ========================================
-Wikiについて
-======================================== */
-
-.wiki-info-section {
-padding:
-30px;
-
-```
-border-radius: 18px;
-
-background:
-    linear-gradient(
-        135deg,
-        #fff0f3 0%,
-        #fff8f9 50%,
-        #ffffff 100%
-    );
-
-border:
-    1px solid
-    var(--border);
-```
-
-}
-
-.wiki-info-grid {
-display: grid;
-
-```
-grid-template-columns:
-    repeat(
-        3,
-        minmax(0, 1fr)
-    );
-
-gap: 14px;
-```
-
-}
-
-.wiki-info-card {
-padding:
-22px;
-
-```
-border:
-    1px solid
-    rgba(
-        180,
-        40,
-        65,
-        0.12
-    );
-
-border-radius: 12px;
-
-background:
-    rgba(
-        255,
-        255,
-        255,
-        0.78
-    );
-
-transition:
-    transform 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-```
-
-}
-
-.wiki-info-card:hover {
-transform:
-translateY(-2px);
-
-```
-border-color:
-    var(--red-300);
-
-box-shadow:
-    0 8px 20px
-    rgba(
-        120,
-        20,
-        35,
-        0.07
-    );
-```
-
-}
-
-.wiki-info-icon {
-display: block;
-
-```
-margin-bottom: 12px;
-
-font-size: 24px;
-```
-
-}
-
-.wiki-info-card h3 {
-margin:
-0 0 6px;
-
-```
-color:
-    var(--red-800);
-
-font-size: 15px;
-
-font-weight: 750;
-```
-
-}
-
-.wiki-info-card p {
-margin: 0;
-
-```
-color:
-    var(--text-light);
-
-font-size: 12px;
-
-line-height: 1.7;
-```
-
-}
-
-/* ========================================
-読み込み・空状態
-======================================== */
-
-.loading,
-.empty {
-padding:
-32px 20px;
-
-```
-border:
-    1px dashed
-    var(--border-strong);
-
-border-radius: 10px;
-
-background:
-    var(--surface);
-
-color:
-    var(--text-light);
-
-text-align: center;
-
-font-size: 13px;
-```
-
-}
-
-/* ========================================
-スマホ
-======================================== */
-
-@media (max-width: 800px) {
-
-```
-/* ====================================
    ヒーロー
-==================================== */
+======================================== */
 
 .hero {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(320px, 0.85fr);
+
+    min-height: 390px;
+
+    margin-bottom: 68px;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border-strong);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7f1728 0%,
+            #a71932 45%,
+            #d7354d 100%
+        );
+
+    box-shadow:
+        0 18px 45px
+        rgba(120, 20, 35, 0.15);
+}
+
+
+/* ========================================
+   ヒーロー画像
+======================================== */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 390px;
+
+    overflow: hidden;
+
+    background: var(--red-800);
+}
+
+
+.hero-visual img {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 390px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.hero:hover .hero-visual img {
+    transform: scale(1.025);
+}
+
+
+.hero-visual::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(60, 5, 15, 0),
+            rgba(60, 5, 15, 0.28)
+        );
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   ヒーロー本文
+======================================== */
+
+.hero-content {
+    position: relative;
+
+    z-index: 1;
+
     display: flex;
 
     flex-direction: column;
 
-    min-height: 0;
+    justify-content: center;
 
-    margin-bottom: 48px;
-
-    border-radius: 16px;
-}
-
-
-.hero-visual {
-    min-height: 240px;
-
-    height: 240px;
-}
-
-
-.hero-visual img {
-    min-height: 240px;
-}
-
-
-.hero-content {
     padding:
-        34px 24px 30px;
+        46px 44px;
+
+    color: white;
+}
+
+
+.hero-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    padding:
+        5px 10px;
+
+    margin-bottom: 16px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
 }
 
 
 .hero h1 {
-    font-size: 40px;
+    margin: 0;
+
+    color: white;
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            62px
+        );
+
+    font-weight: 850;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
 }
 
 
 .hero-lead {
-    margin-top: 16px;
+    margin:
+        18px 0 0;
 
-    font-size: 15px;
+    color:
+        rgba(255, 255, 255, 0.96);
+
+    font-size: 17px;
+
+    font-weight: 650;
 }
 
 
 .hero-description {
-    margin-bottom: 21px;
+    max-width: 520px;
 
-    font-size: 12px;
+    margin:
+        8px 0 26px;
+
+    color:
+        rgba(255, 255, 255, 0.74);
+
+    font-size: 13px;
+
+    line-height: 1.85;
+}
+
+
+/* ========================================
+   ヒーロー検索
+======================================== */
+
+.hero-search {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 500px;
+}
+
+
+.hero-search span {
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    z-index: 1;
+
+    transform:
+        translateY(-50%);
+
+    color: var(--red-600);
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    pointer-events: none;
 }
 
 
 .hero-search input {
-    height: 46px;
+    width: 100%;
+
+    height: 50px;
+
+    padding:
+        0 18px 0 46px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.35);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    box-shadow:
+        0 6px 22px
+        rgba(60, 8, 18, 0.14);
 }
 
 
-/* ====================================
-   セクション
-==================================== */
-
-.home-section {
-    margin-bottom: 52px;
+.hero-search input::placeholder {
+    color: var(--text-light);
 }
 
 
-.section-heading {
-    align-items: flex-start;
+.hero-search input:focus {
+    border-color: white;
 
-    margin-bottom: 18px;
+    box-shadow:
+        0 0 0 4px
+        rgba(255, 255, 255, 0.14);
 }
 
 
-.section-heading h2 {
-    font-size: 22px;
-}
-
-
-/* ====================================
-   BLOODとは
-==================================== */
+/* ========================================
+   BLOODをもっと知る
+======================================== */
 
 .about-section {
+    position: relative;
+
+    overflow: hidden;
+
     padding:
-        22px;
+        32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4f5 0%,
+            #ffffff 55%,
+            #fff8f8 100%
+        );
 }
 
 
 .about-content {
-    grid-template-columns: 1fr;
+    display: grid;
 
-    gap: 22px;
-}
-
-
-.about-visual {
-    min-height: 230px;
-}
-
-
-.about-visual img {
-    min-height: 230px;
-}
-
-
-/* ====================================
-   もっと知る
-==================================== */
-
-.discover-grid {
-    grid-template-columns: 1fr;
-
-    gap: 10px;
-}
-
-
-.discover-card {
     grid-template-columns:
-        125px
-        minmax(0, 1fr);
+        minmax(0, 1.25fr)
+        minmax(260px, 0.75fr);
 
-    min-height: 165px;
+    gap: 32px;
+
+    align-items: center;
 }
 
 
-.discover-image {
-    min-height: 165px;
+.about-text {
+    color: var(--text-sub);
+
+    font-size: 14px;
+
+    line-height: 1.9;
 }
 
 
-.discover-image img {
-    min-height: 165px;
+.about-text p {
+    margin:
+        0 0 12px;
 }
 
 
-.discover-content {
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   BLOOD紹介画像
+======================================== */
+
+.about-image {
+    position: relative;
+
+    min-height: 190px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: var(--red-100);
+}
+
+
+.about-image img {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 190px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.about-image:hover img {
+    transform: scale(1.035);
+}
+
+
+/* ========================================
+   補足カード
+======================================== */
+
+.about-note {
+    padding:
+        20px;
+
+    border-radius: 12px;
+
+    background:
+        var(--red-600);
+
+    color: white;
+
+    box-shadow:
+        0 8px 24px
+        rgba(150, 20, 42, 0.14);
+}
+
+
+.about-note-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+.about-note p {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   もっと知る
+======================================== */
+
+.learn-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 16px;
+}
+
+
+.learn-card {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.learn-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--red-300);
+
+    box-shadow:
+        0 12px 28px
+        rgba(120, 20, 35, 0.10);
+}
+
+
+.learn-card-image {
+    width: 100%;
+
+    height: 150px;
+
+    overflow: hidden;
+
+    background:
+        var(--red-100);
+}
+
+
+.learn-card-image img {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.learn-card:hover
+.learn-card-image img {
+    transform:
+        scale(1.04);
+}
+
+
+.learn-card-content {
     padding:
         18px;
 }
 
 
-.discover-content h3 {
-    font-size: 16px;
+.learn-card-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        var(--red-600);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
 }
 
 
-/* ====================================
-   カテゴリ
-==================================== */
+.learn-card h3 {
+    margin:
+        0 0 6px;
+
+    color:
+        var(--text);
+
+    font-size: 16px;
+
+    font-weight: 750;
+}
+
+
+.learn-card p {
+    margin: 0;
+
+    color:
+        var(--text-light);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   カテゴリ一覧
+======================================== */
 
 .category-list {
-    grid-template-columns: 1fr;
+    display: grid;
 
-    gap: 9px;
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
 }
 
 
 .category-card {
-    min-height: 78px;
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 88px;
+
+    padding:
+        14px 16px;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.16s ease,
+        border-color 0.16s ease,
+        box-shadow 0.16s ease,
+        background 0.16s ease;
 }
 
 
-/* ====================================
+.category-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 3px;
+
+    background:
+        var(--red-300);
+
+    transition:
+        background 0.16s ease;
+}
+
+
+.category-card:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--red-300);
+
+    background:
+        #fffafb;
+
+    box-shadow:
+        0 8px 24px
+        rgba(120, 20, 35, 0.08);
+}
+
+
+.category-card:hover::before {
+    background:
+        var(--red-600);
+}
+
+
+/* ========================================
+   カテゴリアイコン
+======================================== */
+
+.category-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background:
+        var(--red-100);
+
+    color:
+        var(--red-700);
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+.category-icon.enemy {
+    background: #ffe3e7;
+    color: #a71932;
+}
+
+
+.category-icon.boss {
+    background: #f8d9de;
+    color: #821629;
+}
+
+
+.category-icon.fishing {
+    background: #ffecef;
+    color: #c52d4a;
+}
+
+
+.category-icon.weapon {
+    background: #fbdfe3;
+    color: #991b35;
+}
+
+
+.category-icon.armor {
+    background: #fce8ea;
+    color: #b52a42;
+}
+
+
+.category-icon.accessory {
+    background: #f9dce2;
+    color: #8f2035;
+}
+
+
+.category-icon.item {
+    background: #ffe9ec;
+    color: #c13a50;
+}
+
+
+.category-icon.npc {
+    background: #f6dfe3;
+    color: #9e2b40;
+}
+
+
+.category-card-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.category-card-content h3 {
+    margin:
+        0 0 3px;
+
+    color:
+        var(--text);
+
+    font-size: 16px;
+
+    font-weight: 750;
+}
+
+
+.category-card-content p {
+    margin: 0;
+
+    color:
+        var(--text-light);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.arrow {
+    flex-shrink: 0;
+
+    color:
+        var(--red-400);
+
+    font-size: 18px;
+
+    transition:
+        transform 0.15s ease,
+        color 0.15s ease;
+}
+
+
+.category-card:hover .arrow {
+    transform:
+        translateX(3px);
+
+    color:
+        var(--red-600);
+}
+
+
+/* ========================================
+   最近の更新
+======================================== */
+
+.article-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.article-list-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        16px 18px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    text-decoration: none;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.article-list-item:hover {
+    transform:
+        translateX(2px);
+
+    border-color:
+        var(--red-300);
+
+    background:
+        #fffafb;
+}
+
+
+.article-list-main {
+    min-width: 0;
+}
+
+
+.article-category {
+    margin-bottom: 2px;
+
+    color:
+        var(--red-600);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.article-list-item h3 {
+    margin: 0;
+
+    color:
+        var(--text);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.article-list-item p {
+    margin:
+        3px 0 0;
+
+    overflow: hidden;
+
+    color:
+        var(--text-light);
+
+    font-size: 12px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.article-arrow {
+    flex-shrink: 0;
+
+    color:
+        var(--red-400);
+
+    font-size: 18px;
+}
+
+
+/* ========================================
    Wikiについて
-==================================== */
+======================================== */
 
 .wiki-info-section {
     padding:
-        22px;
+        28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1f3,
+            #fff8f9,
+            #ffffff
+        );
 }
 
 
 .wiki-info-grid {
-    grid-template-columns: 1fr;
+    display: grid;
 
-    gap: 9px;
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
 }
 
 
 .wiki-info-card {
     padding:
-        18px;
+        20px;
+
+    border:
+        1px solid
+        rgba(180, 40, 65, 0.12);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 
-/* ====================================
-   最近の更新
-==================================== */
+.wiki-info-card:hover {
+    transform:
+        translateY(-2px);
 
-.article-list-item {
+    border-color:
+        var(--red-300);
+
+    box-shadow:
+        0 8px 20px
+        rgba(120, 20, 35, 0.07);
+}
+
+
+.wiki-info-icon {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color:
+        var(--red-600);
+
+    font-size: 23px;
+}
+
+
+.wiki-info-card h3 {
+    margin:
+        0 0 6px;
+
+    color:
+        var(--red-800);
+
+    font-size: 15px;
+
+    font-weight: 750;
+}
+
+
+.wiki-info-card p {
+    margin: 0;
+
+    color:
+        var(--text-light);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   読み込み・空状態
+======================================== */
+
+.loading,
+.empty {
     padding:
-        14px;
+        32px 20px;
+
+    border:
+        1px dashed var(--border-strong);
+
+    border-radius: 10px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text-light);
+
+    text-align: center;
+
+    font-size: 13px;
 }
 
 
-.article-list-item p {
-    white-space: normal;
+/* ========================================
+   スマホ
+======================================== */
 
-    display:
-        -webkit-box;
+@media (max-width: 800px) {
 
-    -webkit-line-clamp: 2;
 
-    -webkit-box-orient: vertical;
-}
-```
+    /* ====================================
+       ヒーロー
+    ==================================== */
+
+    .hero {
+        display: flex;
+
+        flex-direction: column;
+
+        min-height: 0;
+
+        margin-bottom: 48px;
+
+        border-radius: 16px;
+    }
+
+
+    .hero-visual {
+        min-height: 220px;
+
+        height: 220px;
+    }
+
+
+    .hero-visual img {
+        min-height: 220px;
+    }
+
+
+    .hero-content {
+        padding:
+            30px 24px 28px;
+    }
+
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+
+    .hero-lead {
+        margin-top: 15px;
+
+        font-size: 15px;
+    }
+
+
+    .hero-description {
+        margin-bottom: 20px;
+
+        font-size: 12px;
+    }
+
+
+    .hero-search input {
+        height: 46px;
+    }
+
+
+    /* ====================================
+       セクション
+    ==================================== */
+
+    .home-section {
+        margin-bottom: 52px;
+    }
+
+
+    .section-heading {
+        align-items: flex-start;
+
+        margin-bottom: 18px;
+    }
+
+
+    .section-heading h2 {
+        font-size: 22px;
+    }
+
+
+    /* ====================================
+       BLOODをもっと知る
+    ==================================== */
+
+    .about-section {
+        padding:
+            22px;
+    }
+
+
+    .about-content {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .about-image {
+        min-height: 180px;
+    }
+
+
+    .about-image img {
+        min-height: 180px;
+    }
+
+
+    /* ====================================
+       もっと知る
+    ==================================== */
+
+    .learn-grid {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .learn-card {
+        display: grid;
+
+        grid-template-columns:
+            120px minmax(0, 1fr);
+    }
+
+
+    .learn-card-image {
+        height: 100%;
+
+        min-height: 130px;
+    }
+
+
+    .learn-card-content {
+        padding:
+            16px;
+    }
+
+
+    /* ====================================
+       カテゴリ
+    ==================================== */
+
+    .category-list {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+
+    .category-card {
+        min-height: 78px;
+    }
+
+
+    /* ====================================
+       Wikiについて
+    ==================================== */
+
+    .wiki-info-section {
+        padding:
+            22px;
+    }
+
+
+    .wiki-info-grid {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+
+    .wiki-info-card {
+        padding:
+            18px;
+    }
+
+
+    /* ====================================
+       最近の更新
+    ==================================== */
+
+    .article-list-item {
+        padding:
+            14px;
+    }
+
+
+    .article-list-item p {
+        display:
+            -webkit-box;
+
+        overflow: hidden;
+
+        -webkit-line-clamp: 2;
+
+        -webkit-box-orient: vertical;
+
+        white-space: normal;
+    }
 
 }
