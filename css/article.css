@@ -3,21 +3,31 @@
 ======================================== */
 
 .article-layout {
-    max-width: 1100px;
+    width: 100%;
+    max-width: none;
 
-    margin: 0 auto;
+    margin: 0;
 
-    padding: 40px 50px 80px;
+    padding: 40px 40px 80px;
 
     box-sizing: border-box;
 
     display: grid;
 
     grid-template-columns:
-        minmax(0, 780px)
+        minmax(0, 1fr)
         180px;
 
-    gap: 60px;
+    gap: 40px;
+}
+
+
+/* ========================================
+   Article
+======================================== */
+
+.article {
+    min-width: 0;
 }
 
 
@@ -108,8 +118,7 @@
 
 .article-content {
     /*
-     * 自由配置された表・画像の
-     * left / top の基準。
+     * 自由配置要素の left / top の基準。
      */
     position: relative;
 
@@ -261,13 +270,10 @@
    Tables
 ======================================== */
 
-/*
- * app.html の rich-editor と同じ。
- *
- * width / margin などの inline style は
- * HTML側の指定を優先する。
- */
 .article-content table {
+    /*
+     * app.html側と同じ基本値。
+     */
     width: 100%;
 
     border-collapse: collapse;
@@ -277,28 +283,37 @@
     font-size: 14px;
 
     background: #fff;
+
+    table-layout: fixed;
+}
+
+
+/*
+ * HTML側に width が保存されている表は
+ * その inline style を優先する。
+ *
+ * 例:
+ *
+ * style="width: 80%;"
+ *
+ * style="width: 540px;"
+ */
+.article-content table[style*="width"] {
+    width: revert-layer;
 }
 
 
 /* ========================================
-   Free Positioned Tables
+   Free Positioned Table
 ======================================== */
 
 /*
- * app.html:
+ * app.htmlで保存された
  *
- * .rich-editor table.free-positioned {
- *     width: auto;
- * }
- *
- * と同じ。
- *
- * HTMLに保存された
- *
- *     position: absolute;
- *     left: 311px;
- *     top: 131px;
- *     width: 540px;
+ * position: absolute;
+ * left: 311px;
+ * top: 131px;
+ * width: 540px;
  *
  * をそのまま使用する。
  */
@@ -307,9 +322,9 @@
 
     width: auto;
 
-    box-sizing: border-box;
-
     margin: 0 !important;
+
+    box-sizing: border-box;
 
     z-index: 2;
 }
@@ -319,11 +334,12 @@
    Table Cells
 ======================================== */
 
-/*
- * app.html と同じ値。
- */
 .article-content th,
 .article-content td {
+    min-width: 40px;
+
+    min-height: 36px;
+
     padding: 10px 13px;
 
     border:
@@ -349,8 +365,8 @@
 
 
 /*
- * app.html の直接リサイズで作られた
- * colgroup / col の幅をそのまま使う。
+ * app.htmlで保存された
+ * colgroup / col の幅を維持する。
  */
 .article-content table col {
     box-sizing: border-box;
@@ -364,12 +380,12 @@
 .article-content blockquote {
     margin: 25px 0;
 
-    padding: 14px 18px;
+    padding: 15px 20px;
 
     border-left:
-        4px solid #ccc;
+        4px solid #aaa;
 
-    background: #f7f7f7;
+    background: #f5f6f7;
 
     color: #666;
 }
@@ -384,21 +400,14 @@
 
     border-radius: 4px;
 
-    background: #f1f1f1;
+    background: #f0f1f2;
 
-    font-family:
-        Consolas,
-        Monaco,
-        monospace;
-
-    font-size: 13px;
+    font-size: .9em;
 }
 
 
 .article-content pre {
     overflow-x: auto;
-
-    margin: 25px 0;
 
     padding: 18px;
 
@@ -413,23 +422,7 @@
 .article-content pre code {
     padding: 0;
 
-    background: transparent;
-
-    color: inherit;
-}
-
-
-/* ========================================
-   Horizontal Rule
-======================================== */
-
-.article-content hr {
-    margin: 30px 0;
-
-    border: 0;
-
-    border-top:
-        1px solid #ddd;
+    background: none;
 }
 
 
@@ -575,20 +568,11 @@
 
 
     /*
-     * スマホでも通常表は
-     * 本文幅を超えない。
+     * スマホでは通常表だけ
+     * 画面幅を超えないようにする。
      */
     .article-content table:not(.free-positioned) {
         max-width: 100%;
-    }
-
-
-    /*
-     * 自由配置表は保存された
-     * left / top を基本的に尊重する。
-     */
-    .article-content table.free-positioned {
-        max-width: none;
     }
 
 }
