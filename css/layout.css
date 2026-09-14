@@ -286,7 +286,7 @@
 
 
 /* ========================================
-   ロゴ
+   ロゴ・タイトル画像
 ======================================== */
 
 .logo {
@@ -305,21 +305,30 @@
 
 
 /*
-   画像型タイトル
+   BLOOD Wiki タイトル画像
+
+   <a class="logo" href="index.html">
+       <img src="images/blood-wiki-title.png"
+            alt="BLOOD Wiki">
+   </a>
 */
 
 .logo img {
     display: block;
 
-    max-height: 48px;
-
     width: auto;
+
+    height: 42px;
+
+    max-width: 190px;
+
+    object-fit: contain;
 }
 
 
-/*
-   画像を使わない場合のマーク
-*/
+/* ========================================
+   テキストロゴ
+======================================== */
 
 .logo-mark {
     display: flex;
@@ -615,8 +624,10 @@
     }
 
 
+    /* タイトル画像 */
+
     .logo img {
-        max-height: 40px;
+        height: 36px;
 
         max-width: 140px;
     }
