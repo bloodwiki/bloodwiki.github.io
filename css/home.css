@@ -1,6 +1,6 @@
 /* ========================================
-   BLOOD Wiki — Home World
-   トップページ専用。他ページと切り離した体験
+   BLOOD Wiki — Home World（完成版）
+   トップページ専用
 ======================================== */
 
 .home-world {
@@ -61,172 +61,113 @@
     opacity: 0.7;
 }
 
-/* ========== HERO ========== */
+/* ========== HERO（背景スライドショー） ========== */
 .hw-hero {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: min(78vh, 720px);
+    min-height: min(72vh, 640px);
     margin: 0 0 72px;
-    padding: 64px 24px 80px;
+    padding: 64px 24px 72px;
     border-radius: 24px;
     overflow: hidden;
-    background: linear-gradient(165deg, #fff 0%, #fff5f5 45%, #ffe4e6 100%);
     text-align: center;
+    background: #1c1917;
 }
 
-.hw-hero-bg {
+/* スライド群 */
+.hw-hero-slides {
+    position: absolute;
+    inset: 0;
+}
+
+.hw-hero-slide {
+    position: absolute;
+    inset: 0;
+    background-color: #292524;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 1.2s ease, transform 6s ease;
+}
+
+.hw-hero-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ロゴ・ボタンが読めるためのベール */
+.hw-hero-veil {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(225, 29, 72, 0.15), transparent 60%),
-        radial-gradient(ellipse 60% 40% at 90% 80%, rgba(251, 113, 133, 0.12), transparent 50%),
-        radial-gradient(ellipse 50% 30% at 10% 70%, rgba(253, 164, 175, 0.1), transparent 50%);
+        linear-gradient(
+            180deg,
+            rgba(28, 25, 23, 0.35) 0%,
+            rgba(28, 25, 23, 0.58) 100%
+        ),
+        radial-gradient(
+            ellipse 70% 50% at 50% 40%,
+            rgba(225, 29, 72, 0.14),
+            transparent 70%
+        );
     pointer-events: none;
-}
-
-.hw-hero-glow {
-    position: absolute;
-    width: 480px;
-    height: 480px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(225, 29, 72, 0.08) 0%, transparent 70%);
-    animation: hw-pulse 8s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes hw-pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
 }
 
 .hw-hero-inner {
     position: relative;
     z-index: 1;
-    max-width: 640px;
+    max-width: 560px;
 }
 
 /* ロゴ */
 .hw-logo-wrap {
-    margin-bottom: 28px;
-    animation: hw-fade-up 0.8s ease both;
+    margin-bottom: 20px;
+    animation: hw-fade-up 0.7s ease both;
 }
 
 .hw-logo-img {
     display: block;
-    height: 56px;
+    height: clamp(48px, 10vw, 72px);
     width: auto;
     margin: 0 auto;
     object-fit: contain;
+    filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
 }
 
-.hw-logo-text {
+.hw-logo-fallback {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
+    color: #fff;
 }
 
-.hw-logo-mark {
-    font-size: 42px;
+.hw-logo-fallback span {
+    font-size: 40px;
     font-weight: 900;
-    letter-spacing: 0.08em;
-    color: var(--hw-red);
+    letter-spacing: 0.1em;
     line-height: 1;
 }
 
-.hw-logo-sub {
+.hw-logo-fallback small {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.35em;
-    color: var(--hw-muted);
+    opacity: 0.7;
 }
 
-.hw-hero-tag {
-    margin: 0 0 16px;
-    color: var(--hw-red);
+.hw-hero-label {
+    margin: 0 0 28px;
+    color: rgba(255, 255, 255, 0.78);
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.12em;
-    animation: hw-fade-up 0.8s ease 0.1s both;
-}
-
-.hw-hero-title {
-    margin: 0 0 18px;
-    font-size: clamp(32px, 6vw, 48px);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.15;
-    color: var(--hw-ink);
-    animation: hw-fade-up 0.8s ease 0.18s both;
-}
-
-.hw-hero-desc {
-    margin: 0 0 32px;
-    color: var(--hw-muted);
-    font-size: 15px;
-    line-height: 1.75;
-    animation: hw-fade-up 0.8s ease 0.26s both;
-}
-
-/* 検索 */
-.hw-search {
-    position: relative;
-    max-width: 420px;
-    margin: 0 auto 24px;
-    animation: hw-fade-up 0.8s ease 0.34s both;
-}
-
-.hw-search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--hw-muted);
-    font-size: 16px;
-    pointer-events: none;
-}
-
-.hw-search input {
-    width: 100%;
-    height: 52px;
-    padding: 0 72px 0 44px;
-    border: 1px solid var(--hw-line);
-    border-radius: 14px;
-    background: var(--hw-white);
-    color: var(--hw-ink);
-    font-size: 15px;
-    outline: none;
-    box-shadow: 0 4px 20px rgba(28, 25, 23, 0.04);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hw-search input::placeholder {
-    color: #a8a29e;
-}
-
-.hw-search input:focus {
-    border-color: var(--hw-red);
-    box-shadow: 0 0 0 4px var(--hw-glow), 0 4px 20px rgba(28, 25, 23, 0.04);
-}
-
-.hw-search-hint {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 4px 8px;
-    border: 1px solid var(--hw-line);
-    border-radius: 6px;
-    background: var(--hw-soft);
-    color: var(--hw-muted);
-    font-size: 11px;
-    font-family: inherit;
-    pointer-events: none;
+    letter-spacing: 0.14em;
+    animation: hw-fade-up 0.7s ease 0.1s both;
 }
 
 /* ボタン */
@@ -235,7 +176,7 @@
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
-    animation: hw-fade-up 0.8s ease 0.42s both;
+    animation: hw-fade-up 0.7s ease 0.2s both;
 }
 
 .hw-btn {
@@ -248,7 +189,10 @@
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
 .hw-btn:hover {
@@ -267,32 +211,33 @@
 }
 
 .hw-btn-ghost {
-    background: transparent;
-    color: var(--hw-ink);
-    border: 1px solid var(--hw-line);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
 }
 
 .hw-btn-ghost:hover {
-    border-color: #d6d3d1;
-    background: var(--hw-white);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* スクロールヒント */
 .hw-scroll-hint {
     position: absolute;
-    bottom: 24px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
 }
 
 .hw-scroll-hint span {
+    position: relative;
     display: block;
     width: 20px;
-    height: 32px;
-    border: 2px solid rgba(28, 25, 23, 0.2);
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
     border-radius: 10px;
-    position: relative;
 }
 
 .hw-scroll-hint span::after {
@@ -304,19 +249,25 @@
     height: 6px;
     margin-left: -1.5px;
     border-radius: 2px;
-    background: var(--hw-red);
+    background: #fff;
     animation: hw-scroll-dot 1.6s ease-in-out infinite;
 }
 
 @keyframes hw-scroll-dot {
-    0% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(10px); }
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 }
 
 @keyframes hw-fade-up {
     from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
@@ -344,8 +295,12 @@
 }
 
 @keyframes hw-marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .hw-shot {
@@ -418,7 +373,11 @@
     background: var(--hw-white);
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .hw-feature.is-visible {
@@ -426,8 +385,13 @@
     transform: translateY(0);
 }
 
-.hw-feature:nth-child(2) { transition-delay: 0.08s; }
-.hw-feature:nth-child(3) { transition-delay: 0.16s; }
+.hw-feature:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.hw-feature:nth-child(3) {
+    transition-delay: 0.16s;
+}
 
 .hw-feature:hover {
     border-color: #fecdd3;
@@ -490,9 +454,17 @@
     transform: translateY(0);
 }
 
-.hw-portal:nth-child(2) { transition-delay: 0.06s; }
-.hw-portal:nth-child(3) { transition-delay: 0.12s; }
-.hw-portal:nth-child(4) { transition-delay: 0.18s; }
+.hw-portal:nth-child(2) {
+    transition-delay: 0.06s;
+}
+
+.hw-portal:nth-child(3) {
+    transition-delay: 0.12s;
+}
+
+.hw-portal:nth-child(4) {
+    transition-delay: 0.18s;
+}
 
 .hw-portal:hover {
     border-color: #fda4af;
@@ -592,7 +564,10 @@
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        color 0.15s ease;
 }
 
 .hw-cats-list a:hover {
@@ -673,15 +648,15 @@
 
 /* ========== CLOSING ========== */
 .hw-closing {
-    padding: 56px 24px;
+    padding: 48px 24px;
     border-radius: 20px;
     background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%);
     text-align: center;
 }
 
 .hw-closing-logo {
-    margin: 0 0 12px;
-    font-size: 28px;
+    margin: 0 0 8px;
+    font-size: 24px;
     font-weight: 900;
     letter-spacing: 0.12em;
     color: var(--hw-red);
@@ -691,12 +666,11 @@
     margin: 0;
     color: var(--hw-muted);
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 /* ---------- フォーカス ---------- */
-.home-world a:focus-visible,
-.home-world input:focus-visible {
+.home-world a:focus-visible {
     outline: 2px solid var(--hw-red);
     outline-offset: 3px;
 }
@@ -719,14 +693,10 @@
 
 @media (max-width: 640px) {
     .hw-hero {
-        min-height: auto;
+        min-height: min(60vh, 480px);
         margin-bottom: 48px;
-        padding: 48px 20px 64px;
+        padding: 48px 20px 56px;
         border-radius: 18px;
-    }
-
-    .hw-logo-mark {
-        font-size: 34px;
     }
 
     .hw-showcase,
@@ -774,25 +744,21 @@
         line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-
-    .hw-search-hint {
-        display: none;
-    }
 }
 
 /* 動きを抑える設定 */
 @media (prefers-reduced-motion: reduce) {
-    .hw-hero-glow,
+    .hw-hero-slide {
+        transition: none;
+    }
+
     .hw-marquee-track,
     .hw-scroll-hint span::after {
         animation: none !important;
     }
 
     .hw-logo-wrap,
-    .hw-hero-tag,
-    .hw-hero-title,
-    .hw-hero-desc,
-    .hw-search,
+    .hw-hero-label,
     .hw-hero-actions {
         animation: none !important;
         opacity: 1;
