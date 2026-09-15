@@ -1,0 +1,623 @@
+/* ========================================
+   BLOOD Wiki — Home
+   上質・落ち着き・読みやすさ優先
+======================================== */
+
+/* ---------- 共通ブロック ---------- */
+.home-block {
+    margin-bottom: 80px;
+}
+
+.block-header {
+    margin-bottom: 28px;
+}
+
+.block-header--row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.block-label {
+    margin: 0 0 8px;
+    color: var(--red-600);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.block-title {
+    margin: 0;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+}
+
+.block-desc {
+    margin: 8px 0 0;
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.block-link {
+    flex-shrink: 0;
+    color: var(--red-600);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.block-link:hover {
+    color: var(--red-800);
+    border-bottom-color: var(--red-800);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    margin-bottom: 72px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    background: #1a0a0e;
+    overflow: hidden;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    min-height: 420px;
+}
+
+.hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 48px;
+    color: #f5f0f1;
+}
+
+.hero-badge {
+    display: inline-block;
+    width: fit-content;
+    margin: 0 0 20px;
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.hero-title {
+    margin: 0;
+    font-size: clamp(40px, 5.2vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: #fff;
+}
+
+.hero-lead {
+    margin: 18px 0 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.4;
+}
+
+.hero-desc {
+    margin: 14px 0 32px;
+    max-width: 420px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.hero-search {
+    position: relative;
+    max-width: 400px;
+}
+
+.hero-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--red-600);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.hero-search input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px 0 42px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero-search input::placeholder {
+    color: var(--text-light);
+}
+
+.hero-search input:focus {
+    border-color: var(--red-600);
+    box-shadow: 0 0 0 3px rgba(167, 25, 50, 0.25);
+}
+
+.hero-visual {
+    position: relative;
+    min-height: 420px;
+    background: #2a1016;
+}
+
+.hero-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    opacity: 0.92;
+}
+
+.hero-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        #1a0a0e 0%,
+        rgba(26, 10, 14, 0.35) 40%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+/* ---------- ABOUT ---------- */
+.about-block {
+    padding-bottom: 8px;
+}
+
+.about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+    gap: 48px;
+    align-items: start;
+}
+
+.about-body {
+    color: var(--text-sub);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.about-body p {
+    margin: 0 0 16px;
+}
+
+.about-body p:last-of-type {
+    margin-bottom: 0;
+}
+
+.about-body strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.about-note {
+    margin-top: 28px;
+    padding: 16px 18px;
+    border-left: 3px solid var(--red-600);
+    background: rgba(167, 25, 50, 0.06);
+}
+
+.about-note-label {
+    margin: 0 0 4px;
+    color: var(--red-600);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.about-note p:last-child {
+    margin: 0;
+    color: var(--text-sub);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.about-figure {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--red-100, #f8e8eb);
+}
+
+.about-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* ---------- DISCOVER ---------- */
+.discover-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.discover-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.discover-card:hover {
+    border-color: var(--red-600);
+    background: #fffafb;
+}
+
+.discover-thumb {
+    position: relative;
+    height: 140px;
+    background: #2a1016;
+    overflow: hidden;
+}
+
+.discover-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.25s ease;
+}
+
+.discover-card:hover .discover-thumb img {
+    opacity: 0.88;
+}
+
+.discover-tag {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    padding: 3px 8px;
+    background: rgba(20, 6, 10, 0.75);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.discover-body {
+    padding: 16px 16px 18px;
+}
+
+.discover-body h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.discover-body p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 12.5px;
+    line-height: 1.55;
+}
+
+/* ---------- CATEGORIES ---------- */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.cat-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 72px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.cat-card:hover {
+    border-color: var(--red-600);
+    background: #fffafb;
+}
+
+.cat-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--red-700, #991b35);
+    font-size: 16px;
+    background: rgba(167, 25, 50, 0.08);
+}
+
+.cat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.cat-name {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.cat-desc {
+    color: var(--text-light);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* ---------- RECENT ---------- */
+.recent-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.recent-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+}
+
+.recent-item:hover {
+    background: #fffafb;
+}
+
+.recent-main {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.recent-cat {
+    color: var(--red-600);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.recent-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.recent-summary {
+    overflow: hidden;
+    color: var(--text-light);
+    font-size: 12.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.recent-arrow {
+    flex-shrink: 0;
+    color: var(--red-400, #c45);
+    font-size: 16px;
+    opacity: 0.6;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.recent-item:hover .recent-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* ---------- WIKI INFO ---------- */
+.wiki-block {
+    margin-bottom: 40px;
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: linear-gradient(180deg, #fff8f9 0%, #fff 100%);
+}
+
+.wiki-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.wiki-card h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wiki-card p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ---------- 空・読込 ---------- */
+.state-box {
+    padding: 40px 20px;
+    color: var(--text-light);
+    font-size: 13px;
+    text-align: center;
+    background: var(--surface);
+}
+
+/* ---------- フォーカス ---------- */
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--red-600);
+    outline-offset: 2px;
+}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 1100px) {
+    .discover-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .hero-visual {
+        order: -1;
+        min-height: 240px;
+        height: 240px;
+    }
+
+    .hero-visual img {
+        min-height: 240px;
+    }
+
+    .hero-visual::after {
+        background: linear-gradient(
+            180deg,
+            transparent 40%,
+            #1a0a0e 100%
+        );
+    }
+
+    .hero-copy {
+        padding: 32px 28px 36px;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .about-figure {
+        order: -1;
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-block {
+        margin-bottom: 56px;
+    }
+
+    .block-title {
+        font-size: 20px;
+    }
+
+    .hero {
+        margin-bottom: 48px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .hero-copy {
+        padding: 28px 20px 32px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-lead {
+        font-size: 15px;
+    }
+
+    .hero-desc {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .discover-grid,
+    .cat-grid,
+    .wiki-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .discover-thumb {
+        height: 120px;
+    }
+
+    .wiki-block {
+        padding: 28px 20px;
+    }
+
+    .block-header--row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .recent-item {
+        padding: 14px 16px;
+    }
+
+    .recent-summary {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
