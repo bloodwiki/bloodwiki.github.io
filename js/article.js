@@ -317,12 +317,123 @@ async function loadArticle() {
         content.innerHTML =
             article.html;
 
+            /*
+========================================
+自由配置要素の衝突調整
+========================================
+*/
+
+adjustFreePositionedElements(
+    content
+);
+
+
 
         /*
         ================================
         目次生成
         ================================
         */
+
+        /*
+========================================
+自由配置要素
+========================================
+*/
+
+function adjustFreePositionedElements(
+    content
+) {
+
+    const elements =
+        content.querySelectorAll(
+            ".free-positioned"
+        );
+
+
+    const toc =
+        document.querySelector(
+            ".article-toc"
+        );
+
+
+    if (
+        elements.length === 0 ||
+        !toc
+    ) {
+
+        return;
+
+    }
+
+
+    elements.forEach(
+        element => {
+
+            /*
+             * 前回の判定で通常配置に
+             * なっていた場合でも、
+             * まず自由配置へ戻す。
+             */
+
+            element.classList.remove(
+                "free-positioned-flow"
+            );
+
+
+            /*
+             * レイアウトを取得。
+             */
+
+            const elementRect =
+                element.getBoundingClientRect();
+
+
+            const tocRect =
+                toc.getBoundingClientRect();
+
+
+            /*
+             * 表・画像と
+             * 「この記事の内容」が
+             * 重なっているか判定。
+             */
+
+            const isOverlapping =
+                elementRect.left <
+                tocRect.right &&
+
+                elementRect.right >
+                tocRect.left &&
+
+                elementRect.top <
+                tocRect.bottom &&
+
+                elementRect.bottom >
+                tocRect.top;
+
+
+            if (
+                isOverlapping
+            ) {
+
+                /*
+                 * 自由配置を解除。
+                 *
+                 * DOM上の位置に従って
+                 * 通常の文書フローへ戻す。
+                 */
+
+                element.classList.add(
+                    "free-positioned-flow"
+                );
+
+            }
+
+        }
+    );
+
+}
 
         generateTOC(
             content

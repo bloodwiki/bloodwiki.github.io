@@ -317,16 +317,19 @@
  *
  * をそのまま使用する。
  */
-.article-content table.free-positioned {
+.article-content .free-positioned {
     position: absolute !important;
-
-    width: auto;
-
-    margin: 0 !important;
 
     box-sizing: border-box;
 
+    margin: 0 !important;
+
     z-index: 2;
+}
+
+
+.article-content table.free-positioned {
+    width: auto;
 }
 
 
@@ -576,3 +579,20 @@
     }
 
 }
+
+.article-content .free-positioned-flow {
+    position: static !important;
+
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: auto;
+    max-width: 100%;
+
+    margin: 25px 0 !important;
+
+    z-index: auto;
+}
+
