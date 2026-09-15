@@ -21,202 +21,151 @@
         <main class="main">
             <div class="content home-world">
 
-<section class="hw-hero" aria-label="BLOOD Wiki">
-    <div class="hw-hero-slides" aria-hidden="true">
-        <div class="hw-hero-slide is-active" style="background-image: url('images/blood-hero.jpg')"></div>
-        <div class="hw-hero-slide" style="background-image: url('images/blood-battle.jpg')"></div>
-        <div class="hw-hero-slide" style="background-image: url('images/blood-world.jpg')"></div>
-        <div class="hw-hero-slide" style="background-image: url('images/blood-fishing.jpg')"></div>
-        <div class="hw-hero-slide" style="background-image: url('images/blood-equipment.jpg')"></div>
-    </div>
-    <div class="hw-hero-veil" aria-hidden="true"></div>
+                <!-- ========== ヒーロー ========== -->
+                <section class="hw-hero" aria-label="BLOOD Wiki">
+                    <div class="hw-hero-slides" aria-hidden="true">
+                        <div class="hw-hero-slide is-active" style="background-image: url('images/blood-hero.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-battle.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-world.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-fishing.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-equipment.jpg')"></div>
+                    </div>
+                    <div class="hw-hero-veil" aria-hidden="true"></div>
 
-    <div class="hw-hero-inner">
-        <div class="hw-logo-wrap">
-            <img
-                class="hw-logo-img"
-                src="images/title.png"
-                alt="BLOOD"
-                onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"
-            >
+                    <div class="hw-hero-inner">
+                        <div class="hw-logo-wrap">
+                            <img
+                                class="hw-logo-img"
+                                src="images/title.png"
+                                alt="THE BLOOD WIKI"
+                                onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"
+                            >
+                            <div class="hw-logo-fallback" hidden>
+                                <span>THE BLOOD WIKI</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="hw-body">
+
+                    <!-- ========== ゲームの世界 ========== -->
+                    <section class="hw-showcase" id="showcase" aria-label="ゲームの雰囲気">
+                        <div class="hw-section-label"><span>SHOWCASE</span></div>
+                        <h2 class="hw-section-title">ゲームの世界</h2>
+                        <p class="hw-section-desc">BLOODのさまざまな場面</p>
+
+                        <div class="hw-marquee">
+                            <div class="hw-marquee-track">
+                                <figure class="hw-shot">
+                                    <img src="images/blood-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>フィールド</figcaption>
+                                </figure>
+                                <figure class="hw-shot">
+                                    <img src="images/blood-battle.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>バトル</figcaption>
+                                </figure>
+                                <figure class="hw-shot">
+                                    <img src="images/blood-world.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>ワールド</figcaption>
+                                </figure>
+                                <figure class="hw-shot">
+                                    <img src="images/blood-fishing.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>釣り</figcaption>
+                                </figure>
+                                <figure class="hw-shot">
+                                    <img src="images/blood-equipment.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>装備</figcaption>
+                                </figure>
+                                <!-- ループ用 -->
+                                <figure class="hw-shot" aria-hidden="true">
+                                    <img src="images/blood-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>フィールド</figcaption>
+                                </figure>
+                                <figure class="hw-shot" aria-hidden="true">
+                                    <img src="images/blood-battle.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>バトル</figcaption>
+                                </figure>
+                                <figure class="hw-shot" aria-hidden="true">
+                                    <img src="images/blood-world.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>ワールド</figcaption>
+                                </figure>
+                                <figure class="hw-shot" aria-hidden="true">
+                                    <img src="images/blood-fishing.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>釣り</figcaption>
+                                </figure>
+                                <figure class="hw-shot" aria-hidden="true">
+                                    <img src="images/blood-equipment.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+                                    <figcaption>装備</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ========== 武器の種類 ========== -->
+<section class="hw-weapons" aria-label="武器の種類">
+    <div class="hw-section-label"><span>WEAPONS</span></div>
+    <h2 class="hw-section-title">武器の種類</h2>
+    <p class="hw-section-desc">さまざまな武器が存在する</p>
+
+    <div class="hw-marquee hw-marquee--weapons">
+        <div
+            class="hw-marquee-track hw-marquee-track--reverse"
+            id="weapons-track"
+            data-weapon-count="12"
+            data-weapon-ext="png"
+        >
+            <!-- JS が 1.png … N.png を2周分挿入 -->
         </div>
     </div>
 </section>
 
-                <!-- ========== スクショ・ショーケース ========== -->
-                <section class="hw-showcase" id="showcase" aria-label="ゲームの雰囲気">
-                    <div class="hw-section-label"><span>SHOWCASE</span></div>
-                    <h2 class="hw-section-title">ゲームの世界</h2>
-                    <p class="hw-section-desc">BLOODのさまざまな場面</p>
+                    <!-- ========== 何ができるか ========== -->
+                    <section class="hw-features">
+                        <div class="hw-section-label"><span>FEATURES</span></div>
+                        <h2 class="hw-section-title">このWikiでできること</h2>
 
-                    <div class="hw-marquee">
-                        <div class="hw-marquee-track">
-                            <figure class="hw-shot">
-                                <img src="images/blood-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>フィールド</figcaption>
-                            </figure>
-                            <figure class="hw-shot">
-                                <img src="images/blood-battle.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>バトル</figcaption>
-                            </figure>
-                            <figure class="hw-shot">
-                                <img src="images/blood-world.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>ワールド</figcaption>
-                            </figure>
-                            <figure class="hw-shot">
-                                <img src="images/blood-fishing.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>釣り</figcaption>
-                            </figure>
-                            <figure class="hw-shot">
-                                <img src="images/blood-equipment.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>装備</figcaption>
-                            </figure>
-                            <!-- ループ用 -->
-                            <figure class="hw-shot" aria-hidden="true">
-                                <img src="images/blood-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>フィールド</figcaption>
-                            </figure>
-                            <figure class="hw-shot" aria-hidden="true">
-                                <img src="images/blood-battle.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>バトル</figcaption>
-                            </figure>
-                            <figure class="hw-shot" aria-hidden="true">
-                                <img src="images/blood-world.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>ワールド</figcaption>
-                            </figure>
-                            <figure class="hw-shot" aria-hidden="true">
-                                <img src="images/blood-fishing.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>釣り</figcaption>
-                            </figure>
-                            <figure class="hw-shot" aria-hidden="true">
-                                <img src="images/blood-equipment.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
-                                <figcaption>装備</figcaption>
-                            </figure>
+                        <div class="hw-feature-grid">
+                            <article class="hw-feature" data-reveal>
+                                <div class="hw-feature-num">01</div>
+                                <h3>調べる</h3>
+                                <p>敵のステータス、装備の性能、釣れるもの。プレイ中に気になったことをすぐ確認。</p>
+                            </article>
+                            <article class="hw-feature" data-reveal>
+                                <div class="hw-feature-num">02</div>
+                                <h3>つながる</h3>
+                                <p>関連記事から、知らなかった要素へ自然にたどり着ける構成。</p>
+                            </article>
+                            <article class="hw-feature" data-reveal>
+                                <div class="hw-feature-num">03</div>
+                                <h3>深掘りする</h3>
+                                <p>基本から細かな仕様まで。遊ぶほどに見えてくる世界を残していく。</p>
+                            </article>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- ========== 何ができるか ========== -->
-                <section class="hw-features">
-                    <div class="hw-section-label"><span>FEATURES</span></div>
-                    <h2 class="hw-section-title">このWikiでできること</h2>
-
-                    <div class="hw-feature-grid">
-                        <article class="hw-feature" data-reveal>
-                            <div class="hw-feature-num">01</div>
-                            <h3>調べる</h3>
-                            <p>敵のステータス、装備の性能、釣れるもの。プレイ中に気になったことをすぐ確認。</p>
-                        </article>
-                        <article class="hw-feature" data-reveal>
-                            <div class="hw-feature-num">02</div>
-                            <h3>つながる</h3>
-                            <p>カテゴリや関連記事から、知らなかった要素へ自然にたどり着ける構成。</p>
-                        </article>
-                        <article class="hw-feature" data-reveal>
-                            <div class="hw-feature-num">03</div>
-                            <h3>深掘りする</h3>
-                            <p>基本から細かな仕様まで。遊ぶほどに見えてくる世界を、そのまま残していく。</p>
-                        </article>
-                    </div>
-                </section>
-
-                <!-- ========== 入り口 ========== -->
-                <section class="hw-portals" id="categories">
-                    <div class="hw-section-label"><span>ENTER</span></div>
-                    <h2 class="hw-section-title">カテゴリから探す</h2>
-                    <p class="hw-section-desc">見たい情報の入り口</p>
-
-                    <div class="hw-portal-grid">
-                        <a href="category.html?category=enemy" class="hw-portal" data-reveal>
-                            <div class="hw-portal-visual">
-                                <img src="images/blood-battle.jpg" alt="" onerror="this.style.display='none'">
-                                <span class="hw-portal-icon" aria-hidden="true">⚔</span>
+                    <!-- ========== 最近の更新 ========== -->
+                    <section class="hw-recent">
+                        <div class="hw-recent-head">
+                            <div>
+                                <div class="hw-section-label"><span>UPDATES</span></div>
+                                <h2 class="hw-section-title">最近の更新</h2>
                             </div>
-                            <div class="hw-portal-body">
-                                <h3>敵・ボス</h3>
-                                <p>ステータス / ドロップ / 攻略</p>
-                                <span class="hw-portal-go">見る →</span>
-                            </div>
-                        </a>
-
-                        <a href="category.html?category=weapon" class="hw-portal" data-reveal>
-                            <div class="hw-portal-visual">
-                                <img src="images/blood-equipment.jpg" alt="" onerror="this.style.display='none'">
-                                <span class="hw-portal-icon" aria-hidden="true">🛡</span>
-                            </div>
-                            <div class="hw-portal-body">
-                                <h3>装備</h3>
-                                <p>武器 / 防具 / アクセサリー</p>
-                                <span class="hw-portal-go">見る →</span>
-                            </div>
-                        </a>
-
-                        <a href="category.html?category=fishing" class="hw-portal" data-reveal>
-                            <div class="hw-portal-visual">
-                                <img src="images/blood-fishing.jpg" alt="" onerror="this.style.display='none'">
-                                <span class="hw-portal-icon" aria-hidden="true">🎣</span>
-                            </div>
-                            <div class="hw-portal-body">
-                                <h3>釣り</h3>
-                                <p>釣り場 / 釣果 / アイテム</p>
-                                <span class="hw-portal-go">見る →</span>
-                            </div>
-                        </a>
-
-                        <a href="category.html?category=npc" class="hw-portal" data-reveal>
-                            <div class="hw-portal-visual">
-                                <img src="images/blood-world.jpg" alt="" onerror="this.style.display='none'">
-                                <span class="hw-portal-icon" aria-hidden="true">🗺</span>
-                            </div>
-                            <div class="hw-portal-body">
-                                <h3>世界・NPC</h3>
-                                <p>人物 / ショップ / 場所</p>
-                                <span class="hw-portal-go">見る →</span>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- ========== 全カテゴリ ========== -->
-                <section class="hw-cats">
-                    <div class="hw-cats-inner">
-                        <h2 class="hw-cats-title">すべてのカテゴリ</h2>
-                        <div class="hw-cats-list">
-                            <a href="category.html?category=enemy">敵</a>
-                            <a href="category.html?category=boss">ボス</a>
-                            <a href="category.html?category=weapon">武器</a>
-                            <a href="category.html?category=armor">防具</a>
-                            <a href="category.html?category=accessory">アクセサリー</a>
-                            <a href="category.html?category=item">アイテム</a>
-                            <a href="category.html?category=fishing">釣り</a>
-                            <a href="category.html?category=npc">NPC</a>
+                            <a href="recent.html" class="hw-text-link">すべて見る →</a>
                         </div>
-                    </div>
-                </section>
 
-                <!-- ========== 最近の更新 ========== -->
-                <section class="hw-recent">
-                    <div class="hw-recent-head">
-                        <div>
-                            <div class="hw-section-label"><span>UPDATES</span></div>
-                            <h2 class="hw-section-title">最近の更新</h2>
+                        <div id="recent-articles" class="hw-recent-list">
+                            <div class="hw-empty">読み込み中...</div>
                         </div>
-                        <a href="recent.html" class="hw-text-link">すべて見る →</a>
-                    </div>
+                    </section>
 
-                    <div id="recent-articles" class="hw-recent-list">
-                        <div class="hw-empty">読み込み中...</div>
-                    </div>
-                </section>
+                    <!-- ========== クロージング ========== -->
+                    <section class="hw-closing">
+                        <p class="hw-closing-logo">BLOOD</p>
+                        <p class="hw-closing-text">ファンによる非公式Wikiです。</p>
+                    </section>
 
-                <!-- ========== クロージング ========== -->
-                <section class="hw-closing">
-                    <p class="hw-closing-logo">BLOOD</p>
-                    <p class="hw-closing-text">
-                        ファンによる非公式Wikiです。
-                    </p>
-                </section>
-
+                </div>
             </div>
         </main>
     </div>
@@ -225,22 +174,18 @@
 <script src="js/api.js"></script>
 <script src="js/layout.js"></script>
 <script>
-/* ヒーロー背景スライドショー */
 function setupHeroSlideshow() {
     const slides = document.querySelectorAll(".hw-hero-slide");
     if (slides.length < 2) return;
 
     let index = 0;
-    const interval = 5000;
-
     setInterval(() => {
         slides[index].classList.remove("is-active");
         index = (index + 1) % slides.length;
         slides[index].classList.add("is-active");
-    }, interval);
+    }, 5000);
 }
 
-/* 最近の更新 */
 async function loadArticles() {
     const container = document.getElementById("recent-articles");
     if (!container) return;
@@ -286,7 +231,6 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-/* スクロール出現 */
 function setupReveal() {
     const els = document.querySelectorAll("[data-reveal]");
     if (!els.length) return;
@@ -308,7 +252,53 @@ function setupReveal() {
     els.forEach(el => io.observe(el));
 }
 
+/* 武器マーキー：images/weapons/1.ext … N.ext を2周分 */
+function setupWeaponsTrack() {
+    const track = document.getElementById("weapons-track");
+    if (!track) return;
+
+    const count = Math.max(1, parseInt(track.dataset.weaponCount || "1", 10));
+    const ext = (track.dataset.weaponExt || "png").replace(/^\./, "");
+    const href = "category.html?category=weapon";
+
+    const makeItem = (n, decorative) => {
+        const a = document.createElement("a");
+        a.href = href;
+        a.className = "hw-weapon";
+
+        if (decorative) {
+            a.setAttribute("aria-hidden", "true");
+            a.tabIndex = -1;
+        } else {
+            a.setAttribute("aria-label", "武器一覧");
+        }
+
+        const img = document.createElement("img");
+        img.src = `images/weapons/${n}.${ext}`;
+        img.alt = "";
+        img.loading = "lazy";
+        img.addEventListener("error", () => {
+            a.classList.add("is-empty");
+        });
+
+        a.appendChild(img);
+        return a;
+    };
+
+    const frag = document.createDocumentFragment();
+
+    for (let i = 1; i <= count; i++) {
+        frag.appendChild(makeItem(i, false));
+    }
+    for (let i = 1; i <= count; i++) {
+        frag.appendChild(makeItem(i, true));
+    }
+
+    track.appendChild(frag);
+}
+
 setupHeroSlideshow();
+setupWeaponsTrack();
 loadArticles();
 setupReveal();
 </script>

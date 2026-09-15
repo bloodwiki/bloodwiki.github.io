@@ -1,6 +1,5 @@
 /* ========================================
    BLOOD Wiki — Home World（完成版）
-   トップページ専用
 ======================================== */
 
 .home-world {
@@ -13,18 +12,29 @@
     --hw-white: #ffffff;
     --hw-glow: rgba(225, 29, 72, 0.12);
 
-    max-width: 100%;
-    padding-bottom: 48px;
     color: var(--hw-ink);
 }
 
-/* content の上余白をトップだけ消す */
+/* layout の content 幅制限をホームだけ解除 → ヒーローがメイン全幅に */
 .home-world.content,
 .content.home-world {
-    padding-top: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 0 80px;
+    overflow-x: clip; /* 横スクロール防止 */
+    box-sizing: border-box;
 }
 
-/* ---------- 共通ラベル・見出し ---------- */
+/* ヒーロー以外は従来どおり中央寄せ */
+.hw-body {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding-top: 48px;
+    box-sizing: border-box;
+}
+
+/* ---------- 共通 ---------- */
 .hw-section-label {
     margin-bottom: 10px;
 }
@@ -49,7 +59,7 @@
 }
 
 .hw-section-desc {
-    margin: 0 0 32px;
+    margin: 0 0 28px;
     color: var(--hw-muted);
     font-size: 15px;
     line-height: 1.6;
@@ -67,29 +77,21 @@
     opacity: 0.7;
 }
 
-/* ========== HERO（メイン列フル幅・ロゴのみ） ========== */
+/* ========== HERO（メイン全幅・100vw不使用） ========== */
 .hw-hero {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-    /* サイドバー 240px を除いたメイン列幅（layout.css と一致） */
-    width: calc(100vw - 240px);
-    max-width: none;
-
-    margin-top: 0;
-    margin-bottom: 72px;
-    margin-left: calc(50% - (100vw - 240px) / 2);
-    margin-right: 0;
-
-    padding: 40px 24px 56px;
-    min-height: min(52vh, 480px);
+    width: 100%;
+    margin: 0 0 0;
+    padding: 36px 24px 48px;
+    min-height: min(48vh, 440px);
     border-radius: 0;
     overflow: hidden;
     text-align: center;
-    background: #1c1917;
+    background: #0c0a09;
     box-sizing: border-box;
 }
 
@@ -101,7 +103,7 @@
 .hw-hero-slide {
     position: absolute;
     inset: 0;
-    background-color: #292524;
+    background-color: #1c1917;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -115,14 +117,15 @@
     transform: scale(1);
 }
 
+/* ロゴが見えるよう上部をやや暗く */
 .hw-hero-veil {
     position: absolute;
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(28, 25, 23, 0.5) 0%,
-        rgba(28, 25, 23, 0.15) 40%,
-        rgba(28, 25, 23, 0.3) 100%
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.25) 35%,
+        rgba(0, 0, 0, 0.4) 100%
     );
     pointer-events: none;
 }
@@ -131,8 +134,8 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 560px;
-    padding-top: 20px;
+    max-width: 920px;
+    padding-top: 12px;
 }
 
 .hw-logo-wrap {
@@ -140,35 +143,23 @@
     animation: hw-fade-up 0.7s ease both;
 }
 
+/* 横長ロゴを大きく・はっきり */
 .hw-logo-img {
     display: block;
-    height: clamp(56px, 11vw, 84px);
-    width: auto;
+    width: min(100%, 860px);
+    height: auto;
+    max-height: min(120px, 18vw);
     margin: 0 auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.65));
 }
 
 .hw-logo-fallback {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
     color: #fff;
-}
-
-.hw-logo-fallback span {
-    font-size: 40px;
+    font-size: clamp(28px, 6vw, 48px);
     font-weight: 900;
-    letter-spacing: 0.1em;
-    line-height: 1;
-}
-
-.hw-logo-fallback small {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.35em;
-    opacity: 0.75;
+    letter-spacing: 0.06em;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes hw-fade-up {
@@ -184,55 +175,61 @@
 
 /* ========== SHOWCASE ========== */
 .hw-showcase {
-    margin-bottom: 88px;
+    margin-bottom: 72px;
     overflow: hidden;
 }
 
 .hw-marquee {
-    margin-top: 8px;
-    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    margin-top: 4px;
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
 .hw-marquee-track {
     display: flex;
-    gap: 20px;
+    gap: 18px;
     width: max-content;
-    animation: hw-marquee 40s linear infinite;
+    animation: hw-marquee 42s linear infinite;
+}
+
+.hw-marquee-track--reverse {
+    animation-name: hw-marquee-reverse;
+    animation-duration: 48s;
 }
 
 @keyframes hw-marquee {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes hw-marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
 }
 
 .hw-shot {
     position: relative;
     flex-shrink: 0;
-    width: min(320px, 70vw);
+    width: min(300px, 68vw);
     margin: 0;
-    border-radius: 16px;
+    border-radius: 14px;
     overflow: hidden;
     border: 1px solid var(--hw-line);
     background: var(--hw-soft);
-    box-shadow: 0 12px 40px rgba(28, 25, 23, 0.06);
+    box-shadow: 0 10px 32px rgba(28, 25, 23, 0.06);
 }
 
 .hw-shot img {
     display: block;
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
 }
 
 .hw-shot figcaption {
     position: absolute;
-    left: 12px;
-    bottom: 12px;
+    left: 10px;
+    bottom: 10px;
     padding: 4px 10px;
     border-radius: 8px;
     background: rgba(28, 25, 23, 0.72);
@@ -245,7 +242,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: 180px;
     background: linear-gradient(145deg, #ffe4e6, #fecdd3);
 }
 
@@ -261,92 +258,82 @@
     display: none;
 }
 
+/* ========== WEAPONS ========== */
+.hw-weapons {
+    margin-bottom: 72px;
+    overflow: hidden;
+}
+
+.hw-weapon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 112px;
+    height: 112px;
+    padding: 16px;
+    border: 1px solid var(--hw-line);
+    border-radius: 14px;
+    background: var(--hw-white);
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.hw-weapon:hover {
+    border-color: #fda4af;
+    background: #fff7f8;
+}
+
+.hw-weapon img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    pointer-events: none; /* ドラッグや変なツールチップを抑制 */
+}
+
+/* 読み込み失敗時 */
+.hw-weapon.is-empty img {
+    display: none;
+}
+
+.hw-weapon.is-empty::before {
+    content: "⚔";
+    font-size: 28px;
+    opacity: 0.3;
+    line-height: 1;
+}
+
+@media (max-width: 640px) {
+    .hw-weapon {
+        width: 96px;
+        height: 96px;
+        padding: 12px;
+    }
+
+    .hw-weapon img {
+        width: 52px;
+        height: 52px;
+    }
+}
 /* ========== FEATURES ========== */
 .hw-features {
-    margin-bottom: 88px;
+    margin-bottom: 72px;
 }
 
 .hw-feature-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 28px;
+    gap: 16px;
+    margin-top: 24px;
 }
 
 .hw-feature {
-    padding: 28px 24px;
+    padding: 24px 20px;
     border: 1px solid var(--hw-line);
-    border-radius: 18px;
+    border-radius: 16px;
     background: var(--hw-white);
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.hw-feature.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.hw-feature:nth-child(2) {
-    transition-delay: 0.08s;
-}
-
-.hw-feature:nth-child(3) {
-    transition-delay: 0.16s;
-}
-
-.hw-feature:hover {
-    border-color: #fecdd3;
-    box-shadow: 0 8px 28px rgba(225, 29, 72, 0.06);
-}
-
-.hw-feature-num {
-    margin-bottom: 14px;
-    color: var(--hw-red);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-}
-
-.hw-feature h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.hw-feature p {
-    margin: 0;
-    color: var(--hw-muted);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-/* ========== PORTALS ========== */
-.hw-portals {
-    margin-bottom: 72px;
-}
-
-.hw-portal-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.hw-portal {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    min-height: 140px;
-    border: 1px solid var(--hw-line);
-    border-radius: 18px;
-    background: var(--hw-white);
-    color: inherit;
-    text-decoration: none;
-    overflow: hidden;
     opacity: 0;
     transform: translateY(20px);
     transition:
@@ -356,136 +343,43 @@
         box-shadow 0.2s ease;
 }
 
-.hw-portal.is-visible {
+.hw-feature.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.hw-portal:nth-child(2) {
-    transition-delay: 0.06s;
+.hw-feature:nth-child(2) { transition-delay: 0.08s; }
+.hw-feature:nth-child(3) { transition-delay: 0.16s; }
+
+.hw-feature:hover {
+    border-color: #fecdd3;
+    box-shadow: 0 8px 24px rgba(225, 29, 72, 0.06);
 }
 
-.hw-portal:nth-child(3) {
-    transition-delay: 0.12s;
+.hw-feature-num {
+    margin-bottom: 12px;
+    color: var(--hw-red);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
 }
 
-.hw-portal:nth-child(4) {
-    transition-delay: 0.18s;
-}
-
-.hw-portal:hover {
-    border-color: #fda4af;
-    box-shadow: 0 12px 32px rgba(225, 29, 72, 0.08);
-    transform: translateY(-3px);
-}
-
-.hw-portal-visual {
-    position: relative;
-    background: linear-gradient(145deg, #ffe4e6, #fecdd3);
-    overflow: hidden;
-}
-
-.hw-portal-visual img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.hw-portal:hover .hw-portal-visual img {
-    transform: scale(1.06);
-}
-
-.hw-portal-icon {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.hw-portal-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px 22px;
-}
-
-.hw-portal-body h3 {
-    margin: 0 0 4px;
-    font-size: 18px;
+.hw-feature h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
     font-weight: 700;
 }
 
-.hw-portal-body p {
-    margin: 0 0 12px;
+.hw-feature p {
+    margin: 0;
     color: var(--hw-muted);
-    font-size: 13px;
-}
-
-.hw-portal-go {
-    color: var(--hw-red);
-    font-size: 13px;
-    font-weight: 600;
-}
-
-/* ========== ALL CATEGORIES ========== */
-.hw-cats {
-    margin-bottom: 72px;
-    padding: 28px;
-    border-radius: 18px;
-    background: var(--hw-soft);
-    border: 1px solid var(--hw-line);
-}
-
-.hw-cats-title {
-    margin: 0 0 16px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--hw-muted);
-    letter-spacing: 0.04em;
-}
-
-.hw-cats-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.hw-cats-list a {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--hw-line);
-    background: var(--hw-white);
-    color: var(--hw-ink);
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition:
-        border-color 0.15s ease,
-        background 0.15s ease,
-        color 0.15s ease;
-}
-
-.hw-cats-list a:hover {
-    border-color: var(--hw-red);
-    background: #fff1f2;
-    color: var(--hw-red);
+    font-size: 13.5px;
+    line-height: 1.7;
 }
 
 /* ========== RECENT ========== */
 .hw-recent {
-    margin-bottom: 72px;
+    margin-bottom: 64px;
 }
 
 .hw-recent-head {
@@ -493,12 +387,12 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .hw-recent-list {
     border: 1px solid var(--hw-line);
-    border-radius: 16px;
+    border-radius: 14px;
     background: var(--hw-white);
     overflow: hidden;
 }
@@ -509,7 +403,7 @@
     grid-template-rows: auto auto;
     column-gap: 16px;
     row-gap: 2px;
-    padding: 18px 22px;
+    padding: 16px 20px;
     border-bottom: 1px solid var(--hw-line);
     color: inherit;
     text-decoration: none;
@@ -547,7 +441,7 @@
 }
 
 .hw-empty {
-    padding: 48px 20px;
+    padding: 40px 20px;
     color: var(--hw-muted);
     font-size: 14px;
     text-align: center;
@@ -555,15 +449,15 @@
 
 /* ========== CLOSING ========== */
 .hw-closing {
-    padding: 48px 24px;
-    border-radius: 20px;
+    padding: 40px 24px;
+    border-radius: 16px;
     background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%);
     text-align: center;
 }
 
 .hw-closing-logo {
-    margin: 0 0 8px;
-    font-size: 24px;
+    margin: 0 0 6px;
+    font-size: 22px;
     font-weight: 900;
     letter-spacing: 0.12em;
     color: var(--hw-red);
@@ -572,7 +466,7 @@
 .hw-closing-text {
     margin: 0;
     color: var(--hw-muted);
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.7;
 }
 
@@ -587,60 +481,48 @@
     .hw-feature-grid {
         grid-template-columns: 1fr;
     }
-
-    .hw-portal-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hw-portal {
-        grid-template-columns: 110px 1fr;
-        min-height: 120px;
-    }
 }
 
-/* layout.css のサイドバー解除ブレークポイントに合わせる */
 @media (max-width: 800px) {
-    .hw-hero {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-bottom: 48px;
-        min-height: min(42vh, 360px);
-        padding: 28px 16px 40px;
-        border-radius: 0;
+    .hw-body {
+        width: calc(100% - 32px);
+        padding-top: 36px;
     }
 
-    .hw-hero-inner {
-        padding-top: 12px;
+    .hw-hero {
+        min-height: min(40vh, 340px);
+        padding: 28px 16px 36px;
     }
 
     .hw-logo-img {
-        height: clamp(48px, 14vw, 64px);
+        max-height: min(88px, 22vw);
     }
 }
 
 @media (max-width: 640px) {
     .hw-showcase,
+    .hw-weapons,
     .hw-features,
-    .hw-portals,
-    .hw-cats,
     .hw-recent {
-        margin-bottom: 56px;
+        margin-bottom: 52px;
     }
 
     .hw-shot {
-        width: min(260px, 78vw);
+        width: min(250px, 76vw);
     }
 
     .hw-shot img {
-        height: 160px;
+        height: 150px;
     }
 
-    .hw-portal {
-        grid-template-columns: 1fr;
+    .hw-weapon {
+        width: 100px;
+        padding: 14px 10px;
     }
 
-    .hw-portal-visual {
-        height: 120px;
+    .hw-weapon img {
+        width: 44px;
+        height: 44px;
     }
 
     .hw-recent-head {
@@ -666,13 +548,13 @@
     }
 }
 
-/* 動きを抑える */
 @media (prefers-reduced-motion: reduce) {
     .hw-hero-slide {
         transition: none;
     }
 
-    .hw-marquee-track {
+    .hw-marquee-track,
+    .hw-marquee-track--reverse {
         animation: none !important;
     }
 
@@ -682,8 +564,7 @@
         transform: none;
     }
 
-    .hw-feature,
-    .hw-portal {
+    .hw-feature {
         opacity: 1;
         transform: none;
         transition: none;
