@@ -1,1149 +1,493 @@
 <!DOCTYPE html>
-
 <html lang="ja">
-
 <head>
-
-<link
-    rel="icon"
-    type="image/svg+xml"
-    href="favicon.svg"
->
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>BLOOD Wiki</title>
-
-<link
-    rel="stylesheet"
-    href="css/base.css"
->
-
-<link
-    rel="stylesheet"
-    href="css/layout.css"
->
-
-<link
-    rel="stylesheet"
-    href="css/components.css"
->
-
-
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOOD Wiki</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
-
 <body>
-
 <div class="site">
 
-```
-<!-- ========================================
-     共通ヘッダー
-========================================= -->
+    <!-- ========================================
+         共通ヘッダー
+    ========================================= -->
+    <div id="site-header"></div>
 
-<div id="site-header"></div>
+    <!-- ========================================
+         ページ全体
+    ========================================= -->
+    <div class="page">
 
+        <!-- ====================================
+             共通サイドバー
+        ===================================== -->
+        <div id="site-sidebar"></div>
 
-<!-- ========================================
-     ページ全体
-========================================= -->
+        <!-- ====================================
+             メイン
+        ===================================== -->
+        <main class="main">
+            <div class="content">
 
-<div class="page">
+                <!-- ==============================
+                     ヒーロー
+                =============================== -->
+                <section class="hero" aria-label="BLOOD Wiki トップ">
 
-
-    <!-- ====================================
-         共通サイドバー
-    ===================================== -->
-
-    <div id="site-sidebar"></div>
-
-
-    <!-- ====================================
-         メイン
-    ===================================== -->
-
-    <main class="main">
-
-        <div class="content">
-
-
-            <!-- ==================================
-                 ヒーロー
-            =================================== -->
-
-            <section class="hero">
-
-
-                <!-- ヒーロー画像 -->
-
-                <div class="hero-visual">
-
-                    <img
-                        src="images/blood-hero.jpg"
-                        alt="BLOODのゲームイメージ"
-                        onerror="this.style.display='none'"
-                    >
-
-                    <div class="hero-visual-overlay"></div>
-
-                </div>
-
-
-                <!-- ヒーロー本文 -->
-
-                <div class="hero-content">
-
-                    <div class="hero-label">
-                        UNOFFICIAL WIKI
-                    </div>
-
-
-                    <h1>
-                        BLOOD Wiki
-                    </h1>
-
-
-                    <p class="hero-lead">
-                        BLOODの世界を、もっと深く。
-                    </p>
-
-
-                    <p class="hero-description">
-                        BLOODに登場する敵、ボス、武器、アイテム、
-                        釣りなどの情報をまとめています。
-                        冒険の途中で気になったことを調べたり、
-                        まだ知らない要素を見つけたりできます。
-                    </p>
-
-
-                    <!-- ヒーロー検索 -->
-
-                    <div class="hero-search">
-
-                        <span>
-                            ⌕
-                        </span>
-
-                        <input
-                            type="search"
-                            id="hero-search"
-                            placeholder="知りたいことを検索..."
-                            autocomplete="off"
-                        >
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================
-                 BLOODとは？
-            =================================== -->
-
-            <section class="home-section about-section">
-
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            ABOUT BLOOD
-                        </span>
-
-                        <h2>
-                            BLOODとは？
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-                <div class="about-content">
-
-
-                    <!-- 画像 -->
-
-                    <div class="about-visual">
-
+                    <div class="hero-visual">
                         <img
-                            src="images/blood-world.jpg"
-                            alt="BLOODの世界"
+                            src="images/blood-hero.jpg"
+                            alt="BLOODのゲームイメージ"
                             onerror="this.style.display='none'"
                         >
+                        <div class="hero-visual-overlay" aria-hidden="true"></div>
+                    </div>
 
-                        <div class="image-placeholder">
-                            BLOOD
+                    <div class="hero-content">
+                        <div class="hero-label">UNOFFICIAL WIKI</div>
+
+                        <h1>BLOOD Wiki</h1>
+
+                        <p class="hero-lead">
+                            BLOODの世界を、もっと深く。
+                        </p>
+
+                        <p class="hero-description">
+                            敵・ボス・武器・アイテム・釣りなど、<br>
+                            BLOODの情報をまとめた非公式Wikiです。<br>
+                            冒険の途中で気になったことを、すぐに調べられます。
+                        </p>
+
+                        <div class="hero-search">
+                            <span aria-hidden="true">⌕</span>
+                            <input
+                                type="search"
+                                id="hero-search"
+                                placeholder="知りたいことを検索..."
+                                autocomplete="off"
+                                aria-label="Wiki内を検索"
+                            >
                         </div>
-
                     </div>
 
+                </section>
 
-                    <!-- 説明 -->
+                <!-- ==============================
+                     BLOODとは？
+                =============================== -->
+                <section class="home-section about-section" aria-labelledby="about-heading">
 
-                    <div class="about-text">
-
-                        <p>
-                            <strong>BLOOD</strong>は、
-                            さまざまな敵や装備、アイテム、
-                            そして釣りなどの要素が存在するゲームです。
-                        </p>
-
-                        <p>
-                            このWikiでは、ゲームを遊ぶ中で
-                            「これって何だろう？」と思ったことを
-                            調べられる場所を目指しています。
-                        </p>
-
-                        <p>
-                            基本的な情報から、細かな仕様まで。
-                            BLOODの世界を知るきっかけになれば幸いです。
-                        </p>
-
-
-                        <div class="about-note">
-
-                            <span class="about-note-label">
-                                WIKI NOTE
-                            </span>
-
-                            <p>
-                                このWikiはBLOODの情報を
-                                ファン向けに整理した
-                                非公式Wikiです。
-                            </p>
-
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">ABOUT BLOOD</span>
+                            <h2 id="about-heading">BLOODとは？</h2>
                         </div>
-
                     </div>
 
-                </div>
+                    <div class="about-content">
 
-            </section>
-
-
-
-            <!-- ==================================
-                 もっと知る
-            =================================== -->
-
-            <section class="home-section know-section">
-
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            DISCOVER
-                        </span>
-
-                        <h2>
-                            BLOODをもっと知る
-                        </h2>
-
-                        <p class="section-description">
-                            気になる要素からBLOODの世界を覗いてみよう
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="discover-grid">
-
-
-                    <!-- 世界 -->
-
-                    <article class="discover-card">
-
-                        <div class="discover-image">
-
+                        <div class="about-visual">
                             <img
                                 src="images/blood-world.jpg"
-                                alt="BLOODの世界"
+                                alt="BLOODの世界観"
                                 onerror="this.style.display='none'"
                             >
-
-                            <span>
-                                WORLD
-                            </span>
-
+                            <div class="image-placeholder" aria-hidden="true">BLOOD</div>
                         </div>
 
-                        <div class="discover-content">
-
-                            <h3>
-                                世界を知る
-                            </h3>
-
+                        <div class="about-text">
                             <p>
-                                BLOODの世界やゲームに
-                                登場するさまざまな要素を知ろう。
+                                <strong>BLOOD</strong>は、さまざまな敵や装備、アイテム、
+                                そして釣りなどの要素が存在するゲームです。
+                            </p>
+                            <p>
+                                このWikiでは、ゲームを遊ぶ中で
+                                「これって何だろう？」と思ったことを
+                                調べられる場所を目指しています。
+                            </p>
+                            <p>
+                                基本的な情報から細かな仕様まで。
+                                BLOODの世界を知るきっかけになれば幸いです。
                             </p>
 
-                            <a
-                                href="category.html?category=npc"
-                                class="discover-link"
-                            >
-                                詳しく見る →
-                            </a>
-
+                            <div class="about-note">
+                                <span class="about-note-label">WIKI NOTE</span>
+                                <p>
+                                    このWikiはBLOODの情報をファン向けに整理した
+                                    非公式Wikiです。
+                                </p>
+                            </div>
                         </div>
-
-                    </article>
-
-
-
-                    <!-- 戦闘 -->
-
-                    <article class="discover-card">
-
-                        <div class="discover-image">
-
-                            <img
-                                src="images/blood-battle.jpg"
-                                alt="BLOODの戦闘"
-                                onerror="this.style.display='none'"
-                            >
-
-                            <span>
-                                BATTLE
-                            </span>
-
-                        </div>
-
-                        <div class="discover-content">
-
-                            <h3>
-                                戦いを知る
-                            </h3>
-
-                            <p>
-                                敵やボス、武器など、
-                                戦いに関わる情報を調べよう。
-                            </p>
-
-                            <a
-                                href="category.html?category=enemy"
-                                class="discover-link"
-                            >
-                                敵を見る →
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- 釣り -->
-
-                    <article class="discover-card">
-
-                        <div class="discover-image">
-
-                            <img
-                                src="images/blood-fishing.jpg"
-                                alt="BLOODの釣り"
-                                onerror="this.style.display='none'"
-                            >
-
-                            <span>
-                                FISHING
-                            </span>
-
-                        </div>
-
-                        <div class="discover-content">
-
-                            <h3>
-                                釣りを知る
-                            </h3>
-
-                            <p>
-                                釣れるものや釣りに関する
-                                情報をチェックしよう。
-                            </p>
-
-                            <a
-                                href="category.html?category=fishing"
-                                class="discover-link"
-                            >
-                                釣りを見る →
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- 装備 -->
-
-                    <article class="discover-card">
-
-                        <div class="discover-image">
-
-                            <img
-                                src="images/blood-equipment.jpg"
-                                alt="BLOODの装備"
-                                onerror="this.style.display='none'"
-                            >
-
-                            <span>
-                                EQUIPMENT
-                            </span>
-
-                        </div>
-
-                        <div class="discover-content">
-
-                            <h3>
-                                装備を知る
-                            </h3>
-
-                            <p>
-                                武器、防具、アクセサリーの
-                                性能や入手方法を調べよう。
-                            </p>
-
-                            <a
-                                href="category.html?category=weapon"
-                                class="discover-link"
-                            >
-                                装備を見る →
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================
-                 Wikiを探索する
-            =================================== -->
-
-            <section class="home-section explore-section">
-
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            EXPLORE
-                        </span>
-
-                        <h2>
-                            Wikiを探索する
-                        </h2>
-
-                        <p class="section-description">
-                            カテゴリから情報を探す
-                        </p>
 
                     </div>
 
-                </div>
+                </section>
 
+                <!-- ==============================
+                     BLOODをもっと知る
+                =============================== -->
+                <section class="home-section know-section" aria-labelledby="discover-heading">
 
-                <div class="category-list">
-
-
-                    <!-- 敵 -->
-
-                    <a
-                        href="category.html?category=enemy"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon enemy">
-                            ⚔
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                敵
-                            </h3>
-
-                            <p>
-                                ゲーム内に登場する敵の
-                                ステータスやドロップなど
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">DISCOVER</span>
+                            <h2 id="discover-heading">BLOODをもっと知る</h2>
+                            <p class="section-description">
+                                気になる要素から、BLOODの世界を覗いてみよう
                             </p>
-
                         </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- ボス -->
-
-                    <a
-                        href="category.html?category=boss"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon boss">
-                            ☠
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                ボス
-                            </h3>
-
-                            <p>
-                                ボスのステータスや攻略、
-                                出現方法など
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- 釣り -->
-
-                    <a
-                        href="category.html?category=fishing"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon fishing">
-                            ♨
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                釣り
-                            </h3>
-
-                            <p>
-                                釣れるアイテムや釣り場、
-                                釣りに関する情報
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- 武器 -->
-
-                    <a
-                        href="category.html?category=weapon"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon weapon">
-                            ⚔
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                武器
-                            </h3>
-
-                            <p>
-                                武器の性能や能力、
-                                入手方法など
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- 防具 -->
-
-                    <a
-                        href="category.html?category=armor"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon armor">
-                            ♢
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                防具
-                            </h3>
-
-                            <p>
-                                防具の性能や効果、
-                                入手方法など
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- アクセサリー -->
-
-                    <a
-                        href="category.html?category=accessory"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon accessory">
-                            ◇
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                アクセサリー
-                            </h3>
-
-                            <p>
-                                アクセサリーの性能や効果、
-                                入手方法など
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- アイテム -->
-
-                    <a
-                        href="category.html?category=item"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon item">
-                            □
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                アイテム
-                            </h3>
-
-                            <p>
-                                ゲーム内に登場する
-                                アイテムの詳細情報
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- NPC -->
-
-                    <a
-                        href="category.html?category=npc"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon npc">
-                            ♙
-                        </div>
-
-                        <div class="category-card-content">
-
-                            <h3>
-                                NPC
-                            </h3>
-
-                            <p>
-                                NPCやショップなどの
-                                情報
-                            </p>
-
-                        </div>
-
-                        <span class="arrow">
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================
-                 最近の更新
-            =================================== -->
-
-            <section class="home-section">
-
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            RECENT
-                        </span>
-
-                        <h2>
-                            最近の更新
-                        </h2>
+                    </div>
+
+                    <div class="discover-grid">
+
+                        <article class="discover-card">
+                            <div class="discover-image">
+                                <img
+                                    src="images/blood-world.jpg"
+                                    alt=""
+                                    onerror="this.style.display='none'"
+                                >
+                                <span>WORLD</span>
+                            </div>
+                            <div class="discover-content">
+                                <h3>世界を知る</h3>
+                                <p>
+                                    BLOODの世界や、ゲームに登場する
+                                    さまざまな要素を知ろう。
+                                </p>
+                                <a href="category.html?category=npc" class="discover-link">
+                                    詳しく見る →
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="discover-card">
+                            <div class="discover-image">
+                                <img
+                                    src="images/blood-battle.jpg"
+                                    alt=""
+                                    onerror="this.style.display='none'"
+                                >
+                                <span>BATTLE</span>
+                            </div>
+                            <div class="discover-content">
+                                <h3>戦いを知る</h3>
+                                <p>
+                                    敵やボス、武器など、
+                                    戦いに関わる情報を調べよう。
+                                </p>
+                                <a href="category.html?category=enemy" class="discover-link">
+                                    敵を見る →
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="discover-card">
+                            <div class="discover-image">
+                                <img
+                                    src="images/blood-fishing.jpg"
+                                    alt=""
+                                    onerror="this.style.display='none'"
+                                >
+                                <span>FISHING</span>
+                            </div>
+                            <div class="discover-content">
+                                <h3>釣りを知る</h3>
+                                <p>
+                                    釣れるものや釣り場など、
+                                    釣りに関する情報をチェックしよう。
+                                </p>
+                                <a href="category.html?category=fishing" class="discover-link">
+                                    釣りを見る →
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="discover-card">
+                            <div class="discover-image">
+                                <img
+                                    src="images/blood-equipment.jpg"
+                                    alt=""
+                                    onerror="this.style.display='none'"
+                                >
+                                <span>EQUIPMENT</span>
+                            </div>
+                            <div class="discover-content">
+                                <h3>装備を知る</h3>
+                                <p>
+                                    武器・防具・アクセサリーの
+                                    性能や入手方法を調べよう。
+                                </p>
+                                <a href="category.html?category=weapon" class="discover-link">
+                                    装備を見る →
+                                </a>
+                            </div>
+                        </article>
 
                     </div>
 
+                </section>
 
-                    <a
-                        href="recent.html"
-                        class="text-link"
-                    >
-                        すべて見る →
-                    </a>
+                <!-- ==============================
+                     Wikiを探索する
+                =============================== -->
+                <section class="home-section explore-section" aria-labelledby="explore-heading">
 
-                </div>
-
-
-                <div
-                    id="recent-articles"
-                    class="article-list"
-                >
-
-                    <div class="loading">
-                        読み込み中...
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">EXPLORE</span>
+                            <h2 id="explore-heading">Wikiを探索する</h2>
+                            <p class="section-description">
+                                カテゴリから情報を探す
+                            </p>
+                        </div>
                     </div>
 
-                </div>
+                    <div class="category-list" role="list">
 
+                        <a href="category.html?category=enemy" class="category-card" role="listitem">
+                            <div class="category-icon enemy" aria-hidden="true">⚔</div>
+                            <div class="category-card-content">
+                                <h3>敵</h3>
+                                <p>ゲーム内に登場する敵のステータスやドロップなど</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
-            </section>
+                        <a href="category.html?category=boss" class="category-card" role="listitem">
+                            <div class="category-icon boss" aria-hidden="true">☠</div>
+                            <div class="category-card-content">
+                                <h3>ボス</h3>
+                                <p>ボスのステータスや攻略、出現方法など</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
+                        <a href="category.html?category=fishing" class="category-card" role="listitem">
+                            <div class="category-icon fishing" aria-hidden="true">♨</div>
+                            <div class="category-card-content">
+                                <h3>釣り</h3>
+                                <p>釣れるアイテムや釣り場、釣りに関する情報</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
+                        <a href="category.html?category=weapon" class="category-card" role="listitem">
+                            <div class="category-icon weapon" aria-hidden="true">⚔</div>
+                            <div class="category-card-content">
+                                <h3>武器</h3>
+                                <p>武器の性能や能力、入手方法など</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
-            <!-- ==================================
-                 Wikiについて
-            =================================== -->
+                        <a href="category.html?category=armor" class="category-card" role="listitem">
+                            <div class="category-icon armor" aria-hidden="true">♢</div>
+                            <div class="category-card-content">
+                                <h3>防具</h3>
+                                <p>防具の性能や効果、入手方法など</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
-            <section class="home-section wiki-info-section">
+                        <a href="category.html?category=accessory" class="category-card" role="listitem">
+                            <div class="category-icon accessory" aria-hidden="true">◇</div>
+                            <div class="category-card-content">
+                                <h3>アクセサリー</h3>
+                                <p>アクセサリーの性能や効果、入手方法など</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
+                        <a href="category.html?category=item" class="category-card" role="listitem">
+                            <div class="category-icon item" aria-hidden="true">□</div>
+                            <div class="category-card-content">
+                                <h3>アイテム</h3>
+                                <p>ゲーム内に登場するアイテムの詳細情報</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            ABOUT THIS WIKI
-                        </span>
-
-                        <h2>
-                            Wikiについて
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-                <div class="wiki-info-grid">
-
-
-                    <div class="wiki-info-card">
-
-                        <span class="wiki-info-icon">
-                            📖
-                        </span>
-
-                        <h3>
-                            情報をまとめる
-                        </h3>
-
-                        <p>
-                            BLOODに関するさまざまな情報を
-                            分かりやすく整理しています。
-                        </p>
-
-                    </div>
-
-
-
-                    <div class="wiki-info-card">
-
-                        <span class="wiki-info-icon">
-                            🔎
-                        </span>
-
-                        <h3>
-                            調べる
-                        </h3>
-
-                        <p>
-                            ゲーム中に気になったことを
-                            検索してすぐに確認できます。
-                        </p>
-
-                    </div>
-
-
-
-                    <div class="wiki-info-card">
-
-                        <span class="wiki-info-icon">
-                            🩸
-                        </span>
-
-                        <h3>
-                            BLOODを楽しむ
-                        </h3>
-
-                        <p>
-                            知ることで、BLOODの世界を
-                            もっと楽しめるWikiを目指しています。
-                        </p>
+                        <a href="category.html?category=npc" class="category-card" role="listitem">
+                            <div class="category-icon npc" aria-hidden="true">♙</div>
+                            <div class="category-card-content">
+                                <h3>NPC</h3>
+                                <p>NPCやショップなどの情報</p>
+                            </div>
+                            <span class="arrow" aria-hidden="true">→</span>
+                        </a>
 
                     </div>
 
+                </section>
 
-                </div>
+                <!-- ==============================
+                     最近の更新
+                =============================== -->
+                <section class="home-section" aria-labelledby="recent-heading">
 
-            </section>
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">RECENT</span>
+                            <h2 id="recent-heading">最近の更新</h2>
+                        </div>
+                        <a href="recent.html" class="text-link">
+                            すべて見る →
+                        </a>
+                    </div>
 
+                    <div id="recent-articles" class="article-list">
+                        <div class="loading">読み込み中...</div>
+                    </div>
 
-        </div>
+                </section>
 
-    </main>
+                <!-- ==============================
+                     Wikiについて
+                =============================== -->
+                <section class="home-section wiki-info-section" aria-labelledby="wiki-info-heading">
 
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">ABOUT THIS WIKI</span>
+                            <h2 id="wiki-info-heading">Wikiについて</h2>
+                        </div>
+                    </div>
 
-</div>
-```
+                    <div class="wiki-info-grid">
 
+                        <div class="wiki-info-card">
+                            <span class="wiki-info-icon" aria-hidden="true">📖</span>
+                            <h3>情報をまとめる</h3>
+                            <p>
+                                BLOODに関するさまざまな情報を
+                                分かりやすく整理しています。
+                            </p>
+                        </div>
+
+                        <div class="wiki-info-card">
+                            <span class="wiki-info-icon" aria-hidden="true">🔎</span>
+                            <h3>調べる</h3>
+                            <p>
+                                ゲーム中に気になったことを
+                                検索してすぐに確認できます。
+                            </p>
+                        </div>
+
+                        <div class="wiki-info-card">
+                            <span class="wiki-info-icon" aria-hidden="true">🩸</span>
+                            <h3>BLOODを楽しむ</h3>
+                            <p>
+                                知ることで、BLOODの世界を
+                                もっと楽しめるWikiを目指しています。
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+        </main>
+
+    </div>
 </div>
 
 <!-- ========================================
      JavaScript
 ========================================= -->
-
 <script src="js/api.js"></script>
-
 <script src="js/layout.js"></script>
-
 <script>
-
-/*
-========================================
-最近の更新を読み込む
-========================================
-*/
-
 async function loadArticles() {
-
-    const container =
-        document.getElementById(
-            "recent-articles"
-        );
-
-
+    const container = document.getElementById("recent-articles");
     if (!container) return;
 
-
     try {
+        const result = await getArticles();
 
-        const result =
-            await getArticles();
-
-
-        if (
-            !result ||
-            !result.success
-        ) {
-
-            throw new Error(
-                result?.error ||
-                "記事を取得できませんでした"
-            );
-
+        if (!result || !result.success) {
+            throw new Error(result?.error || "記事を取得できませんでした");
         }
 
-
-        const articles =
-            result.articles || [];
-
-
-        displayRecentArticles(
-            articles.slice(0, 8)
-        );
-
+        const articles = result.articles || [];
+        displayRecentArticles(articles.slice(0, 8));
 
     } catch (error) {
-
-        console.error(
-            "記事読み込みエラー:",
-            error
-        );
-
-
+        console.error("記事読み込みエラー:", error);
         container.innerHTML = `
-
             <div class="empty">
                 記事を読み込めませんでした。
             </div>
-
         `;
-
     }
-
 }
 
-
-/*
-========================================
-記事一覧表示
-========================================
-*/
-
-function displayRecentArticles(
-    articles
-) {
-
-    const container =
-        document.getElementById(
-            "recent-articles"
-        );
-
-
+function displayRecentArticles(articles) {
+    const container = document.getElementById("recent-articles");
     if (!container) return;
-
 
     container.innerHTML = "";
 
-
-    if (
-        !articles ||
-        articles.length === 0
-    ) {
-
+    if (!articles || articles.length === 0) {
         container.innerHTML = `
-
             <div class="empty">
                 まだ記事がありません。
             </div>
-
         `;
-
         return;
-
     }
 
-
-    for (
-        const article of articles
-    ) {
-
-        const element =
-            document.createElement(
-                "a"
-            );
-
-
-        element.href =
-            "article.html?id=" +
-            encodeURIComponent(
-                article.id
-            );
-
-
-        element.className =
-            "article-list-item";
-
+    for (const article of articles) {
+        const element = document.createElement("a");
+        element.href = "article.html?id=" + encodeURIComponent(article.id);
+        element.className = "article-list-item";
 
         element.innerHTML = `
-
             <div class="article-list-main">
-
                 <div class="article-category">
-
-                    ${escapeHtml(
-                        article.category
-                    )}
-
+                    ${escapeHtml(article.category)}
                 </div>
-
-
                 <h3>
-
-                    ${escapeHtml(
-                        article.title
-                    )}
-
+                    ${escapeHtml(article.title)}
                 </h3>
-
-
                 <p>
-
-                    ${escapeHtml(
-                        article.summary
-                    )}
-
+                    ${escapeHtml(article.summary)}
                 </p>
-
             </div>
-
-
-            <span class="article-arrow">
-                →
-            </span>
-
+            <span class="article-arrow" aria-hidden="true">→</span>
         `;
 
-
-        container.appendChild(
-            element
-        );
-
+        container.appendChild(element);
     }
-
 }
-
-
-/*
-========================================
-HTMLエスケープ
-========================================
-*/
 
 function escapeHtml(text) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        text ?? "";
-
-
+    const div = document.createElement("div");
+    div.textContent = text ?? "";
     return div.innerHTML;
-
 }
-
-
-/*
-========================================
-ヒーロー検索
-========================================
-*/
 
 function setupHeroSearch() {
-
-    const input =
-        document.getElementById(
-            "hero-search"
-        );
-
-
+    const input = document.getElementById("hero-search");
     if (!input) return;
 
+    input.addEventListener("keydown", event => {
+        if (event.key !== "Enter") return;
 
-    input.addEventListener(
-        "keydown",
-        event => {
+        const keyword = input.value.trim();
+        if (!keyword) return;
 
-            if (
-                event.key !== "Enter"
-            ) {
-                return;
-            }
-
-
-            const keyword =
-                input.value.trim();
-
-
-            if (!keyword) {
-                return;
-            }
-
-
-            location.href =
-                "search.html?q=" +
-                encodeURIComponent(
-                    keyword
-                );
-
-        }
-    );
-
+        location.href = "search.html?q=" + encodeURIComponent(keyword);
+    });
 }
 
-
-/*
-========================================
-開始
-========================================
-*/
-
 loadArticles();
-
 setupHeroSearch();
-
 </script>
-
 </body>
-
 </html>
