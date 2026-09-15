@@ -21,70 +21,50 @@
         <main class="main">
             <div class="content home-world">
 
-                <!-- ========== ワールド・ヒーロー ========== -->
+                <!-- ========== ヒーロー（背景スライドショー） ========== -->
                 <section class="hw-hero" aria-label="BLOOD Wiki">
-                    <div class="hw-hero-bg" aria-hidden="true"></div>
-                    <div class="hw-hero-glow" aria-hidden="true"></div>
+                    <div class="hw-hero-slides" aria-hidden="true">
+                        <div class="hw-hero-slide is-active" style="background-image: url('images/blood-hero.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-battle.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-world.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-fishing.jpg')"></div>
+                        <div class="hw-hero-slide" style="background-image: url('images/blood-equipment.jpg')"></div>
+                    </div>
+                    <div class="hw-hero-veil" aria-hidden="true"></div>
 
                     <div class="hw-hero-inner">
                         <div class="hw-logo-wrap">
-                            <!-- ロゴ画像があればこちら。なければテキストロゴが出ます -->
                             <img
                                 class="hw-logo-img"
                                 src="images/title.png"
                                 alt="BLOOD"
                                 onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"
                             >
-                            <div class="hw-logo-text" hidden>
-                                <span class="hw-logo-mark">BLOOD</span>
-                                <span class="hw-logo-sub">WIKI</span>
+                            <div class="hw-logo-fallback" hidden>
+                                <span>BLOOD</span>
+                                <small>WIKI</small>
                             </div>
                         </div>
 
-                        <p class="hw-hero-tag">Unofficial Fan Wiki</p>
-                        <h1 class="hw-hero-title">
-                            世界のすべてを、<br>
-                            ここに。
-                        </h1>
-                        <p class="hw-hero-desc">
-                            敵・装備・釣り・アイテム。<br>
-                            BLOODを遊ぶすべての人のためのWiki。
-                        </p>
-
-                        <div class="hw-search">
-                            <span class="hw-search-icon" aria-hidden="true">⌕</span>
-                            <input
-                                type="search"
-                                id="hero-search"
-                                placeholder="何を調べる？"
-                                autocomplete="off"
-                                aria-label="Wiki内を検索"
-                            >
-                            <kbd class="hw-search-hint">Enter</kbd>
-                        </div>
+                        <p class="hw-hero-label">Unofficial Fan Wiki</p>
 
                         <div class="hw-hero-actions">
-                            <a href="#showcase" class="hw-btn hw-btn-primary">世界を見る</a>
-                            <a href="#categories" class="hw-btn hw-btn-ghost">カテゴリへ</a>
+                            <a href="#showcase" class="hw-btn hw-btn-primary">ゲームの世界</a>
+                            <a href="#categories" class="hw-btn hw-btn-ghost">カテゴリ</a>
                         </div>
                     </div>
 
-                    <div class="hw-scroll-hint" aria-hidden="true">
-                        <span></span>
-                    </div>
+                    <div class="hw-scroll-hint" aria-hidden="true"><span></span></div>
                 </section>
 
                 <!-- ========== スクショ・ショーケース ========== -->
                 <section class="hw-showcase" id="showcase" aria-label="ゲームの雰囲気">
-                    <div class="hw-section-label">
-                        <span>SHOWCASE</span>
-                    </div>
+                    <div class="hw-section-label"><span>SHOWCASE</span></div>
                     <h2 class="hw-section-title">ゲームの世界</h2>
-                    <p class="hw-section-desc">画面の先に広がる、BLOODの景色</p>
+                    <p class="hw-section-desc">BLOODのさまざまな場面</p>
 
-                    <div class="hw-marquee" data-marquee>
+                    <div class="hw-marquee">
                         <div class="hw-marquee-track">
-                            <!-- 1周目 -->
                             <figure class="hw-shot">
                                 <img src="images/blood-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
                                 <figcaption>フィールド</figcaption>
@@ -105,7 +85,7 @@
                                 <img src="images/blood-equipment.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
                                 <figcaption>装備</figcaption>
                             </figure>
-                            <!-- 2周目（無限ループ用） -->
+                            <!-- ループ用 -->
                             <figure class="hw-shot" aria-hidden="true">
                                 <img src="images/blood-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
                                 <figcaption>フィールド</figcaption>
@@ -154,11 +134,11 @@
                     </div>
                 </section>
 
-                <!-- ========== 入り口（大きな導線） ========== -->
+                <!-- ========== 入り口 ========== -->
                 <section class="hw-portals" id="categories">
                     <div class="hw-section-label"><span>ENTER</span></div>
-                    <h2 class="hw-section-title">世界への入り口</h2>
-                    <p class="hw-section-desc">興味のある扉を、ひとつ開けてみよう</p>
+                    <h2 class="hw-section-title">カテゴリから探す</h2>
+                    <p class="hw-section-desc">見たい情報の入り口</p>
 
                     <div class="hw-portal-grid">
                         <a href="category.html?category=enemy" class="hw-portal" data-reveal>
@@ -169,7 +149,7 @@
                             <div class="hw-portal-body">
                                 <h3>敵・ボス</h3>
                                 <p>ステータス / ドロップ / 攻略</p>
-                                <span class="hw-portal-go">入る →</span>
+                                <span class="hw-portal-go">見る →</span>
                             </div>
                         </a>
 
@@ -181,7 +161,7 @@
                             <div class="hw-portal-body">
                                 <h3>装備</h3>
                                 <p>武器 / 防具 / アクセサリー</p>
-                                <span class="hw-portal-go">入る →</span>
+                                <span class="hw-portal-go">見る →</span>
                             </div>
                         </a>
 
@@ -193,7 +173,7 @@
                             <div class="hw-portal-body">
                                 <h3>釣り</h3>
                                 <p>釣り場 / 釣果 / アイテム</p>
-                                <span class="hw-portal-go">入る →</span>
+                                <span class="hw-portal-go">見る →</span>
                             </div>
                         </a>
 
@@ -205,13 +185,13 @@
                             <div class="hw-portal-body">
                                 <h3>世界・NPC</h3>
                                 <p>人物 / ショップ / 場所</p>
-                                <span class="hw-portal-go">入る →</span>
+                                <span class="hw-portal-go">見る →</span>
                             </div>
                         </a>
                     </div>
                 </section>
 
-                <!-- ========== 全カテゴリ（コンパクト） ========== -->
+                <!-- ========== 全カテゴリ ========== -->
                 <section class="hw-cats">
                     <div class="hw-cats-inner">
                         <h2 class="hw-cats-title">すべてのカテゴリ</h2>
@@ -247,8 +227,7 @@
                 <section class="hw-closing">
                     <p class="hw-closing-logo">BLOOD</p>
                     <p class="hw-closing-text">
-                        ファンによる非公式Wikiです。<br>
-                        知るほどに、冒険はおもしろくなる。
+                        ファンによる非公式Wikiです。
                     </p>
                 </section>
 
@@ -260,6 +239,21 @@
 <script src="js/api.js"></script>
 <script src="js/layout.js"></script>
 <script>
+/* ヒーロー背景スライドショー */
+function setupHeroSlideshow() {
+    const slides = document.querySelectorAll(".hw-hero-slide");
+    if (slides.length < 2) return;
+
+    let index = 0;
+    const interval = 5000;
+
+    setInterval(() => {
+        slides[index].classList.remove("is-active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("is-active");
+    }, interval);
+}
+
 /* 最近の更新 */
 async function loadArticles() {
     const container = document.getElementById("recent-articles");
@@ -306,18 +300,6 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-/* ヒーロー検索 */
-function setupHeroSearch() {
-    const input = document.getElementById("hero-search");
-    if (!input) return;
-    input.addEventListener("keydown", e => {
-        if (e.key !== "Enter") return;
-        const q = input.value.trim();
-        if (!q) return;
-        location.href = "search.html?q=" + encodeURIComponent(q);
-    });
-}
-
 /* スクロール出現 */
 function setupReveal() {
     const els = document.querySelectorAll("[data-reveal]");
@@ -340,21 +322,9 @@ function setupReveal() {
     els.forEach(el => io.observe(el));
 }
 
-/* マーキー：ホバーで一時停止 */
-function setupMarquee() {
-    const marquee = document.querySelector("[data-marquee]");
-    if (!marquee) return;
-    const track = marquee.querySelector(".hw-marquee-track");
-    if (!track) return;
-
-    marquee.addEventListener("mouseenter", () => track.style.animationPlayState = "paused");
-    marquee.addEventListener("mouseleave", () => track.style.animationPlayState = "running");
-}
-
+setupHeroSlideshow();
 loadArticles();
-setupHeroSearch();
 setupReveal();
-setupMarquee();
 </script>
 </body>
 </html>
