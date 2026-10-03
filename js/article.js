@@ -314,10 +314,26 @@ async function loadArticle() {
             );
 
 
-        content.innerHTML = article.html;
+        
+content.innerHTML = article.html;
 
 
-            /*
+/*
+========================================
+数式の data-math 属性を削除
+========================================
+*/
+
+content.querySelectorAll(
+    ".math-expression"
+).forEach(function(el) {
+
+    el.removeAttribute("data-math");
+
+});
+
+
+/*
 ========================================
 自由配置要素の衝突調整
 ========================================
