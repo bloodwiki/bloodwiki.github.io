@@ -313,23 +313,18 @@ async function loadArticle() {
                 "content"
             );
 
-
-        
+            
 content.innerHTML = article.html;
 
-
-/*
-========================================
-数式の data-math 属性を削除
-========================================
-*/
-
+// MathJaxの補助用MathMLから日本語の数式ラベルを削除
 content.querySelectorAll(
-    ".math-expression"
-).forEach(function(el) {
-
-    el.removeAttribute("data-math");
-
+    ".math-expression mjx-assistive-mml math"
+).forEach(math => {
+    math.querySelectorAll("mi[mathvariant='normal']").forEach(mi => {
+        if (/^[\u3000-\u9FFF\uF900-\uFAFF]+$/.test(mi.textContent)) {
+            mi.remove();
+        }
+    });
 });
 
 
