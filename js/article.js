@@ -314,8 +314,25 @@ async function loadArticle() {
             );
 
 
-        content.innerHTML =
-            article.html;
+        content.innerHTML = article.html;
+
+// 数式を元データから再構築
+content.querySelectorAll(".math-expression").forEach(element => {
+    const math = element.dataset.math;
+
+    if (!math) return;
+
+    // 保存されている描画済みHTMLを削除
+    element.innerHTML = "";
+
+    // 元の数式をMathJax用の区切り文字で設定
+    element.textContent = `\\(${math}\\)`;
+});
+
+// MathJaxで再描画
+if (window.MathJax?.typesetPromise) {
+    await window.MathJax.typesetPromise([content]);
+}
 
             /*
 ========================================
